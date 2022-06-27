@@ -14,6 +14,7 @@
 - fixed navbar
 - added about section
 - using secrets and env vars
+- using react-share for sharing
 
 TODO:
 

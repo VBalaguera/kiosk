@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
+import SharingButtons from '../Sharing/SharingButtons'
+
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/us.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
@@ -32,6 +34,9 @@ export default function UsTopStories() {
                 </a>
               </Button>
             </Card.Body>
+            <Card.Footer>
+              <SharingButtons url={post.url} />
+            </Card.Footer>
           </Card>
         ))}
       </div>

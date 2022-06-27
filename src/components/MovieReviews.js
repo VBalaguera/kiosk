@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
+import SharingButtons from './Sharing/SharingButtons'
 
 const nytMovieReviewsUrl = `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?&api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
@@ -44,6 +45,9 @@ export default function MovieReviews() {
                 </a>
               </Button>
             </Card.Body>
+            <Card.Footer>
+              <SharingButtons url={post.url} />
+            </Card.Footer>
           </Card>
         ))}
       </div>

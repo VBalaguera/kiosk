@@ -20,7 +20,7 @@ code {
 .link {
   color: white;
   text-decoration: none;
-  transition: all 1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .link:hover {
@@ -39,4 +39,19 @@ code {
 .card {
   margin: 1rem 0;
   padding: 0.5rem;
+}
+
+/* icons */
+
+.sharing-icon {
+  height: 2rem;
+  stroke: white;
+  fill: white;
+  margin: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.sharing-icon:hover {
+  transition: all 0.2s ease-in-out;
+  filter: brightness(70%);
 }

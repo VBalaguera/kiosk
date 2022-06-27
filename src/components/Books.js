@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
-
+import SharingButtons from './Sharing/SharingButtons'
 const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
 export default function Books() {
@@ -39,6 +39,9 @@ export default function Books() {
                 </a>
               </Button>
             </Card.Body>
+            <Card.Footer>
+              <SharingButtons url={post.url} />
+            </Card.Footer>
           </Card>
         ))}
       </div>
