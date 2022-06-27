@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
-import { Container, Button, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { useState } from 'react'
+import { Container, Button, Nav, Navbar } from 'react-bootstrap'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import axios from 'axios'
 
 import MostPopular from './components/MostPopular'
 import TopStories from './components/TopStories'

@@ -17,3 +17,7 @@
 TODO:
 
 - add more sections from different apis;
+
+NOTES:
+
+- error autoprefixer: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated. Fixed with: npm install autoprefixer@10.4.5
