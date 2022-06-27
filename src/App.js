@@ -82,7 +82,7 @@ function App() {
             </Nav.Link>
           ))}
         </div>
-        <div className='index min-vh-100'>
+        <div className='index min-vh-100 w-100'>
           <h1 className='text-light '>{mySection}</h1>
 
           {mySection === 'most popular' && <MostPopular />}
