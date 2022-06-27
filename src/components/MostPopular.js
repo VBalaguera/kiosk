@@ -17,7 +17,7 @@ export default function MostPopular() {
   return (
     <div className='most-populars'>
       {mostPopulars.map((post, index) => (
-        <Card className='most-populars__card' index={index}>
+        <Card className='most-populars__card  card' index={index}>
           <Card.Body>
             <Card.Title>{post.title}</Card.Title>
 

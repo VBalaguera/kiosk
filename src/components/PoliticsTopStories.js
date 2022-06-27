@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
-const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
-export default function TopStories() {
+export default function PoliticsTopStories() {
   const [posts, setPosts] = useState([])
   useEffect(() => {
     /* top stories */

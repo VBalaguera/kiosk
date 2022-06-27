@@ -17,7 +17,7 @@ export default function MovieReviews() {
     <div>
       <div className='movie-reviews'>
         {reviews.map((post, index) => (
-          <Card index={index} className='movie-reviews__card'>
+          <Card index={index} className='movie-reviews__card  card'>
             <Card.Body>
               <Card.Title>{post.display_title}</Card.Title>
 

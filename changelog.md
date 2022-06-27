@@ -21,3 +21,4 @@ TODO:
 NOTES:
 
 - error autoprefixer: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated. Fixed with: npm install autoprefixer@10.4.5
+- netlify: error while deploying; solved by editing npm run build to CI= npm run build in deployment options.

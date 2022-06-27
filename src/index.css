@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.index {
+  max-width: 500px;
+  margin: auto;
+}
+
 .link {
   color: white;
   text-decoration: none;
@@ -30,11 +35,8 @@ code {
   padding: 0.5rem;
 }
 
-.navbar {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-around;
-}
-
-.navbar-items {
+/* cards */
+.card {
+  margin: 1rem 0;
+  padding: 0.5rem;
 }

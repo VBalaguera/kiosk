@@ -18,7 +18,7 @@ export default function Books() {
       {' '}
       <div className='books'>
         {books.map((post, index) => (
-          <Card className='books__card' index={index}>
+          <Card className='books__card card' index={index}>
             <Card.Body>
               {' '}
               <Card.Title>{post.title}</Card.Title>
