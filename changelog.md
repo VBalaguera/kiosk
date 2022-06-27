@@ -13,6 +13,7 @@
 - responsive
 - fixed navbar
 - added about section
+- using secrets and env vars
 
 TODO:
 

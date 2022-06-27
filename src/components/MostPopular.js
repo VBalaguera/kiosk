@@ -17,7 +17,10 @@ export default function MostPopular() {
   return (
     <div className='most-populars'>
       {mostPopulars.map((post, index) => (
-        <Card className='most-populars__card  card' index={index}>
+        <Card
+          className='most-populars__card  card bg-dark text-light border-light'
+          index={index}
+        >
           <Card.Body>
             <Card.Title>{post.title}</Card.Title>
 
@@ -25,7 +28,7 @@ export default function MostPopular() {
               <span>{post.updated}</span>
             </Card.Text>
 
-            <Button variant='primary'>
+            <Button variant='btn btn-outline-light'>
               <a href={post.url} className='link'>
                 read more
               </a>

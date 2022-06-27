@@ -17,7 +17,10 @@ export default function MovieReviews() {
     <div>
       <div className='movie-reviews'>
         {reviews.map((post, index) => (
-          <Card index={index} className='movie-reviews__card  card'>
+          <Card
+            index={index}
+            className='movie-reviews__card  card bg-dark text-light border-light'
+          >
             <Card.Body>
               <Card.Title>{post.display_title}</Card.Title>
 
@@ -34,7 +37,7 @@ export default function MovieReviews() {
                 <span>MPAA Rating: {post.mpaa_rating}</span>
               </Card.Text>
 
-              <Button variant='primary'>
+              <Button variant='btn btn-outline-light'>
                 {' '}
                 <a href={post.link.url} alt={post.headline} className='link'>
                   read more

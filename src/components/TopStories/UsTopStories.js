@@ -18,12 +18,15 @@ export default function UsTopStories() {
     <div>
       <div className='top-stories'>
         {posts.map((post, index) => (
-          <Card className='top-stories__card  card' index={index}>
+          <Card
+            className='top-stories__card bg-dark card text-light border-light'
+            index={index}
+          >
             <Card.Body>
               {' '}
               <Card.Title>{post.title}</Card.Title>
               <Card.Text>{post.updated}</Card.Text>
-              <Button variant='primary'>
+              <Button variant='btn btn-outline-light'>
                 <a href={post.url} className='link'>
                   read more
                 </a>

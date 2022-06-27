@@ -38,7 +38,7 @@ function App() {
   const [mySection, setMySection] = useState(true)
 
   return (
-    <div className='App'>
+    <div className='App bg-dark'>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
           <Navbar.Brand href='#home'>kiosk</Navbar.Brand>
@@ -65,12 +65,12 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container className='mt-2'>
+      <Container className='mt-2 '>
         <div className='d-flex flex-wrap flex-row'>
           {sections.map((section) => (
             <Nav.Link className='px-1 py-1 '>
               <Button
-                variant='btn btn-outline-dark button p-1 fs-6'
+                variant='btn btn-outline-light button p-1 fs-6'
                 type='button'
                 key={section}
                 onClick={() => setMySection(section)}
@@ -80,8 +80,8 @@ function App() {
             </Nav.Link>
           ))}
         </div>
-        <div className='index'>
-          <h1>{mySection}</h1>
+        <div className='index min-vh-100'>
+          <h1 className='text-light '>{mySection}</h1>
 
           {mySection === 'most popular' && <MostPopular />}
           {mySection === 'art' && <ArtTopStories />}
