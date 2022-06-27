@@ -5,22 +5,27 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 /* nyt api */
 import MostPopular from './components/MostPopular'
-import TopStories from './components/TopStories'
 import MovieReviews from './components/MovieReviews'
 import Books from './components/Books'
-import PoliticsTopStories from './components/PoliticsTopStories'
-import OpinionTopStories from './components/OpinionTopStories'
+import PoliticsTopStories from './components/TopStories/PoliticsTopStories'
+import OpinionTopStories from './components/TopStories/OpinionTopStories'
+import ArtTopStories from './components/TopStories/ArtTopStories'
+import SportsTopStories from './components/TopStories/Sports'
+import BusinessTopStories from './components/TopStories/BusinessTopStories'
 
+/* miscellaneous */
 import About from './components/About'
 
 function App() {
   const sections = [
     'most popular',
     'politics',
+    'business',
     'movie reviews',
     'books',
     'opinion',
-    'arts',
+    'sports',
+    'art',
     'about',
   ]
 
@@ -55,14 +60,31 @@ function App() {
         </Container>
       </Navbar>
       <Container className='mt-2'>
+        <div className='d-flex flex-wrap flex-row'>
+          {sections.map((section) => (
+            <Nav.Link className='px-1 py-1 '>
+              <Button
+                variant='btn btn-outline-dark button p-1 fs-6'
+                type='button'
+                key={section}
+                onClick={() => setMySection(section)}
+              >
+                {section}
+              </Button>
+            </Nav.Link>
+          ))}
+        </div>
         <div className='index'>
           <h1>{mySection}</h1>
+
           {mySection === 'most popular' && <MostPopular />}
-          {mySection === 'top stories' && <TopStories />}
+          {mySection === 'art' && <ArtTopStories />}
           {mySection === 'movie reviews' && <MovieReviews />}
           {mySection === 'books' && <Books />}
           {mySection === 'opinion' && <OpinionTopStories />}
           {mySection === 'politics' && <PoliticsTopStories />}
+          {mySection === 'business' && <BusinessTopStories />}
+          {mySection === 'sports' && <SportsTopStories />}
           {mySection === 'about' && <About />}
         </div>
       </Container>
