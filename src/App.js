@@ -12,6 +12,9 @@ import OpinionTopStories from './components/TopStories/OpinionTopStories'
 import ArtTopStories from './components/TopStories/ArtTopStories'
 import SportsTopStories from './components/TopStories/Sports'
 import BusinessTopStories from './components/TopStories/BusinessTopStories'
+import UsTopStories from './components/TopStories/UsTopStories'
+import WorldTopStories from './components/TopStories/WorldTopStories'
+import TechnologyTopStories from './components/TopStories/TechTopStories'
 
 /* miscellaneous */
 import About from './components/About'
@@ -19,8 +22,11 @@ import About from './components/About'
 function App() {
   const sections = [
     'most popular',
+    'us',
+    'world',
     'politics',
     'business',
+    'technology',
     'movie reviews',
     'books',
     'opinion',
@@ -85,6 +91,9 @@ function App() {
           {mySection === 'politics' && <PoliticsTopStories />}
           {mySection === 'business' && <BusinessTopStories />}
           {mySection === 'sports' && <SportsTopStories />}
+          {mySection === 'us' && <UsTopStories />}
+          {mySection === 'world' && <WorldTopStories />}
+          {mySection === 'technology' && <TechnologyTopStories />}
           {mySection === 'about' && <About />}
         </div>
       </Container>
