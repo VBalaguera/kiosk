@@ -16,6 +16,8 @@ import UsTopStories from './components/TopStories/UsTopStories'
 import WorldTopStories from './components/TopStories/WorldTopStories'
 import TechnologyTopStories from './components/TopStories/TechTopStories'
 
+import Footer from './components/navigation/Footer'
+
 /* miscellaneous */
 import About from './components/About'
 
@@ -65,7 +67,7 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container className='mt-2 '>
+      <Container className='mt-2 pb-5'>
         <div className='d-flex flex-wrap flex-row'>
           {sections.map((section) => (
             <Nav.Link className='px-1 py-1 '>
@@ -97,6 +99,7 @@ function App() {
           {mySection === 'about' && <About />}
         </div>
       </Container>
+      <Footer />
     </div>
   )
 }

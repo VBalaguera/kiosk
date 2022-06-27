@@ -9,16 +9,19 @@
 - installed axios
 - using bootstrap and react-bootstrap
 - using apy.search.py to backup api call results;
-- backuping those results at /src/backup
+- backup those results at /src/backup
 - responsive
 - fixed navbar
 - added about section
 - using secrets and env vars
-- using react-share for sharing
+- using react-share for sharing https://www.npmjs.com/package/react-share
+- added footer
 
 TODO:
 
 - add more sections from different apis;
+- do daily backups of every api call using api-search.py
+- overall styling
 
 NOTES:
 
