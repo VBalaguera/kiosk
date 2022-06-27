@@ -8,9 +8,16 @@ import MostPopular from './components/MostPopular'
 import TopStories from './components/TopStories'
 import MovieReviews from './components/MovieReviews'
 import Books from './components/Books'
+import About from './components/About'
 
 function App() {
-  const sections = ['most popular', 'top stories', 'movie reviews', 'books']
+  const sections = [
+    'most popular',
+    'top stories',
+    'movie reviews',
+    'books',
+    'about',
+  ]
 
   const [mySection, setMySection] = useState(true)
 
@@ -46,9 +53,13 @@ function App() {
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
           <Navbar.Brand href='#home'>kiosk</Navbar.Brand>
+
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-          <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='me-auto'>
+          <Navbar.Collapse
+            id='responsive-navbar-nav'
+            className='justify-content-end'
+          >
+            <Nav className='justify-content-end flex-grow-1 pe-3'>
               {sections.map((section) => (
                 <Nav.Link>
                   <Button
@@ -62,6 +73,20 @@ function App() {
                 </Nav.Link>
               ))}
             </Nav>
+            {/* <Nav className='me-auto '>
+              {sections.map((section) => (
+                <Nav.Link>
+                  <Button
+                    variant='btn btn-outline-light'
+                    type='button'
+                    key={section}
+                    onClick={() => setMySection(section)}
+                  >
+                    {section}
+                  </Button>
+                </Nav.Link>
+              ))}
+            </Nav> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -72,6 +97,7 @@ function App() {
           {mySection === 'top stories' && <TopStories />}
           {mySection === 'movie reviews' && <MovieReviews />}
           {mySection === 'books' && <Books />}
+          {mySection === 'about' && <About />}
         </div>
       </Container>
     </div>

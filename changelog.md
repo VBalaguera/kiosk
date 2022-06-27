@@ -11,8 +11,9 @@
 - using apy.search.py to backup api call results;
 - backuping those results at /src/backup
 - responsive
+- fixed navbar
+- added about section
 
 TODO:
 
 - add more sections from different apis;
-- fix navbar
