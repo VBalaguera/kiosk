@@ -29,3 +29,12 @@ code {
   object-fit: contain;
   padding: 0.5rem;
 }
+
+.navbar {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-items {
+}

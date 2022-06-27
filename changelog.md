@@ -10,4 +10,9 @@
 - using bootstrap and react-bootstrap
 - using apy.search.py to backup api call results;
 - backuping those results at /src/backup
--
+- responsive
+
+TODO:
+
+- add more sections from different apis;
+- fix navbar
