@@ -4,6 +4,9 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /* nyt api */
+
+import ArticleSearch from './components/ArticleSearch/ArticleSearch'
+
 import MostPopular from './components/MostPopular'
 import MovieReviews from './components/MovieReviews'
 import Books from './components/Books'
@@ -84,7 +87,7 @@ function App() {
         </div>
         <div className='index min-vh-100 w-100'>
           <h1 className='text-light '>{mySection}</h1>
-
+          <ArticleSearch />
           {mySection === 'most popular' && <MostPopular />}
           {mySection === 'art' && <ArtTopStories />}
           {mySection === 'movie reviews' && <MovieReviews />}
