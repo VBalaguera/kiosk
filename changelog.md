@@ -7,7 +7,9 @@
 - navbar revamped
 - footer improved
 - about improved
-- fonts
+- meta and manifest.json updated
+- fonts updated
+- favicon updated
 
 TODO:
 
