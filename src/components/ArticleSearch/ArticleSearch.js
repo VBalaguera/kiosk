@@ -33,7 +33,7 @@ export default function ArticleSearch() {
   return (
     <div className='w-100'>
       <div className='articles-search'>
-        <div class='input-group'>
+        <div class='input-group mb-4'>
           <input
             type='text'
             className='articles-search__input form-control'
@@ -44,7 +44,7 @@ export default function ArticleSearch() {
           />
           {posts.length === 0 ? (
             <span
-              class='btn btn-outline-secondary'
+              class='btn btn-outline-light'
               type='button'
               id='button-addon2'
             >
@@ -52,7 +52,7 @@ export default function ArticleSearch() {
             </span>
           ) : (
             <button
-              class='btn btn-outline-secondary'
+              class='btn btn-outline-light'
               type='button'
               id='button-addon2'
               onClick={clearInput}
