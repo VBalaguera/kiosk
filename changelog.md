@@ -3,6 +3,7 @@
 ## 2022/06/28
 
 - search functionality from nyt api.
+- search bar improved
 - navbar revamped
 - footer improved
 - about improved

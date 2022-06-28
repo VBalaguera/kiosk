@@ -24,27 +24,44 @@ export default function ArticleSearch() {
         setPosts(response.data.response.docs)
       })
   }
-  /* useEffect(() => {
-    const query = 'cats'
-    axios
-      .get(
-        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.REACT_APP_NYT_API_KEY}`
-      )
-      .then((response) => {
-        console.log(response.data.response.docs)
-        setPosts(response.data.response.docs)
-      })
-  }, []) */
+
+  const clearInput = () => {
+    setPosts([])
+    setWordEntered('')
+  }
+
   return (
     <div className='w-100'>
       <div className='articles-search'>
-        <input
-          type='text'
-          value={wordEntered}
-          onChange={handleSearch}
-          className='articles-search__input form-control'
-          placeholder='what would you like to know?'
-        />
+        <div class='input-group'>
+          <input
+            type='text'
+            className='articles-search__input form-control'
+            placeholder='what would you like to know?'
+            value={wordEntered}
+            onChange={handleSearch}
+            aria-label='what would you like to know?'
+          />
+          {posts.length === 0 ? (
+            <span
+              class='btn btn-outline-secondary'
+              type='button'
+              id='button-addon2'
+            >
+              search
+            </span>
+          ) : (
+            <button
+              class='btn btn-outline-secondary'
+              type='button'
+              id='button-addon2'
+              onClick={clearInput}
+            >
+              delete
+            </button>
+          )}
+        </div>
+
         {posts.map((post) => (
           <div className='w-100'>
             <Card
