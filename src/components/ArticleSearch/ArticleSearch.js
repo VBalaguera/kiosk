@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
-import SharingButtons from '../Sharing/SharingButtons'
+import moment from 'moment'
 
-const nytArticlesSearch = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=cats&api-key=${process.env.REACT_APP_NYT_API_KEY}`
-/* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
+import data from '../../data/nytMostPopular.json'
+
+import SharingButtons from '../Sharing/SharingButtons'
 
 export default function ArticleSearch() {
   const [wordEntered, setWordEntered] = useState('')
@@ -22,6 +23,10 @@ export default function ArticleSearch() {
       .then((response) => {
         console.log(response.data.response.docs)
         setPosts(response.data.response.docs)
+      })
+      .catch((err) => {
+        console.log(err)
+        setPosts(data)
       })
   }
 
@@ -73,7 +78,7 @@ export default function ArticleSearch() {
                 <Card.Title>{post.headline.main}</Card.Title>
                 <Card.Subtitle>{post.byline.original}</Card.Subtitle>
                 <Card.Text>
-                  <span>{post.pub_date}</span>
+                  <span>{moment(post.pub_date).format('MMMM d, YYYY')}</span>
                   <span>{post.snippet}</span>
                   <span className='articles-search__keywords'>
                     Keywords:

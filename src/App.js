@@ -19,6 +19,9 @@ import UsTopStories from './components/TopStories/UsTopStories'
 import WorldTopStories from './components/TopStories/WorldTopStories'
 import TechnologyTopStories from './components/TopStories/TechTopStories'
 
+/* weather widget */
+import WeatherWidget from './components/WeatherWidget/WeatherWidget'
+
 import Footer from './components/navigation/Footer'
 
 /* miscellaneous */
@@ -99,6 +102,7 @@ function App() {
           ))}
         </div>
         <div className='index min-vh-100 w-100'>
+          {/* <WeatherWidget /> */}
           <h1 className='text-light '>{mySection}</h1>
 
           {mySection === 'most popular' && <MostPopular />}

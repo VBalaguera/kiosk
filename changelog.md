@@ -3,7 +3,9 @@
 ## 2022/06/28
 
 - search functionality from nyt api.
+- backups updated and implemented.
 - search bar improved
+- fixed all dates using moment
 - navbar revamped
 - footer improved
 - about improved
@@ -13,7 +15,6 @@
 
 TODO:
 
-- fix all dates using moment
 - add more sections from different apis;
 - do daily backups of every api call using api-search.py
 - overall styling

@@ -3,16 +3,25 @@ import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 import SharingButtons from './Sharing/SharingButtons'
 
+import moment from 'moment'
+
+import data from '../data/nytMovieReviews.json'
 const nytMovieReviewsUrl = `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?&api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
 export default function MovieReviews() {
   const [reviews, setReviews] = useState([])
   useEffect(() => {
     /* movie reviews */
-    axios.get(nytMovieReviewsUrl).then((response) => {
-      console.log(response.data.results)
-      setReviews(response.data.results)
-    })
+    axios
+      .get(nytMovieReviewsUrl)
+      .then((response) => {
+        console.log(response.data.results)
+        setReviews(response.data.results)
+      })
+      .catch((err) => {
+        console.log(err)
+        setReviews(data)
+      })
   }, [])
   return (
     <div>
@@ -32,8 +41,16 @@ export default function MovieReviews() {
               />
 
               <Card.Text>
-                <span>Opens on: {post.opening_date}</span>
-                <span>Published on: {post.publication_date}</span>
+                <span>
+                  Opens on:{' '}
+                  {moment(post.publication_date).format('MMMM d, YYYY')}
+                </span>
+                <span>
+                  Published on:{' '}
+                  <span>
+                    {moment(post.publication_date).format('MMMM d, YYYY')}
+                  </span>
+                </span>
                 <span>{post.summary_short}</span>
                 <span>MPAA Rating: {post.mpaa_rating}</span>
               </Card.Text>

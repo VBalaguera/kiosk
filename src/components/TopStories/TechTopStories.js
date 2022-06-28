@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
+import moment from 'moment'
+
+import data from '../../data/nytTech.json'
+
 import SharingButtons from '../Sharing/SharingButtons'
 
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
@@ -11,10 +15,16 @@ export default function TechnologyTopStories() {
   const [posts, setPosts] = useState([])
   useEffect(() => {
     /* top stories */
-    axios.get(nytTopStoriesUrl).then((response) => {
-      console.log(response.data.results)
-      setPosts(response.data.results)
-    })
+    axios
+      .get(nytTopStoriesUrl)
+      .then((response) => {
+        console.log(response.data.results)
+        setPosts(response.data.results)
+      })
+      .catch((err) => {
+        console.log(err)
+        setPosts(data)
+      })
   }, [])
   return (
     <div>
@@ -27,7 +37,9 @@ export default function TechnologyTopStories() {
             <Card.Body>
               {' '}
               <Card.Title>{post.title}</Card.Title>
-              <Card.Text>{post.updated}</Card.Text>
+              <Card.Text>
+                {moment(post.updated).format('MMMM d, YYYY')}
+              </Card.Text>
               <Button variant='btn btn-outline-light'>
                 <a href={post.url} className='link'>
                   read more
