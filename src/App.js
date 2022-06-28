@@ -37,19 +37,15 @@ function App() {
     'opinion',
     'sports',
     'art',
-    'search',
   ]
 
   const [mySection, setMySection] = useState(true)
-
-  /* search bar */
-  const [wordEntered, setWordEntered] = useState('')
 
   return (
     <div className='App bg-dark'>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
-          <Navbar.Brand href='#home'>kiosk</Navbar.Brand>
+          <span className='title'>kiosk</span>
 
           {/* <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse
@@ -72,14 +68,23 @@ function App() {
             </Nav>
           </Navbar.Collapse> */}
           <Nav.Link>
-            <span className='link' onClick={() => setMySection('about')}>
+            <span
+              className='link navbar-link'
+              onClick={() => setMySection('search')}
+            >
+              search
+            </span>
+            <span
+              className='link navbar-link'
+              onClick={() => setMySection('about')}
+            >
               about
             </span>
           </Nav.Link>
         </Container>
       </Navbar>
       <Container className='mt-2 pb-5'>
-        <div className='d-flex flex-wrap flex-row'>
+        <div className='d-flex flex-wrap flex-row mb-5'>
           {sections.map((section) => (
             <Nav.Link className='px-1 py-1 '>
               <Button

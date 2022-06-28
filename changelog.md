@@ -7,6 +7,7 @@
 - navbar revamped
 - footer improved
 - about improved
+- fonts
 
 TODO:
 
