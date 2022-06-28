@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "kiosk",
+  "name": "A simple news api app",
+  "description": "A simple SPA news project that at the moment uses the New York Times API. More to come. ",
+  "author": "Víctor Balaguera",
   "icons": [
     {
       "src": "favicon.ico",

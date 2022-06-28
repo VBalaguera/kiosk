@@ -1,5 +1,19 @@
 # KIOSK
 
+## 2022/06/28
+
+- search functionality from nyt api.
+- navbar revamped
+- footer improved
+- about improved
+
+TODO:
+
+- fix all dates using moment
+- add more sections from different apis;
+- do daily backups of every api call using api-search.py
+- overall styling
+
 ## 2022/06/27
 
 - Project created;
@@ -16,12 +30,6 @@
 - using secrets and env vars
 - using react-share for sharing https://www.npmjs.com/package/react-share
 - added footer
-
-TODO:
-
-- add more sections from different apis;
-- do daily backups of every api call using api-search.py
-- overall styling
 
 NOTES:
 

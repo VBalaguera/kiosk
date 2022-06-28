@@ -7,7 +7,8 @@ export default function About() {
         <Card.Body>
           <Card.Title>Kiosk</Card.Title>
           <Card.Text>
-            A simple SPA news project that uses several APIs.
+            A simple SPA news project that at the moment uses the New York Times
+            API. More to come.
           </Card.Text>
         </Card.Body>
       </Card>

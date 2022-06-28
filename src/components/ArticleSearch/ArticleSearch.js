@@ -42,7 +42,7 @@ export default function ArticleSearch() {
           type='text'
           value={wordEntered}
           onChange={handleSearch}
-          className='articles-search__input'
+          className='articles-search__input form-control'
           placeholder='what would you like to know?'
         />
         {posts.map((post) => (

@@ -37,10 +37,13 @@ function App() {
     'opinion',
     'sports',
     'art',
-    'about',
+    'search',
   ]
 
   const [mySection, setMySection] = useState(true)
+
+  /* search bar */
+  const [wordEntered, setWordEntered] = useState('')
 
   return (
     <div className='App bg-dark'>
@@ -48,7 +51,7 @@ function App() {
         <Container>
           <Navbar.Brand href='#home'>kiosk</Navbar.Brand>
 
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          {/* <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse
             id='responsive-navbar-nav'
             className='justify-content-end'
@@ -67,7 +70,12 @@ function App() {
                 </Nav.Link>
               ))}
             </Nav>
-          </Navbar.Collapse>
+          </Navbar.Collapse> */}
+          <Nav.Link>
+            <span className='link' onClick={() => setMySection('about')}>
+              about
+            </span>
+          </Nav.Link>
         </Container>
       </Navbar>
       <Container className='mt-2 pb-5'>
@@ -87,7 +95,7 @@ function App() {
         </div>
         <div className='index min-vh-100 w-100'>
           <h1 className='text-light '>{mySection}</h1>
-          <ArticleSearch />
+
           {mySection === 'most popular' && <MostPopular />}
           {mySection === 'art' && <ArtTopStories />}
           {mySection === 'movie reviews' && <MovieReviews />}
@@ -100,6 +108,7 @@ function App() {
           {mySection === 'world' && <WorldTopStories />}
           {mySection === 'technology' && <TechnologyTopStories />}
           {mySection === 'about' && <About />}
+          {mySection === 'search' && <ArticleSearch />}
         </div>
       </Container>
       <Footer />
