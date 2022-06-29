@@ -4,6 +4,8 @@
 
 - daily backup of all jsons;
 - new card styles;
+- code cleaning
+- DarkModeToggle implemented but not using. Need to override bootstrap styles first. Worth it?
 
 ## 2022/06/28
 

@@ -32,7 +32,7 @@ export default function BusinnessTopStories() {
         {posts.map((post, index) => (
           <Card
             className='top-stories__card  card bg-dark text-light border-light'
-            index={index}
+            key={index}
           >
             <Card.Body>
               {' '}

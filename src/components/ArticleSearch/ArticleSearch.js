@@ -38,7 +38,7 @@ export default function ArticleSearch() {
   return (
     <div className='w-100'>
       <div className='articles-search'>
-        <div class='articles-search-searchbar input-group mb-4'>
+        <div className='articles-search-searchbar input-group mb-4'>
           <input
             type='text'
             className='articles-search__input form-control'
@@ -49,7 +49,7 @@ export default function ArticleSearch() {
           />
           {posts.length === 0 ? (
             <span
-              class='btn btn-outline-light'
+              className='btn btn-outline-light'
               type='button'
               id='button-addon2'
             >
@@ -57,7 +57,7 @@ export default function ArticleSearch() {
             </span>
           ) : (
             <button
-              class='btn btn-outline-light'
+              className='btn btn-outline-light'
               type='button'
               id='button-addon2'
               onClick={clearInput}
@@ -71,7 +71,7 @@ export default function ArticleSearch() {
           <div className='w-100'>
             <Card
               className='articles-search__card bg-dark card text-light border-light'
-              index={post._id}
+              key={post._id}
             >
               <Card.Body>
                 {' '}

@@ -28,7 +28,7 @@ export default function MovieReviews() {
       <div className='movie-reviews'>
         {reviews.map((post, index) => (
           <Card
-            index={index}
+            key={index}
             className='movie-reviews__card  card bg-dark text-light border-light'
           >
             <Card.Body>

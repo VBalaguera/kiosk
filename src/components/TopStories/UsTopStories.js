@@ -33,7 +33,7 @@ export default function UsTopStories() {
           <div className='w-100'>
             <Card
               className='top-stories__card bg-dark card text-light border-light'
-              index={index}
+              key={index}
             >
               <Card.Body>
                 {' '}

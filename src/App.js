@@ -90,8 +90,8 @@ function App() {
       </Navbar>
       <Container className='mt-2 pb-5'>
         <div className='d-flex flex-wrap flex-row mb-5'>
-          {sections.map((section) => (
-            <Nav.Link className='px-1 py-1 '>
+          {sections.map((section, index) => (
+            <Nav.Link key={index} className='px-1 py-1 '>
               <Button
                 variant='btn btn-outline-light button p-1 fs-6'
                 type='button'
