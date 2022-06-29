@@ -1,0 +1,5 @@
+html[data-theme='light'] {
+  --background: var(--clr-grey-10) !important;
+  --color: var(--clr-dark-blue) !important;
+  --dark-mode-toggler: var(--clr-white) !important;
+}

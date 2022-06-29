@@ -19,6 +19,8 @@ import UsTopStories from './components/TopStories/UsTopStories'
 import WorldTopStories from './components/TopStories/WorldTopStories'
 import TechnologyTopStories from './components/TopStories/TechTopStories'
 
+import DarkModeToggle from './components/DarkModeToggle/DarkModeToggle'
+
 /* weather widget */
 import WeatherWidget from './components/WeatherWidget/WeatherWidget'
 
