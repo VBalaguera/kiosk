@@ -38,7 +38,7 @@ export default function ArticleSearch() {
   return (
     <div className='w-100'>
       <div className='articles-search'>
-        <div class='input-group mb-4'>
+        <div class='articles-search-searchbar input-group mb-4'>
           <input
             type='text'
             className='articles-search__input form-control'
@@ -75,28 +75,26 @@ export default function ArticleSearch() {
             >
               <Card.Body>
                 {' '}
-                <Card.Title>{post.headline.main}</Card.Title>
-                <Card.Subtitle>{post.byline.original}</Card.Subtitle>
-                <Card.Text>
-                  <span>{moment(post.pub_date).format('MMMM d, YYYY')}</span>
-                  <span>{post.snippet}</span>
-                  <span className='articles-search__keywords'>
-                    Keywords:
-                    {post.keywords.map((keyword) => (
-                      <span className='articles-search__keywords-item'>
-                        {keyword.value}
-                      </span>
-                    ))}
+                <div className='title-card'>{post.headline.main}</div>
+                <div className='subtitle'>{post.abstract}</div>
+                <Card.Text className='author-date'>
+                  <span>{post.byline.original}</span>{' '}
+                  <span>
+                    Published: {moment(post.pub_date).format('MMMM d, YYYY')}
                   </span>
                 </Card.Text>
-                <Button variant='btn btn-outline-light'>
+                <div className='lead-paragraph'>{post.lead_paragraph}</div>
+                <Button
+                  className='btn read-more'
+                  variant='btn btn-outline-light'
+                >
                   <a href={post.web_url} className='link'>
                     read more
                   </a>
                 </Button>
               </Card.Body>
               <Card.Footer>
-                <SharingButtons url={post.url} />
+                <SharingButtons url={post.web_url} />
               </Card.Footer>
             </Card>
           </div>

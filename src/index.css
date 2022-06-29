@@ -17,11 +17,45 @@ code {
   margin: auto;
 }
 
-.title {
+/* card elements */
+
+.title,
+.section-title,
+.title-card {
   color: white;
   font-family: 'Playfair Display', serif;
-  font-weight: bolder;
+  font-weight: 700;
   font-size: 2rem;
+}
+
+.title-card {
+  margin-bottom: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.img {
+  height: 300px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.author-date {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.lead-paragraph {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  text-align: justify;
 }
 
 .link {
@@ -34,17 +68,11 @@ code {
 .navbar-link:hover {
   filter: brightness(90%);
   transition: all 0.2s ease-in-out;
-  color: white;
+  color: black;
 }
 
 .navbar-link {
   margin: 0 0.2rem;
-}
-
-.img {
-  height: 300px;
-  object-fit: contain;
-  padding: 0.5rem;
 }
 
 /* cards */
@@ -56,7 +84,7 @@ code {
 /* icons */
 
 .sharing-icon {
-  height: 2rem;
+  height: 1.6rem;
   stroke: white;
   fill: white;
   margin: 0.5rem;
@@ -66,4 +94,10 @@ code {
 .sharing-icon:hover {
   transition: all 0.2s ease-in-out;
   filter: brightness(70%);
+}
+
+/* search bar */
+
+.articles-search-searchbar {
+  margin-top: 2rem;
 }

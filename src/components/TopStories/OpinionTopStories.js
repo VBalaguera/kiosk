@@ -35,11 +35,21 @@ export default function OpinionTopStories() {
           >
             <Card.Body>
               {' '}
-              <Card.Title>{post.title}</Card.Title>
-              <Card.Text>
-                {moment(post.updated).format('MMMM d, YYYY')}
+              <div className='title-card'>{post.title}</div>
+              <Card.Img
+                className='img'
+                src={post.multimedia[0].url}
+                alt={post.caption}
+              />
+              <div className='subtitle'>{post.abstract}</div>
+              <Card.Text className='author-date'>
+                <span>{post.byline}</span>{' '}
+                <span>
+                  Published:{' '}
+                  {moment(post.published_date).format('MMMM d, YYYY')}
+                </span>
               </Card.Text>
-              <Button variant='btn btn-outline-light'>
+              <Button className='btn read-more' variant='btn btn-outline-light'>
                 <a href={post.url} className='link'>
                   read more
                 </a>

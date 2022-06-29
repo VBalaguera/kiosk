@@ -3,6 +3,8 @@ import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 import SharingButtons from './Sharing/SharingButtons'
 
+import moment from 'moment'
+
 import data from '../data/nytBooks.json'
 
 const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
@@ -33,23 +35,25 @@ export default function Books() {
           >
             <Card.Body>
               {' '}
-              <Card.Title>{post.title}</Card.Title>
+              <div className='title-card'>{post.title}</div>
               <Card.Img
-                className='img books__img'
+                className='img'
                 src={post.book_image}
-                alt={post.title}
+                alt={post.description}
               />
-              <Card.Text>
-                <span>By: {post.author}</span>
+              <div className='subtitle'>{post.description}</div>
+              <Card.Text className='author-date'>
+                <span>By: {post.author}</span>{' '}
+                <span>Publisher: {post.publisher}</span>
               </Card.Text>
-              <Button variant='btn btn-outline-light'>
-                <a href={post.url} className='link'>
-                  read more
+              <Button className='btn read-more' variant='btn btn-outline-light'>
+                <a href={post.amazon_product_url} className='link'>
+                  check it out
                 </a>
               </Button>
             </Card.Body>
             <Card.Footer>
-              <SharingButtons url={post.url} />
+              <SharingButtons url={post.amazon_product_url} />
             </Card.Footer>
           </Card>
         ))}

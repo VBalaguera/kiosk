@@ -32,38 +32,31 @@ export default function MovieReviews() {
             className='movie-reviews__card  card bg-dark text-light border-light'
           >
             <Card.Body>
-              <Card.Title>{post.display_title}</Card.Title>
-
+              {' '}
+              <div className='title-card'>{post.display_title}</div>
               <Card.Img
-                className='img movie-reviews__img'
+                className='img'
                 src={post.multimedia.src}
-                alt={post.display_title}
+                alt={post.headline}
               />
-
-              <Card.Text>
-                <span>
-                  Opens on:{' '}
-                  {moment(post.publication_date).format('MMMM d, YYYY')}
-                </span>
+              <div className='subtitle'>{post.summary_short}</div>
+              <Card.Text className='author-date'>
+                <span>By: {post.byline}</span>{' '}
                 <span>
                   Published on:{' '}
                   <span>
                     {moment(post.publication_date).format('MMMM d, YYYY')}
                   </span>
                 </span>
-                <span>{post.summary_short}</span>
-                <span>MPAA Rating: {post.mpaa_rating}</span>
               </Card.Text>
-
-              <Button variant='btn btn-outline-light'>
-                {' '}
-                <a href={post.link.url} alt={post.headline} className='link'>
+              <Button className='btn read-more' variant='btn btn-outline-light'>
+                <a href={post.link.url} className='link'>
                   read more
                 </a>
               </Button>
             </Card.Body>
             <Card.Footer>
-              <SharingButtons url={post.url} />
+              <SharingButtons url={post.link.url} />
             </Card.Footer>
           </Card>
         ))}

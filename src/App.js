@@ -103,7 +103,7 @@ function App() {
         </div>
         <div className='index min-vh-100 w-100'>
           {/* <WeatherWidget /> */}
-          <h1 className='text-light '>{mySection}</h1>
+          <h1 className='section-title text-light '>{mySection}</h1>
 
           {mySection === 'most popular' && <MostPopular />}
           {mySection === 'art' && <ArtTopStories />}

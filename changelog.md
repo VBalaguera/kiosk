@@ -2,6 +2,11 @@
 
 ## 2022/06/28
 
+- daily backup of all jsons;
+- new card styles;
+
+## 2022/06/28
+
 - search functionality from nyt api.
 - backups updated and implemented.
 - search bar improved
