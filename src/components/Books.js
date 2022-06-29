@@ -37,7 +37,7 @@ export default function Books() {
               {' '}
               <div className='title-card'>{post.title}</div>
               <Card.Img
-                className='img'
+                className='img book-img'
                 src={post.book_image}
                 alt={post.description}
               />

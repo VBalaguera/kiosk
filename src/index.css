@@ -68,7 +68,6 @@ code {
 }
 
 .index {
-  max-width: 500px;
   margin: auto;
 }
 
@@ -88,10 +87,22 @@ code {
   font-size: 1.5rem;
 }
 
-.img {
-  height: 300px;
+.img,
+.book-img {
+  height: 600px;
   object-fit: contain;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .img {
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .book-img {
+    object-fit: contain;
+  }
 }
 
 .subtitle {

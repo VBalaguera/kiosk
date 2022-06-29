@@ -103,7 +103,7 @@ function App() {
             </Nav.Link>
           ))}
         </div>
-        <div className='index min-vh-100 w-100'>
+        <div className='index min-vh-100 h-100 w-100'>
           {/* <WeatherWidget /> */}
           <h1 className='section-title text-light '>{mySection}</h1>
 
