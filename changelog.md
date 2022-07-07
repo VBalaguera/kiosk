@@ -1,5 +1,9 @@
 # KIOSK
 
+## 2022/07/07
+
+- api-search moved to src/data;
+
 ## 2022/06/28
 
 - daily backup of all jsons;
