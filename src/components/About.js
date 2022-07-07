@@ -5,10 +5,10 @@ export default function About() {
     <>
       <Card className='about card bg-dark text-light border-light'>
         <Card.Body>
-          <Card.Title>Kiosk</Card.Title>
+          {/*           <Card.Title>Kiosk</Card.Title> */}
           <Card.Text>
-            A simple SPA news project that at the moment uses the New York Times
-            API. More to come.
+            A simple SPA news project that, at this moment, uses the New York
+            Times API only. More to come.
           </Card.Text>
         </Card.Body>
       </Card>
