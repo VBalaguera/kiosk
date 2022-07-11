@@ -1,5 +1,9 @@
 # KIOSK
 
+## 2022/07/11
+
+- now I'm auth from Firebase
+
 ## 2022/07/07
 
 - api-search moved to src/data;

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 import moment from 'moment'
-import data from '../../data/nytTopStoriesUrl.json'
+import data from '../../data/nytTopStories.json'
 import SharingButtons from '../Sharing/SharingButtons'
 
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`

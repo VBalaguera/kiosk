@@ -71,6 +71,10 @@ code {
   margin: auto;
 }
 
+h1 {
+  color: white;
+}
+
 /* card elements */
 
 .title,
