@@ -33,6 +33,7 @@ export default function Kiosk() {
     'opinion',
     'sports',
     'art',
+    'search',
   ]
 
   const [mySection, setMySection] = useState(true)
@@ -52,7 +53,7 @@ export default function Kiosk() {
           </Nav.Link>
         ))}
       </div>
-      <div className='index min-vh-100 h-100 w-100'>
+      <div className='index'>
         {/* <WeatherWidget /> */}
         <h1 className='section-title text-light '>{mySection}</h1>
 

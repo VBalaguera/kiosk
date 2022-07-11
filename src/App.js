@@ -1,12 +1,12 @@
-import { useState } from 'react'
 import { Container, Button, Nav, Navbar } from 'react-bootstrap'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import DarkModeToggle from './components/DarkModeToggle/DarkModeToggle'
+/* TODO! fix this */
+/* import DarkModeToggle from './components/DarkModeToggle/DarkModeToggle'
 
-/* weather widget */
-import WeatherWidget from './components/WeatherWidget/WeatherWidget'
+
+import WeatherWidget from './components/WeatherWidget/WeatherWidget' */
 
 /* auth */
 import { AuthProvider } from './context/AuthContext'
@@ -15,9 +15,11 @@ import SignUp from './components/SignUp/SignUp'
 /* routing */
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
-
+import PublicRoute from './components/PublicRoute/PublicRoute'
 /* kiosk */
 import Kiosk from './Kiosk'
+
+import About from './components/About'
 
 import Dashboard from './Dashboard'
 import Login from './components/Login/Login'
@@ -35,7 +37,15 @@ function App() {
           <Container className='pb-5' style={{ minHeight: '95vh' }}>
             <NavBar />
             <Routes>
-              <Route exact path='/' element={<Login />} />
+              <Route
+                exact
+                path='/'
+                element={
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                }
+              />
               <Route exact path='/signup' element={<SignUp />} />
               <Route
                 exact
@@ -56,6 +66,7 @@ function App() {
               ></Route>
               <Route path='/kiosk' element={<Kiosk />} />
               <Route path='/forgot-password' element={<ForgotPassword />} />
+              <Route path='/about' element={<About />} />
             </Routes>
           </Container>
           <Footer />

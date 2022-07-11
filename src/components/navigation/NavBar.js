@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 export default function NavBar() {
   const [mySection, setMySection] = useState(true)
@@ -9,7 +10,9 @@ export default function NavBar() {
     <>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
-          <span className='title'>kiosk</span>
+          <span className='title'>
+            <Link to='/'>kiosk</Link>
+          </span>
           {currentUser ? (
             <>
               <Nav.Link>
@@ -19,17 +22,19 @@ export default function NavBar() {
                 >
                   search
                 </span>
-                <span
-                  className='link navbar-link'
-                  onClick={() => setMySection('about')}
-                >
-                  about
+              </Nav.Link>
+              <Nav.Link>
+                <span className='link navbar-link'>
+                  <Link to='/dashboard'>dashboard</Link>
                 </span>
               </Nav.Link>
             </>
-          ) : (
-            <span>nothing</span>
-          )}
+          ) : null}
+          <Nav.Link>
+            <span className='link navbar-link'>
+              <Link to='/about'>about</Link>
+            </span>
+          </Nav.Link>
         </Container>
       </Navbar>
     </>
