@@ -4,12 +4,12 @@
 
 - saving api results as favorites is a go;
 - dashboard showing favorites filtered by id is a go;
-- HOWEVER: there is a problem described here: https://stackoverflow.com/questions/72952947/function-in-react-js-needs-to-run-twice-to-work
+- PROBLEM FIXED: https://stackoverflow.com/questions/72952947/function-in-react-js-needs-to-run-twice-to-work
 
 TODO:
 
-- Fix said problem!
-- create an unique comp to save favorites;
+- revamp dashboard, order results by createdAt value;
+- create an unique comp to save favorites between multiple news sections.
 - revisit and polish code for said comp.
 
 ## 2022/07/11

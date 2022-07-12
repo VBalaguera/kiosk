@@ -10,6 +10,8 @@ import { db } from '../firebase'
 
 import moment from 'moment'
 
+import PostCard from './PostCard'
+
 import data from '../data/nytMostPopular.json'
 const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 export default function MostPopular() {
@@ -90,37 +92,9 @@ export default function MostPopular() {
   return (
     <div className='most-populars'>
       {mostPopulars.map((post, index) => (
-        <Card
-          className='most-populars__card  card bg-dark text-light border-light'
-          key={index}
-        >
-          <span onClick={() => handleFavorite(mostPopulars[index])}>
-            handleFavorite here
-          </span>
-          <span onClick={() => saveFavorite(mostPopulars[index])}>
-            save favorite here
-          </span>
-          <Card.Body>
-            {' '}
-            <div className='title-card'>{post.title}</div>
-            <div className='subtitle'>{post.abstract}</div>
-            <Card.Text className='author-date'>
-              <span>{post.byline}</span>{' '}
-              <span>
-                Published: {moment(post.published_date).format('MMMM d, YYYY')}
-              </span>
-            </Card.Text>
-            <Button className='btn read-more' variant='btn btn-outline-light'>
-              <a href={post.url} className='link'>
-                read more
-              </a>
-            </Button>
-          </Card.Body>
-
-          <Card.Footer>
-            <SharingButtons url={post.url} />
-          </Card.Footer>
-        </Card>
+        <>
+          <PostCard post={post} user={currentUser} />
+        </>
       ))}
     </div>
   )
