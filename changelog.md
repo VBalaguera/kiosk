@@ -2,6 +2,8 @@
 
 ## 2022/07/12
 
+TODO:
+
 - saving api results as favorites is a go;
 - dashboard showing favorites filtered by id is a go;
 - PROBLEM FIXED: https://stackoverflow.com/questions/72952947/function-in-react-js-needs-to-run-twice-to-work
@@ -22,6 +24,7 @@ TODO:
 - revamp dashboard, order results by createdAt value;
 - have a better folder/comp organization; I can do better
 - revisit all TODO:
+- overall styling
 
 ## 2022/07/11
 
