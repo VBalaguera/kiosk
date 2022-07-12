@@ -8,9 +8,20 @@
 
 TODO:
 
+- PostCard.js: adapt it to create an unique comp to save favorites between multiple news sections:
+  - /TopStories: no changes
+  - Books.js: changes:
+    - {post.author} instead of {post.byline}
+    - adds {post.publisher}
+    - {post.amazon_product_url} instead of {post.url}
+    - {post.description} instead of {post.abstract}
+  - MovieReviews.js:
+    - {post.link.url} instead of {post.url}
+    - {post.summary_short} instead of {post.abstract}
+    - {post.display_title} instead of {post.title}
 - revamp dashboard, order results by createdAt value;
-- create an unique comp to save favorites between multiple news sections.
-- revisit and polish code for said comp.
+- have a better folder/comp organization; I can do better
+- revisit all TODO:
 
 ## 2022/07/11
 
