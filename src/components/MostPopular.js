@@ -94,8 +94,12 @@ export default function MostPopular() {
           className='most-populars__card  card bg-dark text-light border-light'
           key={index}
         >
-          <span onClick={() => handleFavorite(post)}>handleFavorite here</span>
-          <span onClick={() => saveFavorite(post)}>save favorite here</span>
+          <span onClick={() => handleFavorite(mostPopulars[index])}>
+            handleFavorite here
+          </span>
+          <span onClick={() => saveFavorite(mostPopulars[index])}>
+            save favorite here
+          </span>
           <Card.Body>
             {' '}
             <div className='title-card'>{post.title}</div>
