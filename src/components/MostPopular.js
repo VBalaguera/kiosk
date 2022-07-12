@@ -12,7 +12,6 @@ import moment from 'moment'
 
 import data from '../data/nytMostPopular.json'
 const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
-
 export default function MostPopular() {
   const [mostPopulars, setMostPopulars] = useState([])
   const { currentUser } = useAuth()
@@ -42,7 +41,6 @@ export default function MostPopular() {
     console.log({ author, date, description, section, title, url, user })
   }
 
-  /* TODO! for the love of god, revisit and polish this code */
   const saveFavorite = async (post) => {
     setAuthor(post.byline)
     setDate(post.published_date)
@@ -64,6 +62,7 @@ export default function MostPopular() {
         user,
       })
       console.log('favorite added')
+      console.log({ author, date, description, section, title, url, user })
     } catch (err) {
       console.log(err)
     }
@@ -76,11 +75,16 @@ export default function MostPopular() {
       .then((response) => {
         /* console.log(response.data.results) */
         setMostPopulars(response.data.results)
+        setUser(currentUser.uid)
       })
       .catch((err) => {
         console.log(err)
         setMostPopulars(data)
       })
+    console.log(mostPopulars[0])
+    const info = mostPopulars[0]
+
+    console.log({ author, date, description, section, title, url, user })
   }, [])
 
   return (
