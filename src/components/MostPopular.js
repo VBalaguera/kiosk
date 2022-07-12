@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
+import { useAuth } from '../context/AuthContext'
 import SharingButtons from './Sharing/SharingButtons'
+
+/* firebase and firestore */
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../firebase'
 
 import moment from 'moment'
 
@@ -10,13 +15,66 @@ const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.j
 
 export default function MostPopular() {
   const [mostPopulars, setMostPopulars] = useState([])
+  const { currentUser } = useAuth()
+
+  const [author, setAuthor] = useState('')
+  const [date, setDate] = useState('')
+  const [description, setDescription] = useState('')
+  const [section, setSection] = useState('')
+
+  const [title, setTitle] = useState('')
+  const [url, setUrl] = useState('')
+  const [user, setUser] = useState('')
+
+  /* firestore collection */
+  const favoritesCollectionRef = collection(db, 'favorites')
+  /* console.log(favoritesCollectionRef) */
+  function handleFavorite(post) {
+    setUser(currentUser.uid)
+    setAuthor(post.byline)
+    setDate(post.published_date)
+    setDescription(post.abstract)
+    setSection(post.section)
+    setTitle(post.title)
+    setUrl(post.url)
+
+    setUser(currentUser.uid)
+    console.log({ author, date, description, section, title, url, user })
+  }
+
+  /* TODO! for the love of god, revisit and polish this code */
+  const saveFavorite = async (post) => {
+    setAuthor(post.byline)
+    setDate(post.published_date)
+    setDescription(post.abstract)
+    setSection(post.section)
+    setTitle(post.title)
+    setUrl(post.url)
+
+    setUser(currentUser.uid)
+
+    try {
+      await addDoc(favoritesCollectionRef, {
+        author,
+        date,
+        description,
+        section,
+        title,
+        url,
+        user,
+      })
+      console.log('favorite added')
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     /* most popular */
     axios
       .get(nytMostPopularUrl)
       .then((response) => {
-        console.log(response.data.results)
+        /* console.log(response.data.results) */
         setMostPopulars(response.data.results)
       })
       .catch((err) => {
@@ -24,6 +82,7 @@ export default function MostPopular() {
         setMostPopulars(data)
       })
   }, [])
+
   return (
     <div className='most-populars'>
       {mostPopulars.map((post, index) => (
@@ -31,6 +90,8 @@ export default function MostPopular() {
           className='most-populars__card  card bg-dark text-light border-light'
           key={index}
         >
+          <span onClick={() => handleFavorite(post)}>handleFavorite here</span>
+          <span onClick={() => saveFavorite(post)}>save favorite here</span>
           <Card.Body>
             {' '}
             <div className='title-card'>{post.title}</div>

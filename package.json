@@ -27,8 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch db.json --port 5000",
-    "backup": "python3 api-search.py run"
+    "server": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
     "extends": [

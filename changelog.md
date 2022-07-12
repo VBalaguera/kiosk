@@ -1,8 +1,20 @@
 # KIOSK
 
+## 2022/07/12
+
+- saving api results as favorites is a go;
+- dashboard showing favorites filtered by id is a go;
+- HOWEVER: there is a problem described here: https://stackoverflow.com/questions/72952947/function-in-react-js-needs-to-run-twice-to-work
+
+TODO:
+
+- Fix said problem!
+- create an unique comp to save favorites;
+- revisit and polish code for said comp.
+
 ## 2022/07/11
 
-- now I'm auth from Firebase
+- now I'm auth from Firebase.
 
 ## 2022/07/07
 
