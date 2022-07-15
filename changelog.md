@@ -2,6 +2,8 @@
 
 ## 2022/07/15
 
+Deployed this version for testing at https://kiosk-q6k5iejxi-vbalaguera.vercel.app/kiosk
+
 DONE:
 
 - daily api-search.py backup
@@ -25,6 +27,7 @@ DONE:
 - dashboard includes now filtering by sections; it's a good start, still unfinished
 - fixed problems with Saved on dates on favorites;
 - added react-toastify for notifications
+- added ternary ops at Favorite.js to avoid crashing when testing old createdAt entries format
 
 TODO:
 

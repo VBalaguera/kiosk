@@ -16,19 +16,21 @@ export default function Favorite({ favorite, index }) {
                 <span className='mx-2'>
                   Published on: {String(favorite.date).slice(0, 10)}.
                 </span>
-                <span className='mx-2'>
-                  <>
-                    Saved on:{' '}
-                    {moment
-                      .utc(favorite.createdAt.seconds)
-                      .format()
-                      .slice(0, 10)}
-                  </>
+                {favorite.createdAt.seconds ? (
+                  <span className='mx-2'>
+                    <>
+                      Saved on:{' '}
+                      {moment
+                        .utc(favorite.createdAt.seconds)
+                        .format()
+                        .slice(0, 10)}
+                    </>
 
-                  {/* <>{moment.utc(favorite.createdAt.seconds).format()}</>
+                    {/* <>{moment.utc(favorite.createdAt.seconds).format()}</>
                   {moment(favorite.createdAt.seconds).format('MMMM d, YYYY')}. */}
-                  {/* TODO: FIX THIS */}
-                </span>
+                    {/* TODO: FIX THIS */}
+                  </span>
+                ) : null}
               </div>
               <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
                 <span>Section: {favorite.section}.</span>
