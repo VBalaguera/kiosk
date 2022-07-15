@@ -4,6 +4,11 @@
 
 Deployed this version for testing at https://kiosk-q6k5iejxi-vbalaguera.vercel.app/kiosk
 
+TODO:
+
+- explore api lists here: https://github.com/VBalaguera/public-apis and USE IT TO CREATE MORE CONTENT!
+- explore CRUD options for Favorites!
+
 DONE:
 
 - daily api-search.py backup
@@ -28,8 +33,6 @@ DONE:
 - fixed problems with Saved on dates on favorites;
 - added react-toastify for notifications
 - added ternary ops at Favorite.js to avoid crashing when testing old createdAt entries format
-
-TODO:
 
 ## 2022/07/12
 
