@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import PostCardBooks from './PostCardBooks'
-import { useAuth } from '../context/AuthContext'
+import PostCardBooks from '../../PostCardBooks'
+import { useAuth } from '../../../context/AuthContext'
 
-import data from '../data/nytBooks.json'
+import data from '../../../data/nytBooks.json'
 
 const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 

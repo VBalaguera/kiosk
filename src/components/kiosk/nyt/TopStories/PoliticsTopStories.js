@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
-
 import axios from 'axios'
-import PostCard from '../PostCard'
-import { useAuth } from '../../context/AuthContext'
 
-import data from '../../data/nytWorld.json'
-const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+import PostCard from '../../../PostCard'
+import { useAuth } from '../../../../context/AuthContext'
+
+import data from '../../../../data/nytPolitics.json'
+
+const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
-export default function WorldTopStories() {
+export default function PoliticsTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function WorldTopStories() {
       .get(nytTopStoriesUrl)
       .then((response) => {
         console.log(response.data.results)
-        setPosts(response.data.results.slice(1))
+        setPosts(response.data.results)
       })
       .catch((err) => {
         console.log(err)

@@ -3,26 +3,28 @@ import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { ToastContainer, toast } from 'react-toastify'
+
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
-  const [error, setError] = useState('')
+  /*   const [error, setError] = useState('') */
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  const { currentUser, updateEmail, updatePassword } = useAuth()
+  const { currentUser, updateEmail, updatePassword, deleteUser } = useAuth()
 
   function handleSubmit(e) {
     e.preventDefault()
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setError('passwords do not match')
+      return toast('passwords do not match')
     }
 
     const promises = []
     setLoading(true)
-    setError('')
+    /*     setError('') */
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value))
     }
@@ -33,25 +35,40 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
+        toast('account updated successfully')
         navigate('/kiosk')
       })
       .catch(() => {
-        setError('failed to update account')
+        /*     setError('failed to update account') */
+        toast('failed to update account')
       })
       .finally(() => {
         setLoading(false)
       })
 
     try {
-      setError('')
+      /*       setError('') */
       setLoading(true)
 
       console.log('info updated')
       navigate('/kiosk')
     } catch {
-      setError('Error while updating account info')
+      /*       setError('Error while updating account info') */
+      toast('Error while updating account info')
     }
     setLoading(false)
+  }
+
+  function handleDeleteUser(uid) {
+    try {
+      setLoading(true)
+      deleteUser(uid)
+      toast('bye :(')
+      console.log('user with uid', { uid }, ' deleted')
+      navigate('/')
+    } catch {
+      toast('Error when deleting user')
+    }
   }
 
   return (
@@ -59,7 +76,7 @@ export default function UpdateProfile() {
       <div style={{ minWidth: '400px' }}>
         <Card>
           <Card.Header>update profile</Card.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
+          {/*  {error && <Alert variant='danger'>{error}</Alert>} */}
           {/* {JSON.stringify(currentUser)} */}
           {/*  { currentUser &&   currentUser.email} */}
           {/* firebase uses localstorage; also an initial loading state */}
@@ -93,7 +110,23 @@ export default function UpdateProfile() {
             </Link>
             .
           </div>
+          <button onClick={() => handleDeleteUser(currentUser.uid)}>
+            delete user
+          </button>
         </Card>
+        <ToastContainer
+          position='bottom-right'
+          type='info'
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          theme='dark'
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </div>
   )

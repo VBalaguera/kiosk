@@ -1,9 +1,30 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 
+import { doc, deleteDoc, collection } from 'firebase/firestore'
+import { db } from '../../firebase'
+import { useAuth } from '../../context/AuthContext'
 import moment from 'moment'
 
 export default function Favorite({ favorite, index }) {
+  const { currentUser } = useAuth()
+  const favoritesCollectionRef = collection(
+    db,
+    'favorites',
+    currentUser.email,
+    currentUser.uid
+  )
+  const handleDeleteFavorite = async () => {
+    const docRef = doc(favoritesCollectionRef)
+    deleteDoc(docRef)
+      .then(() => {
+        console.log('Entire Document has been deleted successfully.')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <>
       <Card key={index} className='card bg-dark text-light border-light'>

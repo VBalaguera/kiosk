@@ -31,7 +31,12 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const favoritesCollectionRef = collection(db, 'favorites')
+  const favoritesCollectionRef = collection(
+    db,
+    'favorites',
+    currentUser.email,
+    currentUser.uid
+  )
   const q = query(
     favoritesCollectionRef,
     where('user', '==', String(currentUser.uid))

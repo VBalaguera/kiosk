@@ -25,7 +25,14 @@ export class PostCard extends Component {
   }
 
   render() {
-    const favoritesCollectionRef = collection(db, 'favorites')
+    console.log(this.props)
+    console.log(this.props.user.multiFactor.user)
+    const favoritesCollectionRef = collection(
+      db,
+      'favorites',
+      this.props.user.multiFactor.user.email,
+      this.props.user.multiFactor.user.uid
+    )
     const saveFavorite = async (props) => {
       try {
         await addDoc(favoritesCollectionRef, {

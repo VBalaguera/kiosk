@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
+
 import axios from 'axios'
+import PostCard from '../../../PostCard'
+import { useAuth } from '../../../../context/AuthContext'
 
-import PostCard from '../PostCard'
-import { useAuth } from '../../context/AuthContext'
-
-import data from '../../data/nytTopStories.json'
-const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/us.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+import data from '../../../../data/nytWorld.json'
+const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
-export default function UsTopStories() {
+export default function WorldTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function UsTopStories() {
       .get(nytTopStoriesUrl)
       .then((response) => {
         console.log(response.data.results)
-        setPosts(response.data.results)
+        setPosts(response.data.results.slice(1))
       })
       .catch((err) => {
         console.log(err)
@@ -25,14 +25,12 @@ export default function UsTopStories() {
       })
   }, [])
   return (
-    <div className='w-100'>
+    <div>
       <div className='top-stories'>
         {posts.map((post, index) => (
-          <div className='w-100'>
-            <>
-              <PostCard post={post} user={currentUser} />
-            </>
-          </div>
+          <>
+            <PostCard post={post} user={currentUser} />
+          </>
         ))}
       </div>
     </div>

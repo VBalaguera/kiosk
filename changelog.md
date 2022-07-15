@@ -1,5 +1,7 @@
 # KIOSK
 
+Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
+
 ## 2022/07/15
 
 Deployed this version for testing at https://kiosk-q6k5iejxi-vbalaguera.vercel.app/kiosk
@@ -12,6 +14,21 @@ TODO:
 
 DONE:
 
+- users can delete their accounts
+- improved how users can save favorites:
+  - before:
+    <code>
+    const favoritesCollectionRef = collection(db, 'favorites')
+    </code>
+  - now:
+    <code>
+    const favoritesCollectionRef = collection(
+    db,
+    'favorites',
+    this.props.user.multiFactor.user.email,
+    this.props.user.multiFactor.user.uid
+    )
+    </code>
 - daily api-search.py backup
 - incorporated favorite saving functions into:
   - arttopstories

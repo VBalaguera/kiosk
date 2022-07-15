@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import PostCard from '../PostCard'
-import { useAuth } from '../../context/AuthContext'
+import PostCard from '../../../PostCard'
+import { useAuth } from '../../../../context/AuthContext'
 
-import data from '../../data/nytPolitics.json'
-
-const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+import data from '../../../../data/nytArt.json'
+const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
-export default function PoliticsTopStories() {
+export default function ArtTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
   useEffect(() => {

@@ -3,12 +3,12 @@ import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
 import moment from 'moment'
-import { useAuth } from '../../context/AuthContext'
-import PostCard from '../PostCard'
+import { useAuth } from '../../../../context/AuthContext'
+import PostCard from '../../../PostCard'
 
-import SharingButtons from '../Sharing/SharingButtons'
+import SharingButtons from '../../../Sharing/SharingButtons'
 
-import data from '../../data/nytBusiness.json'
+import data from '../../../../data/nytBusiness.json'
 
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */

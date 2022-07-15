@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react'
-
 import axios from 'axios'
 
-import PostCard from '../PostCard'
-import { useAuth } from '../../context/AuthContext'
+import PostCard from '../../../PostCard'
+import { useAuth } from '../../../../context/AuthContext'
 
-import data from '../../data/nytTech.json'
-const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+import data from '../../../../data/nytTopStories.json'
+const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/us.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
-export default function TechnologyTopStories() {
+export default function UsTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
   useEffect(() => {
@@ -26,12 +25,14 @@ export default function TechnologyTopStories() {
       })
   }, [])
   return (
-    <div>
+    <div className='w-100'>
       <div className='top-stories'>
         {posts.map((post, index) => (
-          <>
-            <PostCard post={post} user={currentUser} />
-          </>
+          <div className='w-100'>
+            <>
+              <PostCard post={post} user={currentUser} />
+            </>
+          </div>
         ))}
       </div>
     </div>

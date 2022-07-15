@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
-import { useAuth } from '../context/AuthContext'
-import SharingButtons from './Sharing/SharingButtons'
+import { useAuth } from '../../../context/AuthContext'
+import SharingButtons from '../../Sharing/SharingButtons'
 
 /* firebase and firestore */
 import { addDoc, collection } from 'firebase/firestore'
-import { db } from '../firebase'
+import { db } from '../../../firebase'
 
-import PostCard from './PostCard'
+import PostCard from '../../PostCard'
 
-import data from '../data/nytMostPopular.json'
+import data from '../../../data/nytMostPopular.json'
 const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 export default function MostPopular() {
   const [mostPopulars, setMostPopulars] = useState([])

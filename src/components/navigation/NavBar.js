@@ -32,14 +32,6 @@ export default function NavBar() {
             {currentUser ? (
               <>
                 <Nav.Link>
-                  <span
-                    className='link navbar-link'
-                    onClick={() => setMySection('search')}
-                  >
-                    search
-                  </span>
-                </Nav.Link>
-                <Nav.Link>
                   <span className='link navbar-link'>
                     <Link className='myLink' to='/dashboard'>
                       dashboard
@@ -52,6 +44,15 @@ export default function NavBar() {
                   </span>
                 </Nav.Link>
               </>
+            ) : null}
+            {!currentUser ? (
+              <Nav.Link>
+                <span className='link navbar-link'>
+                  <Link className='myLink' to='/'>
+                    login
+                  </Link>
+                </span>
+              </Nav.Link>
             ) : null}
             <Nav.Link>
               <span className='link navbar-link'>
