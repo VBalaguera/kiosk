@@ -11,6 +11,7 @@ import {
 import { db } from './firebase'
 import { useAuth } from './context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
+import moment from 'moment'
 
 export default function Dashboard() {
   const [error, setError] = useState('')
@@ -56,6 +57,7 @@ export default function Dashboard() {
       setError('error while logging out')
     }
   }
+
   return (
     <>
       <h1>dashboard</h1>
@@ -64,14 +66,51 @@ export default function Dashboard() {
           <h2>favorites</h2>
 
           <>
-            {favorites.map((favorite, index) => {
-              return (
-                <div>
-                  <span key={index}>{favorite.title}</span>
-                  <span>{favorite.user}</span>
-                </div>
-              )
-            })}
+            {favorites ? (
+              <>
+                {favorites.map((favorite, index) => {
+                  console.log(favorite)
+                  return (
+                    <Card
+                      key={index}
+                      className='card bg-dark text-light border-light'
+                    >
+                      <Card.Body>
+                        <div className='d-flex justify-content-between'>
+                          {favorite.title}
+                          <div className='d-flex justify-content-between'>
+                            <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
+                              {' '}
+                              <span className='mx-2'>
+                                Published on:{' '}
+                                {moment(favorite.date).format('MMMM d, YYYY')}.
+                              </span>
+                              <span className='mx-2'>
+                                Saved on:{' '}
+                                {moment(favorite.createdAt).format(
+                                  'MMMM d, YYYY'
+                                )}
+                                .{/* TODO: FIX THIS */}
+                              </span>
+                            </div>
+                            <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
+                              <span>Section: {favorite.section}.</span>
+                              <a href={favorite.url} className='myLink'>
+                                Read more.
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  )
+                })}
+              </>
+            ) : (
+              <>
+                <span>you have no favorites yet</span>
+              </>
+            )}
           </>
         </Card.Body>
       </Card>
@@ -81,13 +120,34 @@ export default function Dashboard() {
           <h2>profile</h2>
           {error && <Alert variant='danger'>{error}</Alert>}
           <div>
-            <span>email: {currentUser.email}</span>
-            <Link to='/update-profile'>update profile</Link>
+            <div className='d-flex justify-content-between mt-2'>
+              <span>
+                Created on:{' '}
+                {moment(currentUser.metadata.creationTime).format(
+                  'MMMM d, YYYY'
+                )}
+                .
+              </span>
+
+              <span>
+                Last login on:{' '}
+                {moment(currentUser.metadata.lastSignInTime).format(
+                  'MMMM d, YYYY'
+                )}
+                .
+              </span>
+            </div>
+            <div className='d-flex justify-content-between mt-2'>
+              <span>Email: {currentUser.email}</span>
+              <Link className='myLink' to='/update-profile'>
+                Update profile.
+              </Link>
+            </div>
           </div>
         </Card.Body>
       </Card>
       <div>
-        <Button variant='link' onClick={handleLogOut}>
+        <Button variant='secondary' onClick={handleLogOut}>
           log out
         </Button>
       </div>

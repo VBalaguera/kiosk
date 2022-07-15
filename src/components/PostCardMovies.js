@@ -6,17 +6,17 @@ import { Card, Button } from 'react-bootstrap'
 import SharingButtons from './Sharing/SharingButtons'
 import moment from 'moment'
 
-export class PostCard extends Component {
+export class PostCardMovies extends Component {
   constructor(props) {
     super(props)
     this.state = {
       author: this.props.post.byline,
-      date: this.props.post.published_date,
+      date: this.props.post.publication_date,
       createdAt: new Date(),
-      description: this.props.post.abstract,
-      section: this.props.post.section,
-      title: this.props.post.title,
-      url: this.props.post.url,
+      description: this.props.post.summary_short,
+      section: 'movies',
+      title: this.props.post.display_title,
+      url: this.props.post.link.url,
       user: this.props.user.multiFactor.user.uid,
     }
   }
@@ -27,12 +27,12 @@ export class PostCard extends Component {
       try {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.byline,
-          date: this.props.post.published_date,
+          date: this.props.post.publication_date,
           createdAt: new Date(),
-          description: this.props.post.abstract,
-          section: this.props.post.section,
-          title: this.props.post.title,
-          url: this.props.post.url,
+          description: this.props.post.summary_short,
+          section: 'movies',
+          title: this.props.post.display_title,
+          url: this.props.post.link.url,
           user: this.props.user.multiFactor.user.uid,
         })
         console.log('favorite added')
@@ -49,24 +49,17 @@ export class PostCard extends Component {
       >
         <Card.Body>
           {' '}
-          <div className='title-card'>{this.props.post.title}</div>
+          <div className='title-card'>{this.props.post.display_title}</div>
           {this.props.post.multimedia ? (
             <Card.Img
               className='img'
-              src={this.props.post.multimedia[0].url}
-              alt={this.props.post.caption}
+              src={this.props.post.multimedia.src}
+              alt={this.props.post.headline}
             />
           ) : null}
-          {this.props.post.book_image ? (
-            <Card.Img
-              className='img book-img'
-              src={this.props.post.book_image}
-              alt={this.props.post.description}
-            />
-          ) : null}
-          <div className='subtitle'>{this.props.post.abstract}</div>
+          <div className='subtitle'>{this.props.post.summary_short}</div>
           <Card.Text className='author-date'>
-            <span>{this.props.post.byline}</span>{' '}
+            <span>By {this.props.post.byline}.</span>
             <span>
               Published:{' '}
               {moment(this.props.post.published_date).format('MMMM d, YYYY')}
@@ -77,7 +70,7 @@ export class PostCard extends Component {
               className='btn read-more'
               variant='btn btn-outline-light mx-2'
             >
-              <a href={this.props.post.url} className='myLink'>
+              <a href={this.props.post.link.url} className='myLink'>
                 Read more
               </a>
               .
@@ -95,11 +88,11 @@ export class PostCard extends Component {
         </Card.Body>
 
         <Card.Footer>
-          <SharingButtons url={this.props.post.url} />
+          <SharingButtons url={this.props.post.link.url} />
         </Card.Footer>
       </Card>
     )
   }
 }
 
-export default PostCard
+export default PostCardMovies

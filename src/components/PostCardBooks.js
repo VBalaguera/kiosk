@@ -4,19 +4,18 @@ import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Card, Button } from 'react-bootstrap'
 import SharingButtons from './Sharing/SharingButtons'
-import moment from 'moment'
 
-export class PostCard extends Component {
+export class PostCardBooks extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      author: this.props.post.byline,
-      date: this.props.post.published_date,
+      author: this.props.post.author,
+      publisher: this.props.post.publisher,
       createdAt: new Date(),
-      description: this.props.post.abstract,
-      section: this.props.post.section,
+      description: this.props.post.description,
+      section: 'books',
       title: this.props.post.title,
-      url: this.props.post.url,
+      url: this.props.post.amazon_product_url,
       user: this.props.user.multiFactor.user.uid,
     }
   }
@@ -26,13 +25,13 @@ export class PostCard extends Component {
     const saveFavorite = async (props) => {
       try {
         await addDoc(favoritesCollectionRef, {
-          author: this.props.post.byline,
-          date: this.props.post.published_date,
+          author: this.props.post.author,
+          publisher: this.props.post.publisher,
           createdAt: new Date(),
-          description: this.props.post.abstract,
-          section: this.props.post.section,
+          description: this.props.post.description,
+          section: 'books',
           title: this.props.post.title,
-          url: this.props.post.url,
+          url: this.props.post.amazon_product_url,
           user: this.props.user.multiFactor.user.uid,
         })
         console.log('favorite added')
@@ -64,21 +63,18 @@ export class PostCard extends Component {
               alt={this.props.post.description}
             />
           ) : null}
-          <div className='subtitle'>{this.props.post.abstract}</div>
+          <div className='subtitle'>{this.props.post.description}</div>
           <Card.Text className='author-date'>
-            <span>{this.props.post.byline}</span>{' '}
-            <span>
-              Published:{' '}
-              {moment(this.props.post.published_date).format('MMMM d, YYYY')}
-            </span>
+            <span>By {this.props.post.author}.</span>
+            <span>Publisher: {this.props.post.publisher}</span>
           </Card.Text>
           <div className='d-flex align-items-center justify-content-center'>
             <Button
               className='btn read-more'
               variant='btn btn-outline-light mx-2'
             >
-              <a href={this.props.post.url} className='myLink'>
-                Read more
+              <a href={this.props.post.amazon_product_url} className='myLink'>
+                Amazon link
               </a>
               .
             </Button>
@@ -102,4 +98,4 @@ export class PostCard extends Component {
   }
 }
 
-export default PostCard
+export default PostCardBooks

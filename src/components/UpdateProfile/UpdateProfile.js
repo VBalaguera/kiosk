@@ -65,7 +65,7 @@ export default function UpdateProfile() {
           {/* firebase uses localstorage; also an initial loading state */}
 
           <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
+            <Form.Group id='email' className='m-2'>
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type='email'
@@ -74,11 +74,11 @@ export default function UpdateProfile() {
                 defaultValue={currentUser.email}
               />
             </Form.Group>
-            <Form.Group id='password'>
+            <Form.Group id='password' className='m-2'>
               <Form.Label>Password</Form.Label>
               <Form.Control type='password' ref={passwordRef} required />
             </Form.Group>
-            <Form.Group id='confirmPassword'>
+            <Form.Group id='confirmPassword' className='m-2'>
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control type='password' ref={confirmPasswordRef} required />
             </Form.Group>
@@ -86,8 +86,12 @@ export default function UpdateProfile() {
               update
             </Button>
           </Form>
-          <div>
-            Changed your mind? <Link to='/'>Cancel.</Link>
+          <div className='m-2'>
+            Changed your mind?{' '}
+            <Link className='myLink' to='/'>
+              Cancel
+            </Link>
+            .
           </div>
         </Card>
       </div>

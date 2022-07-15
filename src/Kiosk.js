@@ -27,7 +27,7 @@ export default function Kiosk() {
     'world',
     'politics',
     'business',
-    'technology',
+    'tech',
     'movie reviews',
     'books',
     'opinion',

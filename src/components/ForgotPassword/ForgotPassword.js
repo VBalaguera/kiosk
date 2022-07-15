@@ -51,10 +51,15 @@ export default function ForgotPassword() {
             </Button>
           </Form>
           <div>
-            Still don't have an account? <Link to='/signup'>get one</Link>
+            Still don't have an account?{' '}
+            <Link className='myLink' to='/signup'>
+              get one
+            </Link>
           </div>
           <div>
-            <Link to='/'>log in?</Link>
+            <Link className='myLink' to='/'>
+              log in?
+            </Link>
           </div>
         </Card>
       </div>

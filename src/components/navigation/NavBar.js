@@ -1,17 +1,30 @@
 import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function NavBar() {
   const [mySection, setMySection] = useState(true)
-  const { currentUser } = useAuth()
+  const [error, setError] = useState('')
+  const { currentUser, logout } = useAuth()
+  const navigate = useNavigate()
+  async function handleLogOut() {
+    setError('')
+    try {
+      await logout()
+      navigate('/')
+    } catch {
+      setError('error while logging out')
+    }
+  }
   return (
     <>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
           <span className='title'>
-            <Link to='/'>kiosk</Link>
+            <Link className='myLink' to='/'>
+              kiosk
+            </Link>
           </span>
           {currentUser ? (
             <>
@@ -25,14 +38,23 @@ export default function NavBar() {
               </Nav.Link>
               <Nav.Link>
                 <span className='link navbar-link'>
-                  <Link to='/dashboard'>dashboard</Link>
+                  <Link className='myLink' to='/dashboard'>
+                    dashboard
+                  </Link>
+                </span>
+              </Nav.Link>
+              <Nav.Link>
+                <span className='link navbar-link ' onClick={handleLogOut}>
+                  <span className='myLink'>logout</span>
                 </span>
               </Nav.Link>
             </>
           ) : null}
           <Nav.Link>
             <span className='link navbar-link'>
-              <Link to='/about'>about</Link>
+              <Link className='myLink' to='/about'>
+                about
+              </Link>
             </span>
           </Nav.Link>
         </Container>

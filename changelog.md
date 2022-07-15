@@ -1,5 +1,27 @@
 # KIOSK
 
+## 2022/07/15
+
+- daily api-search.py backup
+- incorporated favorite saving functions into:
+  - arttopstories
+  - businessstories
+  - opiniontopstories
+  - politicstopstories
+  - sportstories
+  - techtopstories
+  - ustopstories
+  - worldtopstories
+  - Books (including PostCardBooks)
+  - MovieReviews (including PostCardMovies)
+- logout incorporated into navbar
+- using slice(1) on worldtopstories due to a bug in nyt api where it shows incomplete information on the first result;
+- link styling overhaul;
+- dashboard overhaul:
+  - profile info updated showing createdon, lastlogin, email, and update profile button
+  - favorites style overhaul: cards including title, date and read more button;
+-
+
 ## 2022/07/12
 
 TODO:

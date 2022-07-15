@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
-import SharingButtons from './Sharing/SharingButtons'
 
-import moment from 'moment'
+import PostCardBooks from './PostCardBooks'
+import { useAuth } from '../context/AuthContext'
 
 import data from '../data/nytBooks.json'
 
@@ -11,6 +10,7 @@ const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcove
 
 export default function Books() {
   const [books, setBooks] = useState([])
+  const { currentUser } = useAuth()
   useEffect(() => {
     /* books */
     axios
@@ -29,33 +29,9 @@ export default function Books() {
       {' '}
       <div className='books'>
         {books.map((post, index) => (
-          <Card
-            className='books__card card bg-dark text-light border-light'
-            key={index}
-          >
-            <Card.Body>
-              {' '}
-              <div className='title-card'>{post.title}</div>
-              <Card.Img
-                className='img book-img'
-                src={post.book_image}
-                alt={post.description}
-              />
-              <div className='subtitle'>{post.description}</div>
-              <Card.Text className='author-date'>
-                <span>By: {post.author}</span>{' '}
-                <span>Publisher: {post.publisher}</span>
-              </Card.Text>
-              <Button className='btn read-more' variant='btn btn-outline-light'>
-                <a href={post.amazon_product_url} className='link'>
-                  check it out
-                </a>
-              </Button>
-            </Card.Body>
-            <Card.Footer>
-              <SharingButtons url={post.amazon_product_url} />
-            </Card.Footer>
-          </Card>
+          <>
+            <PostCardBooks post={post} user={currentUser} />
+          </>
         ))}
       </div>
     </div>

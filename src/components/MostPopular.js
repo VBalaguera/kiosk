@@ -8,8 +8,6 @@ import SharingButtons from './Sharing/SharingButtons'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase'
 
-import moment from 'moment'
-
 import PostCard from './PostCard'
 
 import data from '../data/nytMostPopular.json'
@@ -26,10 +24,10 @@ export default function MostPopular() {
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
   const [user, setUser] = useState('')
+  /* 
 
-  /* firestore collection */
   const favoritesCollectionRef = collection(db, 'favorites')
-  /* console.log(favoritesCollectionRef) */
+
   function handleFavorite(post) {
     setUser(currentUser.uid)
     setAuthor(post.byline)
@@ -68,7 +66,7 @@ export default function MostPopular() {
     } catch (err) {
       console.log(err)
     }
-  }
+  } */
 
   useEffect(() => {
     /* most popular */
@@ -77,7 +75,7 @@ export default function MostPopular() {
       .then((response) => {
         /* console.log(response.data.results) */
         setMostPopulars(response.data.results)
-        setUser(currentUser.uid)
+        /* setUser(currentUser.uid) */
       })
       .catch((err) => {
         console.log(err)

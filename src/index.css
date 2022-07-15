@@ -75,6 +75,21 @@ h1 {
   color: white;
 }
 
+a,
+.myLink {
+  color: gold;
+  text-decoration: none;
+  color: crimson;
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover,
+.myLink:hover {
+  color: crimson;
+  filter: brightness(80%);
+  transition: all 0.5s ease-in-out;
+}
+
 /* card elements */
 
 .title,

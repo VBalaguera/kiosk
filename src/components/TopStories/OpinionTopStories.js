@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Card, Button } from 'react-bootstrap'
 import axios from 'axios'
 
-import moment from 'moment'
-import SharingButtons from '../Sharing/SharingButtons'
+import PostCard from '../PostCard'
+import { useAuth } from '../../context/AuthContext'
 
 import data from '../../data/nytOpinion.json'
-
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/opinion.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
 export default function OpinionTopStories() {
   const [posts, setPosts] = useState([])
+  const { currentUser } = useAuth()
   useEffect(() => {
     /* top stories */
     axios
@@ -29,36 +28,9 @@ export default function OpinionTopStories() {
     <div>
       <div className='top-stories'>
         {posts.map((post, index) => (
-          <Card
-            className='top-stories__card  card bg-dark text-light border-light'
-            key={index}
-          >
-            <Card.Body>
-              {' '}
-              <div className='title-card'>{post.title}</div>
-              <Card.Img
-                className='img'
-                src={post.multimedia[0].url}
-                alt={post.caption}
-              />
-              <div className='subtitle'>{post.abstract}</div>
-              <Card.Text className='author-date'>
-                <span>{post.byline}</span>{' '}
-                <span>
-                  Published:{' '}
-                  {moment(post.published_date).format('MMMM d, YYYY')}
-                </span>
-              </Card.Text>
-              <Button className='btn read-more' variant='btn btn-outline-light'>
-                <a href={post.url} className='link'>
-                  read more
-                </a>
-              </Button>
-            </Card.Body>
-            <Card.Footer>
-              <SharingButtons url={post.url} />
-            </Card.Footer>
-          </Card>
+          <>
+            <PostCard post={post} user={currentUser} />
+          </>
         ))}
       </div>
     </div>

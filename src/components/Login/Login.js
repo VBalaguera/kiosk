@@ -38,24 +38,37 @@ export default function Login() {
           {/* firebase uses localstorage; also an initial loading state */}
 
           <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email address</Form.Label>
+            <Form.Group id='email' className='m-2'>
+              <Form.Label className='m-2'>Email address</Form.Label>
               <Form.Control type='email' ref={emailRef} required />
             </Form.Group>
-            <Form.Group id='password'>
+            <Form.Group className='m-2' id='password'>
               <Form.Label>Password</Form.Label>
               <Form.Control type='password' ref={passwordRef} required />
             </Form.Group>
 
-            <Button disabled={loading} type='submit'>
+            <Button
+              className='m-2'
+              variant='secondary'
+              disabled={loading}
+              type='submit'
+            >
               sign up
             </Button>
           </Form>
-          <div>
-            Still don't have an account? <Link to='/signup'>get one</Link>
-          </div>
-          <div>
-            <Link to='/forgot-password'>Forgot your password?</Link>
+          <div className='m-2'>
+            <div>
+              Still don't have an account?{' '}
+              <Link className='myLink' to='/signup'>
+                get one
+              </Link>
+              .
+            </div>
+            <div>
+              <Link className='myLink' to='/forgot-password'>
+                Forgot your password?
+              </Link>
+            </div>
           </div>
         </Card>
       </div>
