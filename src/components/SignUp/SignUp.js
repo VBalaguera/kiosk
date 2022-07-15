@@ -3,12 +3,14 @@ import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { ToastContainer, toast } from 'react-toastify'
+
 export default function SignUp() {
   const displayNameRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
-  const [error, setError] = useState('')
+  /*   const [error, setError] = useState('') */
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -18,11 +20,12 @@ export default function SignUp() {
     e.preventDefault()
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setError('passwords do not match')
+      return toast('passwords do not match')
+      /* setError('passwords do not match') */
     }
 
     try {
-      setError('')
+      /*       setError('') */
       setLoading(true)
       await signup(
         emailRef.current.value,
@@ -30,9 +33,11 @@ export default function SignUp() {
         displayNameRef.current.value
       )
       console.log('account created!')
+      toast('account created!')
       navigate('/kiosk')
     } catch {
-      setError('Error while creating an account')
+      /* setError('Error while creating an account') */
+      toast('Error while creating an account')
     }
     setLoading(false)
   }
@@ -42,7 +47,7 @@ export default function SignUp() {
       <div style={{ minWidth: '400px' }}>
         <Card>
           <Card.Header>sign up</Card.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
+          {/* {error && <Alert variant='danger'>{error}</Alert>} */}
           {/* {JSON.stringify(currentUser)} */}
           {/*  { currentUser &&   currentUser.email} */}
           {/* firebase uses localstorage; also an initial loading state */}
@@ -75,6 +80,19 @@ export default function SignUp() {
             </Link>
           </div>
         </Card>
+        <ToastContainer
+          position='bottom-right'
+          type='info'
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          theme='dark'
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </div>
   )

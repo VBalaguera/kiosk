@@ -2,19 +2,21 @@ import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-
+import { ToastContainer, toast } from 'react-toastify'
 export default function NavBar() {
   const [mySection, setMySection] = useState(true)
-  const [error, setError] = useState('')
+  /*   const [error, setError] = useState('') */
   const { currentUser, logout } = useAuth()
   const navigate = useNavigate()
   async function handleLogOut() {
-    setError('')
+    /* setError('') */
     try {
       await logout()
+      toast('bye')
       navigate('/')
     } catch {
-      setError('error while logging out')
+      toast('error while logging out')
+      /* setError('error while logging out') */
     }
   }
   return (
@@ -61,6 +63,19 @@ export default function NavBar() {
           </div>
         </Container>
       </Navbar>
+      <ToastContainer
+        position='bottom-right'
+        type='info'
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        theme='dark'
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

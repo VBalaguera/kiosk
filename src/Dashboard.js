@@ -13,10 +13,12 @@ import { useAuth } from './context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 
+import { ToastContainer, toast } from 'react-toastify'
+
 import Favorites from './components/Favorites/Favorites'
 
 export default function Dashboard() {
-  const [error, setError] = useState('')
+  /*   const [error, setError] = useState('') */
   const { currentUser, logout } = useAuth()
   const navigate = useNavigate()
 
@@ -65,12 +67,14 @@ export default function Dashboard() {
   ]
 
   async function handleLogOut() {
-    setError('')
+    /* setError('') */
     try {
       await logout()
+      toast('bye')
       navigate('/')
     } catch {
-      setError('error while logging out')
+      /* setError('error while logging out') */
+      toast('error while logging out')
     }
   }
 
@@ -122,7 +126,8 @@ export default function Dashboard() {
       <Card className='dashboard card bg-dark text-light border-light'>
         <Card.Body>
           <h2>profile</h2>
-          {error && <Alert variant='danger'>{error}</Alert>}
+          {/* {error && <Alert variant='danger'>{error}</Alert>}
+           */}
           <div>
             <div className='d-flex justify-content-between mt-2'>
               <span>
@@ -154,6 +159,19 @@ export default function Dashboard() {
         <Button variant='secondary' onClick={handleLogOut}>
           log out
         </Button>
+        <ToastContainer
+          position='bottom-right'
+          type='info'
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          theme='dark'
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   )
