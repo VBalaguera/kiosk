@@ -22,8 +22,12 @@ export default function Dashboard() {
 
   const [favorites, setFavorites] = useState([])
 
+  /* filtering functionality */
   const [favoritesSection, setFavoritesSection] = useState([])
-  const [filteredFavorites, setFilteredFavorites] = useState([])
+
+  /* search functionality */
+  const [searchTerm, setSearchTerm] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const favoritesCollectionRef = collection(db, 'favorites')
   const q = query(
@@ -72,11 +76,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     getFavorites()
-
-    const allSections = [
-      'all',
-      ...new Set(favorites.map((favorite) => favorite.section)),
-    ]
   }, [])
 
   const getCategories = () => {
@@ -87,8 +86,8 @@ export default function Dashboard() {
     setFavoritesSection(allSections)
   }
 
-  console.log('favoritesSection', favoritesSection)
-  console.log('allSections', allSections)
+  /* console.log('favoritesSection', favoritesSection)
+  console.log('allSections', allSections) */
 
   return (
     <>

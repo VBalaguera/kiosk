@@ -26,37 +26,39 @@ export default function NavBar() {
               kiosk
             </Link>
           </span>
-          {currentUser ? (
-            <>
-              <Nav.Link>
-                <span
-                  className='link navbar-link'
-                  onClick={() => setMySection('search')}
-                >
-                  search
-                </span>
-              </Nav.Link>
-              <Nav.Link>
-                <span className='link navbar-link'>
-                  <Link className='myLink' to='/dashboard'>
-                    dashboard
-                  </Link>
-                </span>
-              </Nav.Link>
-              <Nav.Link>
-                <span className='link navbar-link ' onClick={handleLogOut}>
-                  <span className='myLink'>logout</span>
-                </span>
-              </Nav.Link>
-            </>
-          ) : null}
-          <Nav.Link>
-            <span className='link navbar-link'>
-              <Link className='myLink' to='/about'>
-                about
-              </Link>
-            </span>
-          </Nav.Link>
+          <div className='d-flex'>
+            {currentUser ? (
+              <>
+                <Nav.Link>
+                  <span
+                    className='link navbar-link'
+                    onClick={() => setMySection('search')}
+                  >
+                    search
+                  </span>
+                </Nav.Link>
+                <Nav.Link>
+                  <span className='link navbar-link'>
+                    <Link className='myLink' to='/dashboard'>
+                      dashboard
+                    </Link>
+                  </span>
+                </Nav.Link>
+                <Nav.Link>
+                  <span className='link navbar-link ' onClick={handleLogOut}>
+                    <span className='myLink'>logout</span>
+                  </span>
+                </Nav.Link>
+              </>
+            ) : null}
+            <Nav.Link>
+              <span className='link navbar-link'>
+                <Link className='myLink' to='/about'>
+                  about
+                </Link>
+              </span>
+            </Nav.Link>
+          </div>
         </Container>
       </Navbar>
     </>

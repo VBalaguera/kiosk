@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 /* firebase and firestore */
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Card, Button } from 'react-bootstrap'
 import SharingButtons from './Sharing/SharingButtons'
@@ -12,7 +12,7 @@ export class PostCard extends Component {
     this.state = {
       author: this.props.post.byline,
       date: this.props.post.published_date,
-      createdAt: new Date(),
+      createdAt: Date().toLocaleString(),
       description: this.props.post.abstract,
       section: this.props.post.section,
       title: this.props.post.title,
@@ -28,7 +28,7 @@ export class PostCard extends Component {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.byline,
           date: this.props.post.published_date,
-          createdAt: new Date(),
+          createdAt: Date().toLocaleString(),
           description: this.props.post.abstract,
           section: this.props.post.section,
           title: this.props.post.title,

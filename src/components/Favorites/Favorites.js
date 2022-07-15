@@ -2,6 +2,7 @@ import React from 'react'
 import Favorite from './Favorite'
 
 export default function Favorites({ favorites }) {
+  console.log(favorites)
   return (
     <>
       {favorites ? (

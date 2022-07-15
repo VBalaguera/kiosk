@@ -2,6 +2,8 @@
 
 ## 2022/07/15
 
+DONE:
+
 - daily api-search.py backup
 - incorporated favorite saving functions into:
   - arttopstories
@@ -21,6 +23,11 @@
   - profile info updated showing createdon, lastlogin, email, and update profile button
   - favorites style overhaul: cards including title, date and read more button;
 - dashboard includes now filtering by sections; it's a good start, still unfinished
+- fixed problems with Saved on dates on favorites;
+
+TODO:
+
+- notifications;
 
 ## 2022/07/12
 

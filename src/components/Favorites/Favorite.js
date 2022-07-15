@@ -14,10 +14,19 @@ export default function Favorite({ favorite, index }) {
               <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
                 {' '}
                 <span className='mx-2'>
-                  Published on: {moment(favorite.date).format('MMMM d, YYYY')}.
+                  Published on: {String(favorite.date).slice(0, 10)}.
                 </span>
                 <span className='mx-2'>
-                  Saved on: {moment(favorite.createdAt).format('MMMM d, YYYY')}.
+                  <>
+                    Saved on:{' '}
+                    {moment
+                      .utc(favorite.createdAt.seconds)
+                      .format()
+                      .slice(0, 10)}
+                  </>
+
+                  {/* <>{moment.utc(favorite.createdAt.seconds).format()}</>
+                  {moment(favorite.createdAt.seconds).format('MMMM d, YYYY')}. */}
                   {/* TODO: FIX THIS */}
                 </span>
               </div>
