@@ -2,6 +2,18 @@
 
 Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
 
+## 2022/07/16
+
+TODO:
+
+- FIX DATE PROBLEM AT FAVORITE.js
+- explore api lists here: https://github.com/VBalaguera/public-apis and USE IT TO CREATE MORE CONTENT!
+- explore CRUD options for Favorites!
+
+Done:
+
+- initial responsive styling;
+
 ## 2022/07/15
 
 Deployed this version for testing at https://kiosk-q6k5iejxi-vbalaguera.vercel.app/kiosk

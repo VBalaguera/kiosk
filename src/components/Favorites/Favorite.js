@@ -29,9 +29,9 @@ export default function Favorite({ favorite, index }) {
     <>
       <Card key={index} className='card bg-dark text-light border-light'>
         <Card.Body>
-          <div className='d-flex justify-content-between'>
+          <div className='d-flex justify-content-between favorite-card'>
             {favorite.title}
-            <div className='d-flex justify-content-between'>
+            <div className='d-flex justify-content-between favorite-card-top'>
               <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
                 {' '}
                 <span className='mx-2'>
@@ -54,7 +54,7 @@ export default function Favorite({ favorite, index }) {
                   {moment(favorite.createdAt.seconds).format('MMMM d, YYYY')}. */}
                 {/* TODO: FIX THIS */}
               </div>
-              <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
+              <div className='d-flex flex-column align-items-end justify-content-end mx-2 favorite-card-bottom'>
                 <span>Section: {favorite.section}.</span>
                 <a href={favorite.url} className='myLink'>
                   Read more.

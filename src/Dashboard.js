@@ -100,10 +100,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <h1>dashboard</h1>
+      <h1 className='section-title'>dashboard</h1>
       <Card className='dashboard card bg-dark text-light border-light'>
         <Card.Body>
-          <h2>favorites</h2>
+          <h2 className='section-title'>favorites</h2>
           <div className='d-flex justify-content-center'>
             {/*             {favoritesSection.map((section, index) => (
               <button key={index} onClick={() => filterItems(section)}>
@@ -113,7 +113,7 @@ export default function Dashboard() {
             {allSections.map((section, index) => (
               <Button
                 variant='secondary'
-                className='mx-2'
+                className='mx-2 favorites-btn'
                 key={index}
                 onClick={() => filterItems(section)}
               >

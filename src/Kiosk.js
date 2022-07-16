@@ -39,11 +39,11 @@ export default function Kiosk() {
   const [mySection, setMySection] = useState(true)
   return (
     <div>
-      <div className='d-flex justify-content-between flex-wrap flex-row mb-5'>
+      <div className='d-flex justify-content-between flex-wrap flex-row mb-3'>
         {sections.map((section, index) => (
           <Nav.Link key={index} className='px-1 py-1 '>
             <Button
-              variant='btn btn-outline-light button p-1 fs-6'
+              variant='btn btn-outline-light button p-1 kiosk'
               type='button'
               key={section}
               onClick={() => setMySection(section)}

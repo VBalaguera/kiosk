@@ -31,36 +31,30 @@ export default function NavBar() {
           <div className='d-flex'>
             {currentUser ? (
               <>
-                <Nav.Link>
-                  <span className='link navbar-link'>
-                    <Link className='myLink' to='/dashboard'>
-                      dashboard
-                    </Link>
-                  </span>
-                </Nav.Link>
-                <Nav.Link>
-                  <span className='link navbar-link ' onClick={handleLogOut}>
-                    <span className='myLink'>logout</span>
-                  </span>
-                </Nav.Link>
+                <span className='link navbar-link'>
+                  <Link className='myLink' to='/dashboard'>
+                    dashboard
+                  </Link>
+                </span>
+
+                <span className='link navbar-link ' onClick={handleLogOut}>
+                  <span className='myLink'>logout</span>
+                </span>
               </>
             ) : null}
             {!currentUser ? (
-              <Nav.Link>
-                <span className='link navbar-link'>
-                  <Link className='myLink' to='/'>
-                    login
-                  </Link>
-                </span>
-              </Nav.Link>
-            ) : null}
-            <Nav.Link>
               <span className='link navbar-link'>
-                <Link className='myLink' to='/about'>
-                  about
+                <Link className='myLink' to='/'>
+                  login
                 </Link>
               </span>
-            </Nav.Link>
+            ) : null}
+
+            <span className='link navbar-link'>
+              <Link className='myLink' to='/about'>
+                about
+              </Link>
+            </span>
           </div>
         </Container>
       </Navbar>

@@ -186,3 +186,52 @@ a:hover,
 .articles-search-searchbar {
   margin-top: 2rem;
 }
+
+/* responsive */
+
+@media screen and (max-width: 568px) {
+  /* navbar */
+  .nav-link {
+    padding: 0.1rem 0.5rem;
+  }
+  .navbar-link {
+    margin: 0 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* kiosk */
+  .kiosk,
+  .favorites-btn {
+    font-size: 0.5rem !important;
+  }
+
+  /* postcard */
+  .section-title {
+    font-size: 1.2rem;
+  }
+  .title-card {
+    font-size: 1rem;
+  }
+
+  .subtitle,
+  .author-date {
+    font-size: 0.7rem;
+  }
+
+  .read-more a,
+  .read-more span {
+    font-size: 0.7rem;
+  }
+
+  /* dashboard */
+  .favorite-card,
+  .favorite-card-top {
+    flex-direction: column;
+  }
+
+  .favorite-card-bottom {
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+  }
+}
