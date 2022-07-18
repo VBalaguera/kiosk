@@ -312,7 +312,8 @@ a:hover,
   .favorite-card span,
   .favorite-card-comments span,
   .profile span,
-  .profile-info-bottom a {
+  .profile-info-bottom a,
+  .about span {
     font-size: 0.7rem;
   }
 
