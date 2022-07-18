@@ -3,11 +3,12 @@
 Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
 
 ## 2022/07/18
+AUTH BRANCH MERGED WITH MAIN
 
 - Users can delete their own favorites.
 - FIXED DATE PROBLEM AT FAVORITE.js
 - fixed footer and navbar
-- responsive
+- responsive overhaul
 - incorporated comments into dashboard/favorites atm
 - using and testing newsapi on newly created Work comp; not sure if it's worth all the effort atm to incorporate this.
 - added source field to favorites (ie: source: 'New York Times');

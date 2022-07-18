@@ -9,7 +9,6 @@ export default function ForgotPassword() {
   /*   const [error, setError] = useState('') */
   const [loading, setLoading] = useState(false)
   /*   const [message, setMessage] = useState('') */
-  const navigate = useNavigate()
 
   const { resetPassword } = useAuth()
 
@@ -21,18 +20,22 @@ export default function ForgotPassword() {
       setError('') */
       setLoading(true)
       await resetPassword(emailRef.current.value)
-      toast('check your recovery email')
+      toast('Check your recovery email.')
     } catch {
-      toast('Error while login')
+      toast('Error while trying to reset password.')
     }
     setLoading(false)
   }
 
   return (
-    <div className='d-flex align-items-center justify-content-center'>
-      <div style={{ minWidth: '400px' }}>
+    <div className='forms'>
+      <div className='w-100' style={{ maxWidth: '800px' }}>
         <Card>
-          <Card.Header>forgot password</Card.Header>
+          <Card.Header>
+            <span className='section-title text-dark'>
+              forgot your password?
+            </span>
+          </Card.Header>
           {/* {error && <Alert variant='danger'>{error}</Alert>}
           {message && <Alert variant='success'>{message}</Alert>}
  */}
@@ -41,25 +44,27 @@ export default function ForgotPassword() {
           {/* firebase uses localstorage; also an initial loading state */}
 
           <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email address</Form.Label>
+            <Form.Group id='email' className='m-2'>
+              <Form.Label className='m-2'>Email address</Form.Label>
               <Form.Control type='email' ref={emailRef} required />
             </Form.Group>
 
-            <Button disabled={loading} type='submit'>
+            <Button className='m-2' disabled={loading} type='submit'>
               Reset password
             </Button>
           </Form>
-          <div>
+          <div className='m-2'>
             Still don't have an account?{' '}
             <Link className='myLink' to='/signup'>
-              get one
+              Get one
             </Link>
+            .
           </div>
           <div>
             <Link className='myLink' to='/'>
-              log in?
+              False alarm? Log in
             </Link>
+            .
           </div>
         </Card>
         <ToastContainer

@@ -82,9 +82,11 @@ export default function Favorite({ favorite, index }) {
               </div>
             </div>
           </div>
-          <div className='d-flex'>
+          <div className='favorite-card-comments'>
             {favorite.comments ? (
-              <span>Comments: {favorite.comments}.</span>
+              <span>
+                <strong>Comments:</strong> {favorite.comments}.
+              </span>
             ) : null}
           </div>
         </Card.Body>

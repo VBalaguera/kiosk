@@ -116,6 +116,15 @@ a:hover,
   margin-bottom: 1rem;
 }
 
+/* signup, forgotpassword, updateprofile, login forms*/
+.forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
 @media screen and (max-width: 768px) {
   .img {
     height: 300px;
@@ -218,6 +227,15 @@ a:hover,
   align-items: flex-start;
 }
 
+.favorite-card-comments {
+  display: flex;
+  margin: 1rem 0 0 0;
+}
+
+.favorite-card-comments span {
+  font-style: italic;
+}
+
 /* profile */
 
 .profile-info-top,
@@ -292,7 +310,9 @@ a:hover,
   /* dashboard */
 
   .favorite-card span,
-  .profile span {
+  .favorite-card-comments span,
+  .profile span,
+  .profile-info-bottom a {
     font-size: 0.7rem;
   }
 
@@ -324,5 +344,9 @@ a:hover,
   .footer {
     font-size: 0.7rem;
     flex-direction: column;
+  }
+
+  .forms {
+    height: 50vh;
   }
 }

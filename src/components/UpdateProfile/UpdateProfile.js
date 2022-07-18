@@ -72,8 +72,8 @@ export default function UpdateProfile() {
   }
 
   return (
-    <div className='d-flex align-items-center justify-content-center'>
-      <div style={{ minWidth: '400px' }}>
+    <div className='forms'>
+      <div className='w-100' style={{ maxWidth: '800px' }}>
         <Card>
           <Card.Header>
             <span className='section-title text-dark'>update profile</span>
