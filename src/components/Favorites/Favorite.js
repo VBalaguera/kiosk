@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-import { doc, deleteDoc, collection } from 'firebase/firestore'
+import { doc, deleteDoc, collection, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { useAuth } from '../../context/AuthContext'
 import moment from 'moment'
@@ -27,6 +27,17 @@ export default function Favorite({ favorite, index }) {
       toast(err)
     }
   }
+  const handleUpdateFavorite = async (e, id) => {
+    e.preventDefault()
+    try {
+      await updateDoc(doc(favoritesCollectionRef, id), {
+        comments: e.target.value,
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   console.log(favorite)
 
   return (
@@ -67,6 +78,15 @@ export default function Favorite({ favorite, index }) {
             </div>
           </div>
         </Card.Body>
+        <form onSubmit={handleUpdateFavorite(favorite.id)}>
+          <input
+            type='text'
+            className='outline-dark text-light bg-dark'
+            placeholder='your comments'
+          />
+          <button type='submit'>submit</button>
+        </form>
+        {favorite.comments ? <span>Comments: {favorite.comments}</span> : null}
       </Card>
       <ToastContainer
         position='bottom-right'

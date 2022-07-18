@@ -22,6 +22,7 @@ export class PostCard extends Component {
       url: this.props.post.url,
       user: this.props.user.multiFactor.user.uid,
       source: 'New York Times',
+      comments: '',
     }
   }
 
@@ -47,6 +48,7 @@ export class PostCard extends Component {
           url: this.props.post.url,
           user: this.props.user.multiFactor.user.uid,
           source: 'New York Times',
+          comments: '',
         })
         /* console.log('favorite added') */
         toast('favorite added')

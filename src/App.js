@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import PublicRoute from './components/PublicRoute/PublicRoute'
 /* kiosk */
 import Kiosk from './Kiosk'
+import Work from './Work'
 
 import About from './components/About'
 
@@ -65,6 +66,7 @@ function App() {
                 }
               ></Route>
               <Route path='/kiosk' element={<Kiosk />} />
+              <Route path='/work' element={<Work />} />
               <Route path='/forgot-password' element={<ForgotPassword />} />
               <Route path='/about' element={<About />} />
             </Routes>
