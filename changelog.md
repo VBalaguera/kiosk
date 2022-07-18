@@ -18,6 +18,7 @@ AUTH BRANCH MERGED WITH MAIN
 - warning modals when deleting accounts and favorites
 - minor code cleaning
 - about page updated
+- footer info updated with portfolio link.
 
 TODO:
 

@@ -8,8 +8,20 @@ export default function About() {
         <Card.Body>
           <Card.Text className='d-flex flex-column'>
             <span>
-              A simple web app project that, at this moment, uses the New York
-              Times API only as source of external content.
+              A simple web app project, created by{' '}
+              <a
+                className='myLink'
+                href='http://vbalaguera.com'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Víctor Balaguera
+              </a>
+              .
+            </span>
+            <span>
+              At this moment, uses the New York Times API only as source of
+              external content.
             </span>
             <span>
               Create your account. Read the news. Add your favorites. Share

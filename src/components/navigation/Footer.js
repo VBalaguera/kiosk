@@ -5,7 +5,16 @@ export default function Footer() {
     <footer className='text-center text-light text-lg-start bg-dark border-top border-light '>
       <div className='footer'>
         <div className='footer-left'>
-          <span>Víctor Balaguera. 2022.</span>
+          2022.{' '}
+          <a
+            className='myLink'
+            href='http://vbalaguera.com'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Víctor Balaguera
+          </a>
+          .
         </div>
 
         <div className='footer-right'>
