@@ -85,10 +85,14 @@ export default function Favorite({ favorite, index }) {
             <div className='favorite-card-bottom'>
               <div className='favorite-card-bottom-left'>
                 <span>
-                  Published on: {moment(favorite.date).format('YYYY-MM-DD')}.
+                  Published on: {moment(favorite.date).format('MMMM DD, YYYY')}.
                 </span>
                 <span>
-                  Saved on: {moment(favorite.createdAt).format('YYYY-MM-DD')}.
+                  Saved on:{' '}
+                  {moment
+                    .unix(favorite.createdAt.seconds)
+                    .format('MMMM DD, YYYY')}
+                  .
                 </span>
               </div>
               <div className='favorite-card-bottom-center'>

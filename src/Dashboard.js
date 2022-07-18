@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Button, Alert } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import {
   getDocs,
   collection,
@@ -143,7 +143,7 @@ export default function Dashboard() {
               <span>
                 Created on:{' '}
                 {moment(currentUser.metadata.creationTime).format(
-                  'MMMM d, YYYY'
+                  'MMMM DD, YYYY'
                 )}
                 .
               </span>
@@ -151,7 +151,7 @@ export default function Dashboard() {
               <span>
                 Last login on:{' '}
                 {moment(currentUser.metadata.lastSignInTime).format(
-                  'MMMM d, YYYY'
+                  'MMMM DD, YYYY'
                 )}
                 .
               </span>

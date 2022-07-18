@@ -15,7 +15,7 @@ export class PostCard extends Component {
     this.state = {
       author: this.props.post.byline,
       date: this.props.post.published_date,
-      createdAt: Date().toLocaleString(),
+      createdAt: Timestamp.now(),
       description: this.props.post.abstract,
       section: this.props.post.section,
       title: this.props.post.title,
@@ -41,7 +41,7 @@ export class PostCard extends Component {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.byline,
           date: this.props.post.published_date,
-          createdAt: Date().toLocaleString(),
+          createdAt: Timestamp.now(),
           description: this.props.post.abstract,
           section: this.props.post.section,
           title: this.props.post.title,

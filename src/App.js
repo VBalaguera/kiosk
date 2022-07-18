@@ -20,6 +20,8 @@ import PublicRoute from './components/PublicRoute/PublicRoute'
 import Kiosk from './Kiosk'
 import Work from './Work'
 
+import Notes from './Notes'
+
 import About from './components/About'
 
 import Dashboard from './Dashboard'
@@ -62,6 +64,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <UpdateProfile />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path='/notes'
+                element={
+                  <PrivateRoute>
+                    <Notes />
                   </PrivateRoute>
                 }
               ></Route>
