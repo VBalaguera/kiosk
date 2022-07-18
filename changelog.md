@@ -17,6 +17,7 @@ AUTH BRANCH MERGED WITH MAIN
 - minor tweakings on all PostCards.
 - warning modals when deleting accounts and favorites
 - minor code cleaning
+- about page updated
 
 TODO:
 
