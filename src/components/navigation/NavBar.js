@@ -39,9 +39,13 @@ export default function NavBar() {
                   </Link>
                 </span>
 
-                <span className='link navbar-link ' onClick={handleLogOut}>
+                <Link
+                  className='link navbar-link '
+                  onClick={handleLogOut}
+                  to='/'
+                >
                   <span className='myLink'>logout</span>
-                </span>
+                </Link>
               </>
             ) : null}
             {!currentUser ? (

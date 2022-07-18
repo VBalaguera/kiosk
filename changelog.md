@@ -15,6 +15,7 @@ Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User
 
 TODO:
 
+- Modals to warn about final changes.
 - the question is: different apis used different fields and results, so when dealing with saving/showing favorites I should create similar comps for each api source (ie: nyt postcard/favorite comps). This also includes all api/firestore calls, filtering them by source.
 - explore api lists here: https://github.com/VBalaguera/public-apis and USE IT TO CREATE MORE CONTENT!
 - explore CRUD options for Favorites!

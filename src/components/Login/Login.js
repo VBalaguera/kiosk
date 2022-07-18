@@ -22,7 +22,7 @@ export default function Login() {
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
       /* console.log('logged in!') */
-      toast('logged in!')
+      toast('welcome back!')
       navigate('/kiosk')
     } catch {
       /* setError('Error while login') */
@@ -35,7 +35,9 @@ export default function Login() {
     <div className='d-flex align-items-center justify-content-center'>
       <div style={{ minWidth: '400px' }}>
         <Card>
-          <Card.Header>login</Card.Header>
+          <Card.Header>
+            <span className='section-title text-dark'>login</span>
+          </Card.Header>
           {/* {error && <Alert variant='danger'>{error}</Alert>} */}
           {/* {JSON.stringify(currentUser)} */}
           {/*  { currentUser &&   currentUser.email} */}

@@ -75,7 +75,9 @@ export default function UpdateProfile() {
     <div className='d-flex align-items-center justify-content-center'>
       <div style={{ minWidth: '400px' }}>
         <Card>
-          <Card.Header>update profile</Card.Header>
+          <Card.Header>
+            <span className='section-title text-dark'>update profile</span>
+          </Card.Header>
           {/*  {error && <Alert variant='danger'>{error}</Alert>} */}
           {/* {JSON.stringify(currentUser)} */}
           {/*  { currentUser &&   currentUser.email} */}
@@ -110,9 +112,13 @@ export default function UpdateProfile() {
             </Link>
             .
           </div>
-          <button onClick={() => handleDeleteUser(currentUser.uid)}>
+          <Button
+            variant='secondary'
+            className='delete-btn'
+            onClick={() => handleDeleteUser(currentUser.uid)}
+          >
             delete user
-          </button>
+          </Button>
         </Card>
         <ToastContainer
           position='bottom-right'

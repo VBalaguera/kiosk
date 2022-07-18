@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 export default function About() {
   return (
     <>
-      <h1>about</h1>
+      <h1 className='section-title'>about</h1>
       <Card className='about card bg-dark text-light border-light'>
         <Card.Body>
           <Card.Text>

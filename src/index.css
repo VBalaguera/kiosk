@@ -239,7 +239,7 @@ a:hover,
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem;
+  padding: 1rem 0.5rem;
 }
 
 /* responsive */
@@ -261,7 +261,8 @@ a:hover,
   /* kiosk */
   .kiosk,
   .favorites-btn,
-  .logout-btn {
+  .logout-btn,
+  .delete-btn {
     font-size: 0.7rem !important;
   }
 

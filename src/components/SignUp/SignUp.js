@@ -46,7 +46,9 @@ export default function SignUp() {
     <div className='d-flex align-items-center justify-content-center'>
       <div style={{ minWidth: '400px' }}>
         <Card>
-          <Card.Header>sign up</Card.Header>
+          <Card.Header>
+            <span className='section-title text-dark'>sign up</span>
+          </Card.Header>
           {/* {error && <Alert variant='danger'>{error}</Alert>} */}
           {/* {JSON.stringify(currentUser)} */}
           {/*  { currentUser &&   currentUser.email} */}
