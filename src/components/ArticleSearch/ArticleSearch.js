@@ -21,11 +21,11 @@ export default function ArticleSearch() {
         `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.REACT_APP_NYT_API_KEY}`
       )
       .then((response) => {
-        console.log(response.data.response.docs)
+        /* console.log(response.data.response.docs) */
         setPosts(response.data.response.docs)
       })
       .catch((err) => {
-        console.log(err)
+        /* console.log(err) */
         setPosts(data)
       })
   }

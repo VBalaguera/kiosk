@@ -16,11 +16,11 @@ export default function WorldTopStories() {
     axios
       .get(nytTopStoriesUrl)
       .then((response) => {
-        console.log(response.data.results)
+        /*      console.log(response.data.results) */
         setPosts(response.data.results.slice(1))
       })
       .catch((err) => {
-        console.log(err)
+        /*  console.log(err) */
         setPosts(data)
       })
   }, [])

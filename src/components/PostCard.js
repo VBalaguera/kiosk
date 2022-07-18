@@ -27,8 +27,8 @@ export class PostCard extends Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.props.user.multiFactor.user)
+    /* console.log(this.props)
+    console.log(this.props.user.multiFactor.user) */
     const favoritesCollectionRef = collection(
       db,
       'favorites',
@@ -58,7 +58,7 @@ export class PostCard extends Component {
         toast(err)
       }
     }
-    console.log(this.props.user.multiFactor.user.uid)
+    /*  console.log(this.props.user.multiFactor.user.uid) */
     return (
       <>
         <Card

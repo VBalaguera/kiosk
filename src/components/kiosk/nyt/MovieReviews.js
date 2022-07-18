@@ -16,11 +16,11 @@ export default function MovieReviews() {
     axios
       .get(nytMovieReviewsUrl)
       .then((response) => {
-        console.log(response.data.results)
+        /* console.log(response.data.results) */
         setReviews(response.data.results)
       })
       .catch((err) => {
-        console.log(err)
+        /*  console.log(err) */
         setReviews(data)
       })
   }, [])

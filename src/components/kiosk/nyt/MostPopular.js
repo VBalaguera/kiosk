@@ -33,10 +33,10 @@ export default function MostPopular() {
         console.log(err)
         setMostPopulars(data)
       })
-    console.log(mostPopulars[0])
+    /* console.log(mostPopulars[0]) */
     const info = mostPopulars[0]
 
-    console.log({ author, date, description, section, title, url, user })
+    /* console.log({ author, date, description, section, title, url, user }) */
   }, [])
 
   return (

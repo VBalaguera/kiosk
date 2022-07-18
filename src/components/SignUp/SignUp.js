@@ -32,7 +32,7 @@ export default function SignUp() {
         passwordRef.current.value,
         displayNameRef.current.value
       )
-      console.log('account created!')
+      /* console.log('account created!') */
       toast('account created!')
       navigate('/kiosk')
     } catch {

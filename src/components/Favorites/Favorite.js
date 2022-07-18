@@ -46,7 +46,7 @@ export default function Favorite({ favorite, index }) {
   const handleDeleteFavorite = async (id) => {
     try {
       setModal(false)
-      await deleteDoc(doc(favoritesCollectionRef, id))
+      setTimeout(await deleteDoc(doc(favoritesCollectionRef, id)), 2000)
       console.log('Entire Document has been deleted successfully.')
       toast(`Document with id ${id} has been deleted successfully.`)
 

@@ -76,7 +76,7 @@ export default function UpdateProfile() {
       /*       setError('') */
       setLoading(true)
 
-      console.log('info updated')
+      toast('info updated')
       navigate('/kiosk')
     } catch {
       /*       setError('Error while updating account info') */
@@ -91,7 +91,7 @@ export default function UpdateProfile() {
       setLoading(true)
       deleteUser(uid)
       toast('bye :(')
-      console.log('user with uid', { uid }, ' deleted')
+      toast('user with uid', { uid }, ' deleted')
       navigate('/')
     } catch {
       toast('Error when deleting user')

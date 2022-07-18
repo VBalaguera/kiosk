@@ -16,11 +16,11 @@ export default function Books() {
     axios
       .get(nytBooksUrl)
       .then((response) => {
-        console.log(response.data.results.books)
+        /*  console.log(response.data.results.books) */
         setBooks(response.data.results.books)
       })
       .catch((err) => {
-        console.log(err)
+        /* console.log(err) */
         setBooks(data)
       })
   }, [])
