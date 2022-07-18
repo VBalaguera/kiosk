@@ -8,12 +8,14 @@ export default function About() {
         <Card.Body>
           <Card.Text className='d-flex flex-column'>
             <span>
-              A simple SPA news project that, at this moment, uses the New York
-              Times API only.
+              A simple web app project that, at this moment, uses the New York
+              Times API only as source of external content.
             </span>
             <span>
-              Add your favorites. Share them. Take notes. More to come.
+              Create your account. Read the news. Add your favorites. Share
+              them. Take notes.
             </span>
+            <span>More to come.</span>
           </Card.Text>
         </Card.Body>
       </Card>
