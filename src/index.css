@@ -136,8 +136,12 @@ a:hover,
 .author-date {
   font-size: 0.8rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 1.5rem;
+}
+
+.author-date span {
+  margin: 0 0.5rem;
 }
 
 .lead-paragraph {
