@@ -11,6 +11,6 @@ Available sections:
 - movie reviews: https://developer.nytimes.com/docs/movie-reviews-api/1/overview
 - books api: https://developer.nytimes.com/docs/books-product/1/overview
 
-## WEATHER
+## NEWSAPI
 
-### AEMET
+- docs: https://newsapi.org/docs/endpoints/top-headlines

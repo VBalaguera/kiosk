@@ -66,7 +66,7 @@ function App() {
                 }
               ></Route>
               <Route path='/kiosk' element={<Kiosk />} />
-              <Route path='/work' element={<Work />} />
+              {/* <Route path='/work' element={<Work />} /> */}
               <Route path='/forgot-password' element={<ForgotPassword />} />
               <Route path='/about' element={<About />} />
             </Routes>

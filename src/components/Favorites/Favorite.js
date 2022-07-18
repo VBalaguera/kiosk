@@ -1,4 +1,4 @@
-import React from 'react'
+import {useState} from 'react'
 import { Card, Button } from 'react-bootstrap'
 
 import { doc, deleteDoc, collection, updateDoc } from 'firebase/firestore'
@@ -9,6 +9,7 @@ import moment from 'moment'
 import { ToastContainer, toast } from 'react-toastify'
 
 export default function Favorite({ favorite, index }) {
+  const [comment, setComment] = useState('')
   const { currentUser } = useAuth()
   const favoritesCollectionRef = collection(
     db,
