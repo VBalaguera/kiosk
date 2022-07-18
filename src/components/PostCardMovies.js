@@ -64,7 +64,7 @@ export class PostCardMovies extends Component {
             <div className='title-card'>{this.props.post.display_title}</div>
             {this.props.post.multimedia ? (
               <Card.Img
-                className='img'
+                className='img-movies'
                 src={this.props.post.multimedia.src}
                 alt={this.props.post.headline}
               />
@@ -102,20 +102,20 @@ export class PostCardMovies extends Component {
           <Card.Footer>
             <SharingButtons url={this.props.post.link.url} />
           </Card.Footer>
+          <ToastContainer
+            position='bottom-right'
+            type='info'
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            theme='dark'
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Card>
-        <ToastContainer
-          position='bottom-right'
-          type='info'
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme='dark'
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </>
     )
   }

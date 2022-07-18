@@ -110,7 +110,7 @@ a:hover,
 }
 
 .img,
-.book-img {
+.img-movies .book-img {
   height: 600px;
   object-fit: contain;
   margin-bottom: 1rem;
@@ -123,6 +123,10 @@ a:hover,
   align-items: center;
   justify-content: center;
   height: 80vh;
+}
+
+/* search form */
+.search-form {
 }
 
 @media screen and (max-width: 768px) {
@@ -198,6 +202,19 @@ a:hover,
 }
 
 /* search bar */
+
+.articles-search__form {
+  display: flex;
+}
+
+.articles-search__form-input,
+.articles-search__form-buttons {
+  margin: 2rem 0;
+}
+
+.articles-search__form-buttons {
+  display: flex;
+}
 
 .articles-search-searchbar {
   margin-top: 2rem;
@@ -284,6 +301,7 @@ a:hover,
   .kiosk,
   .favorites-btn,
   .logout-btn,
+  .search-btn,
   .delete-btn {
     font-size: 0.7rem !important;
   }
@@ -349,5 +367,43 @@ a:hover,
 
   .forms {
     height: 50vh;
+  }
+
+  /* .articles-search__form {
+    flex-direction: column;
+  } */
+
+  .articles-search__form-input,
+  .articles-search__form-buttons {
+    margin: 0.2rem 0;
+  }
+
+  /*   .articles-search__form-buttons {
+    display: flex;
+    justify-content: space-between;
+  } */
+  .articles-search__form-buttons button {
+    padding: 0.2rem;
+  }
+}
+
+/* grid implementation */
+
+.grid-example {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+@media screen and (max-width: 1280px) {
+  .grid-example {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-example {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

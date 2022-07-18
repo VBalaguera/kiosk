@@ -12,6 +12,7 @@ NOTES BRANCH CREATED FOR STUDYING CRUD FUNCTIONS IN FIREBASE
 - .vscode no longer needed
 - src/hooks no longer needed
 - better folder organization
+- search works way better now; also, responsive overhaul.
 
 AUTH BRANCH MERGED WITH MAIN
 

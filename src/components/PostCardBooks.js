@@ -106,20 +106,20 @@ export class PostCardBooks extends Component {
           <Card.Footer>
             <SharingButtons url={this.props.post.url} />
           </Card.Footer>
+          <ToastContainer
+            position='bottom-right'
+            type='info'
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            theme='dark'
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Card>
-        <ToastContainer
-          position='bottom-right'
-          type='info'
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme='dark'
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </>
     )
   }
