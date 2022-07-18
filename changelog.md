@@ -5,14 +5,17 @@ Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User
 ## 2022/07/18
 
 - Users can delete their own favorites.
-- added source field to favorites (ie: source: 'New York Times');
-- replacing this.props.user.multiFactor.user.uid with the favorite's source (ie: 'New York Times')
+- FIXED DATE PROBLEM AT FAVORITE.js
+
 - fixed footer and navbar
 - responsive
 
 TODO:
 
-- FIX DATE PROBLEM AT FAVORITE.js
+- implement these changes:
+  - added source field to favorites (ie: source: 'New York Times');
+  - replacing this.props.user.multiFactor.user.uid with the favorite's source (ie: 'New York Times')
+  - the question is: different apis used different fields and results, so when dealing with saving/showing favorites I should create similar comps for each api source (ie: nyt postcard/favorite comps). This also includes all api/firestore calls, filtering them by source.
 - explore api lists here: https://github.com/VBalaguera/public-apis and USE IT TO CREATE MORE CONTENT!
 - explore CRUD options for Favorites!
 

@@ -32,7 +32,8 @@ export class PostCard extends Component {
       db,
       'favorites',
       this.props.user.multiFactor.user.email,
-      'New York Times'
+      /* 'New York Times' */
+      this.props.user.multiFactor.user.uid
     )
     const saveFavorite = async (props) => {
       try {

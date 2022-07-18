@@ -160,7 +160,7 @@ a:hover,
 }
 
 .navbar-link {
-  margin: 0 0.2rem;
+  margin: 0 0.4rem;
 }
 
 /* cards */
@@ -252,6 +252,10 @@ a:hover,
   .navbar-link {
     margin: 0 0.5rem;
     font-size: 0.8rem;
+  }
+
+  .navbar-link .myLink {
+    margin: 0 0 0 0.1rem;
   }
 
   /* kiosk */

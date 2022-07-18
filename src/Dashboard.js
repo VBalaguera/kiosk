@@ -36,6 +36,7 @@ export default function Dashboard() {
     'favorites',
     currentUser.email,
     currentUser.uid
+    /* 'New York Times' */
   )
   const q = query(
     favoritesCollectionRef,
