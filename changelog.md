@@ -7,6 +7,7 @@ AUTH BRANCH MERGED WITH MAIN
 
 - Users can delete their own favorites.
 - FIXED DATE PROBLEM AT FAVORITE.js
+- overhaul on signup/forgot password/log in/update forms
 - fixed footer and navbar
 - responsive overhaul
 - incorporated comments into dashboard/favorites atm
