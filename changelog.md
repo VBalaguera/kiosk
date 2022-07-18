@@ -8,6 +8,7 @@ Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User
 - FIXED DATE PROBLEM AT FAVORITE.js
 - fixed footer and navbar
 - responsive
+- incorporated comments into dashboard/favorites atm
 - using and testing newsapi on newly created Work comp; not sure if it's worth all the effort atm to incorporate this.
 - added source field to favorites (ie: source: 'New York Times');
 - replacing this.props.user.multiFactor.user.uid with the favorite's source (ie: 'New York Times')

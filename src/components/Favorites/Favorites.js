@@ -4,7 +4,6 @@ import Favorite from './Favorite'
 import { Link } from 'react-router-dom'
 
 export default function Favorites({ favorites }) {
-  console.log(favorites)
   return (
     <>
       {favorites.length > 0 ? (

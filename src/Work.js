@@ -44,7 +44,7 @@ https://newsapi.org/v2/top-headlines?country=${location}&apiKey=${process.env.RE
   return (
     <div>
       <h1 className='text-light'>working</h1>
-      {/* <Select value={location} onChange={setLocation} options={options} /> */}
+      {/* <Select value={location} onChange={getNewsByCountry} options={options} /> */}
       <button value='us' onClick={getNewsByCountry}>
         us
       </button>

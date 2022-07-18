@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import { Card, Button, Form } from 'react-bootstrap'
 
 import { doc, deleteDoc, collection, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
@@ -23,23 +23,27 @@ export default function Favorite({ favorite, index }) {
       await deleteDoc(doc(favoritesCollectionRef, id))
       console.log('Entire Document has been deleted successfully.')
       toast(`Document with id ${id} has been deleted successfully.`)
+      window.location.reload(false)
     } catch (err) {
       console.log(err)
       toast(err)
     }
   }
-  const handleUpdateFavorite = async (e, id) => {
+  const handleUpdateFavorite = async (e) => {
     e.preventDefault()
     try {
-      await updateDoc(doc(favoritesCollectionRef, id), {
-        comments: e.target.value,
+      await updateDoc(doc(favoritesCollectionRef, favorite.id), {
+        comments: comment,
       })
+      console.log('updated')
+      console.log(favorite)
+      window.location.reload(false)
     } catch (err) {
       console.log(err)
     }
   }
 
-  console.log(favorite)
+  console.log(favorite.comments)
 
   return (
     <>
@@ -78,16 +82,26 @@ export default function Favorite({ favorite, index }) {
               </div>
             </div>
           </div>
+          <div className='d-flex'>
+            {favorite.comments ? (
+              <span>Comments: {favorite.comments}.</span>
+            ) : null}
+          </div>
         </Card.Body>
-        <form onSubmit={handleUpdateFavorite(favorite.id)}>
-          <input
-            type='text'
-            className='outline-dark text-light bg-dark'
-            placeholder='your comments'
-          />
-          <button type='submit'>submit</button>
-        </form>
-        {favorite.comments ? <span>Comments: {favorite.comments}</span> : null}
+        <Form onSubmit={handleUpdateFavorite}>
+          <div className='d-flex my-2'>
+            <Form.Control
+              type='text'
+              className='outline-dark text-light bg-dark '
+              placeholder='Would you like to add some comments?'
+              onChange={(e) => setComment(e.target.value)}
+              value={comment}
+            />
+            <Button variant='secondary' className='favorites-btn' type='submit'>
+              submit
+            </Button>
+          </div>
+        </Form>
       </Card>
       <ToastContainer
         position='bottom-right'
