@@ -9,6 +9,9 @@ NOTES BRANCH CREATED FOR STUDYING CRUD FUNCTIONS IN FIREBASE
 - notes collection created; a basic text/description/date collection on firebase;
 - Notes.js created:
   - users can write notes
+- .vscode no longer needed
+- src/hooks no longer needed
+- better folder organization
 
 AUTH BRANCH MERGED WITH MAIN
 

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Card, Form, Button } from 'react-bootstrap'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Modal from 'react-modal'

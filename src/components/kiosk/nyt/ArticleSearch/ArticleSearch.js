@@ -4,9 +4,9 @@ import axios from 'axios'
 
 import moment from 'moment'
 
-import data from '../../data/nytMostPopular.json'
+import data from '../../../../data/nytMostPopular.json'
 
-import SharingButtons from '../Sharing/SharingButtons'
+import SharingButtons from '../../../Sharing/SharingButtons'
 
 export default function ArticleSearch() {
   const [wordEntered, setWordEntered] = useState('')

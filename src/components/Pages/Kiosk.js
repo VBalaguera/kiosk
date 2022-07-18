@@ -3,22 +3,22 @@ import { Button, Nav } from 'react-bootstrap'
 
 /* nyt api */
 
-import ArticleSearch from './components/ArticleSearch/ArticleSearch'
+import ArticleSearch from '../kiosk/nyt/ArticleSearch/ArticleSearch'
 
-import MostPopular from './components/kiosk/nyt/MostPopular'
-import MovieReviews from './components/kiosk/nyt/MovieReviews'
-import Books from './components/kiosk/nyt/Books'
-import PoliticsTopStories from './components/kiosk/nyt/TopStories/PoliticsTopStories'
-import OpinionTopStories from './components/kiosk/nyt/TopStories/OpinionTopStories'
-import ArtTopStories from './components/kiosk/nyt/TopStories/ArtTopStories'
-import SportsTopStories from './components/kiosk/nyt/TopStories/Sports'
-import BusinessTopStories from './components/kiosk/nyt/TopStories/BusinessTopStories'
-import UsTopStories from './components/kiosk/nyt/TopStories/UsTopStories'
-import WorldTopStories from './components/kiosk/nyt/TopStories/WorldTopStories'
-import TechnologyTopStories from './components/kiosk/nyt/TopStories/TechTopStories'
+import MostPopular from '../kiosk/nyt/MostPopular'
+import MovieReviews from '../kiosk/nyt/MovieReviews'
+import Books from '../kiosk/nyt/Books'
+import PoliticsTopStories from '../kiosk/nyt/TopStories/PoliticsTopStories'
+import OpinionTopStories from '../kiosk/nyt/TopStories/OpinionTopStories'
+import ArtTopStories from '../kiosk/nyt/TopStories/ArtTopStories'
+import SportsTopStories from '../kiosk/nyt/TopStories/Sports'
+import BusinessTopStories from '../kiosk/nyt/TopStories/BusinessTopStories'
+import UsTopStories from '../kiosk/nyt/TopStories/UsTopStories'
+import WorldTopStories from '../kiosk/nyt/TopStories/WorldTopStories'
+import TechnologyTopStories from '../kiosk/nyt/TopStories/TechTopStories'
 
 /* miscellaneous */
-import About from './components/About'
+import About from './About'
 
 export default function Kiosk() {
   const sections = [

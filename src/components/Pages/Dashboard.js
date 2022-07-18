@@ -8,14 +8,14 @@ import {
   where,
   query,
 } from 'firebase/firestore'
-import { db } from './firebase'
-import { useAuth } from './context/AuthContext'
+import { db } from '../../firebase'
+import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 
 import { ToastContainer, toast } from 'react-toastify'
 
-import Favorites from './components/Favorites/Favorites'
+import Favorites from '../../components/Favorites/Favorites'
 
 export default function Dashboard() {
   /*   const [error, setError] = useState('') */
