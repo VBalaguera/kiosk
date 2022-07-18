@@ -88,35 +88,35 @@ export default function Notes() {
             /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
             <Card key={index} className='bg-dark text-light border-light'>
               <h2>{note.title}</h2>
-              <span>{note.description}</span>
               <span>
                 Written on:{' '}
                 {moment.unix(note.created.seconds).format('MMMM DD, YYYY')}.
               </span>
+              <span>{note.description}</span>
             </Card>
           ))}
         </div>
         <div className='notes-write'>
           <h1>write a note</h1>
           <Form onSubmit={handleUpdateFavorite}>
-            <div className='d-flex my-2'>
+            <div className='notes-write-form'>
               <Form.Control
                 type='text'
-                className='outline-dark text-light bg-dark '
+                className='outline-dark text-light bg-dark my-1'
                 placeholder='title'
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
               />
-              <Form.Control
-                type='text'
-                className='outline-dark text-light bg-dark '
+              <textarea
+                className='form-control outline-dark text-light bg-dark my-1'
                 placeholder='description'
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
+                rows='3'
               />
               <Button
                 variant='secondary'
-                className='favorites-btn'
+                className='favorites-btn my-1'
                 type='submit'
               >
                 submit
