@@ -10,3 +10,7 @@ Available sections:
 - archive: https://developer.nytimes.com/docs/archive-product/1/overview
 - movie reviews: https://developer.nytimes.com/docs/movie-reviews-api/1/overview
 - books api: https://developer.nytimes.com/docs/books-product/1/overview
+
+## NEWSAPI
+
+- docs: https://newsapi.org/docs/endpoints/top-headlines
