@@ -3,9 +3,35 @@ import { Card, Form, Button } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
+import Modal from 'react-modal'
+
 import { ToastContainer, toast } from 'react-toastify'
 
+/* modal styles */
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+
+    transform: 'translate(-50%, -50%)',
+  },
+}
+
 export default function UpdateProfile() {
+  /* modal */
+  const [modal, setModal] = useState(false)
+
+  function openModal() {
+    setModal(true)
+  }
+
+  function closeModal() {
+    setModal(false)
+  }
+
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
@@ -61,6 +87,7 @@ export default function UpdateProfile() {
 
   function handleDeleteUser(uid) {
     try {
+      setModal(false)
       setLoading(true)
       deleteUser(uid)
       toast('bye :(')
@@ -112,13 +139,36 @@ export default function UpdateProfile() {
             </Link>
             .
           </div>
-          <Button
-            variant='secondary'
-            className='delete-btn'
-            onClick={() => handleDeleteUser(currentUser.uid)}
-          >
+          <Button variant='danger' className='delete-btn' onClick={openModal}>
             delete user
           </Button>
+          <Modal
+            isOpen={modal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel='Warning'
+          >
+            <div className='d-flex flex-column align-items-center'>
+              <span>Are you sure you want to delete your account?</span>
+              <span>This action cannot be undone.</span>
+            </div>
+            <div className='d-flex justify-content-between mt-2'>
+              <Button
+                variant='secondary'
+                className='delete-btn'
+                onClick={closeModal}
+              >
+                Cancel.
+              </Button>
+              <Button
+                variant='danger'
+                className='delete-btn'
+                onClick={() => handleDeleteUser(currentUser.uid)}
+              >
+                delete user
+              </Button>
+            </div>
+          </Modal>
         </Card>
         <ToastContainer
           position='bottom-right'

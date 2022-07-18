@@ -3,6 +3,8 @@ import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
+import Modal from 'react-modal'
+
 import { ToastContainer, toast } from 'react-toastify'
 
 export default function Login() {
@@ -70,6 +72,7 @@ export default function Login() {
               </Link>
               .
             </div>
+
             <div>
               <Link className='myLink' to='/forgot-password'>
                 Forgot your password?

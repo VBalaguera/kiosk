@@ -15,6 +15,7 @@ AUTH BRANCH MERGED WITH MAIN
 - added source field to favorites (ie: source: 'New York Times');
 - replacing this.props.user.multiFactor.user.uid with the favorite's source (ie: 'New York Times')
 - minor tweakings on all PostCards.
+- warning modals when deleting accounts and favorites
 
 TODO:
 

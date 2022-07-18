@@ -6,9 +6,34 @@ import { db } from '../../firebase'
 import { useAuth } from '../../context/AuthContext'
 import moment from 'moment'
 
+import Modal from 'react-modal'
+
 import { ToastContainer, toast } from 'react-toastify'
 
+/* modal styles */
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+
+    transform: 'translate(-50%, -50%)',
+  },
+}
+
 export default function Favorite({ favorite, index }) {
+  /* modal */
+  const [modal, setModal] = useState(false)
+
+  function openModal() {
+    setModal(true)
+  }
+
+  function closeModal() {
+    setModal(false)
+  }
   const [comment, setComment] = useState('')
   const { currentUser } = useAuth()
   const favoritesCollectionRef = collection(
@@ -20,9 +45,11 @@ export default function Favorite({ favorite, index }) {
 
   const handleDeleteFavorite = async (id) => {
     try {
+      setModal(false)
       await deleteDoc(doc(favoritesCollectionRef, id))
       console.log('Entire Document has been deleted successfully.')
       toast(`Document with id ${id} has been deleted successfully.`)
+
       window.location.reload(false)
     } catch (err) {
       console.log(err)
@@ -35,11 +62,13 @@ export default function Favorite({ favorite, index }) {
       await updateDoc(doc(favoritesCollectionRef, favorite.id), {
         comments: comment,
       })
-      console.log('updated')
-      console.log(favorite)
+
+      /* console.log(favorite) */
       window.location.reload(false)
+      toast('updated')
     } catch (err) {
-      console.log(err)
+      /* console.log(err) */
+      toast(err)
     }
   }
 
@@ -75,17 +104,44 @@ export default function Favorite({ favorite, index }) {
                 <Button
                   variant='warning'
                   className='favorites-btn'
-                  onClick={() => handleDeleteFavorite(favorite.id)}
+                  onClick={openModal}
                 >
-                  delete
+                  Delete.
                 </Button>
+                <Modal
+                  isOpen={modal}
+                  onRequestClose={closeModal}
+                  style={customStyles}
+                  contentLabel='Warning'
+                >
+                  <div className='d-flex flex-column align-items-center'>
+                    <span>Are you sure you want to delete this item</span>
+                    <span>This action cannot be undone.</span>
+                  </div>
+                  <div className='d-flex justify-content-between mt-2'>
+                    <Button
+                      variant='secondary'
+                      className='delete-btn'
+                      onClick={closeModal}
+                    >
+                      Cancel.
+                    </Button>
+                    <Button
+                      variant='danger'
+                      className='delete-btn'
+                      onClick={() => handleDeleteFavorite(favorite.id)}
+                    >
+                      Delete.
+                    </Button>
+                  </div>
+                </Modal>
               </div>
             </div>
           </div>
           <div className='favorite-card-comments'>
             {favorite.comments ? (
               <span>
-                <strong>Comments:</strong> {favorite.comments}.
+                <strong>Comments:</strong> {favorite.comments}
               </span>
             ) : null}
           </div>
