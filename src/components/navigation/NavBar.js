@@ -23,11 +23,13 @@ export default function NavBar() {
     <>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
-          <span className='title'>
-            <Link className='myLink' to='/'>
-              kiosk
-            </Link>
-          </span>
+          <div>
+            <span className='title'>
+              <Link className='myLink' to='/'>
+                kiosk
+              </Link>
+            </span>
+          </div>
           <div className='d-flex'>
             {currentUser ? (
               <>

@@ -21,6 +21,7 @@ export class PostCard extends Component {
       title: this.props.post.title,
       url: this.props.post.url,
       user: this.props.user.multiFactor.user.uid,
+      source: 'New York Times',
     }
   }
 
@@ -31,7 +32,7 @@ export class PostCard extends Component {
       db,
       'favorites',
       this.props.user.multiFactor.user.email,
-      this.props.user.multiFactor.user.uid
+      'New York Times'
     )
     const saveFavorite = async (props) => {
       try {
@@ -44,6 +45,7 @@ export class PostCard extends Component {
           title: this.props.post.title,
           url: this.props.post.url,
           user: this.props.user.multiFactor.user.uid,
+          source: 'New York Times',
         })
         /* console.log('favorite added') */
         toast('favorite added')

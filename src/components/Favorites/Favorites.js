@@ -1,11 +1,13 @@
 import React from 'react'
 import Favorite from './Favorite'
 
+import { Link } from 'react-router-dom'
+
 export default function Favorites({ favorites }) {
   console.log(favorites)
   return (
     <>
-      {favorites ? (
+      {favorites.length > 0 ? (
         <>
           {favorites.map((favorite, index) => {
             /* console.log(favorite) */
@@ -17,9 +19,17 @@ export default function Favorites({ favorites }) {
           })}
         </>
       ) : (
-        <>
-          <span>you have no favorites yet</span>
-        </>
+        <div className='mt-4'>
+          <>
+            <span>
+              You have no favorites yet. C'mon,{' '}
+              <Link className='myLink' to='/kiosk'>
+                add some
+              </Link>
+              .
+            </span>
+          </>
+        </div>
       )}
     </>
   )

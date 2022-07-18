@@ -19,6 +19,7 @@ export class PostCardBooks extends Component {
       title: this.props.post.title,
       url: this.props.post.amazon_product_url,
       user: this.props.user.multiFactor.user.uid,
+      source: 'New York Times',
     }
   }
 
@@ -27,7 +28,7 @@ export class PostCardBooks extends Component {
       db,
       'favorites',
       this.props.user.multiFactor.user.email,
-      this.props.user.multiFactor.user.uid
+      'New York Times'
     )
     const saveFavorite = async (props) => {
       try {
@@ -40,6 +41,7 @@ export class PostCardBooks extends Component {
           title: this.props.post.title,
           url: this.props.post.amazon_product_url,
           user: this.props.user.multiFactor.user.uid,
+          source: 'New York Times',
         })
         /* console.log('favorite added')
         console.log(this.props.post.byline) */
@@ -49,7 +51,7 @@ export class PostCardBooks extends Component {
         toast(err)
       }
     }
-    console.log(this.props.user.multiFactor.user.uid)
+    /* console.log(this.props.user.multiFactor.user.uid) */
     return (
       <>
         <Card

@@ -1,10 +1,12 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 import { doc, deleteDoc, collection } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { useAuth } from '../../context/AuthContext'
 import moment from 'moment'
+
+import { ToastContainer, toast } from 'react-toastify'
 
 export default function Favorite({ favorite, index }) {
   const { currentUser } = useAuth()
@@ -14,56 +16,71 @@ export default function Favorite({ favorite, index }) {
     currentUser.email,
     currentUser.uid
   )
-  const handleDeleteFavorite = async () => {
-    const docRef = doc(favoritesCollectionRef)
-    deleteDoc(docRef)
-      .then(() => {
-        console.log('Entire Document has been deleted successfully.')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
+  const handleDeleteFavorite = async (id) => {
+    try {
+      await deleteDoc(doc(favoritesCollectionRef, id))
+      console.log('Entire Document has been deleted successfully.')
+      toast(`Document with id ${id} has been deleted successfully.`)
+    } catch (err) {
+      console.log(err)
+      toast(err)
+    }
   }
+  console.log(favorite)
 
   return (
     <>
       <Card key={index} className='card bg-dark text-light border-light'>
         <Card.Body>
-          <div className='d-flex justify-content-between favorite-card'>
-            {favorite.title}
-            <div className='d-flex justify-content-between favorite-card-top'>
-              <div className='d-flex flex-column align-items-end justify-content-end mx-2'>
-                {' '}
-                <span className='mx-2'>
-                  Published on: {String(favorite.date).slice(0, 10)}.
+          <div className='favorite-card'>
+            <div className='favorite-card-top'>
+              <span className='title-favorite-card'>{favorite.title}</span>
+            </div>
+            <div className='favorite-card-bottom'>
+              <div className='favorite-card-bottom-left'>
+                <span>
+                  Published on: {moment(favorite.date).format('YYYY-MM-DD')}.
                 </span>
-                {/* {favorite.createdAt.seconds ? (
-                  <span className='mx-2'>
-                    <>
-                      Saved on:{' '}
-                      {moment
-                        .utc(favorite.createdAt.seconds)
-                        .format()
-                        .slice(0, 10)}
-                    </>
-
-                    
-                  </span>
-                ) : null} */}
-                {/* <>{moment.utc(favorite.createdAt.seconds).format()}</>
-                  {moment(favorite.createdAt.seconds).format('MMMM d, YYYY')}. */}
-                {/* TODO: FIX THIS */}
+                <span>
+                  Saved on: {moment(favorite.createdAt).format('YYYY-MM-DD')}.
+                </span>
               </div>
-              <div className='d-flex flex-column align-items-end justify-content-end mx-2 favorite-card-bottom'>
+              <div className='favorite-card-bottom-center'>
+                <span>Source: {favorite.source}</span>
                 <span>Section: {favorite.section}.</span>
-                <a href={favorite.url} className='myLink'>
-                  Read more.
-                </a>
+              </div>
+              <div className='favorite-card-bottom-right'>
+                <Button variant='secondary' className='favorites-btn me-2'>
+                  <a href={favorite.url} className='myLink text-light'>
+                    Read more.
+                  </a>
+                </Button>
+                <Button
+                  variant='warning'
+                  className='favorites-btn'
+                  onClick={() => handleDeleteFavorite(favorite.id)}
+                >
+                  delete
+                </Button>
               </div>
             </div>
           </div>
         </Card.Body>
       </Card>
+      <ToastContainer
+        position='bottom-right'
+        type='info'
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        theme='dark'
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

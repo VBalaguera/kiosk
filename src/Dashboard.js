@@ -47,7 +47,11 @@ export default function Dashboard() {
     const data = await getDocs(q)
     /*       console.log(currentUser.uid) */
     setFavorites(
-      data.docs.map((doc) => ({ ...doc.data(), user: currentUser.uid }))
+      data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        user: currentUser.uid,
+      }))
     )
   }
 
@@ -128,13 +132,13 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
 
-      <Card className='dashboard card bg-dark text-light border-light'>
+      <Card className='profile card bg-dark text-light border-light'>
         <Card.Body>
-          <h2>profile</h2>
+          <h2 className='section-title'>profile</h2>
           {/* {error && <Alert variant='danger'>{error}</Alert>}
            */}
-          <div>
-            <div className='d-flex justify-content-between mt-2'>
+          <div className='profile-info'>
+            <div className='profile-info-top'>
               <span>
                 Created on:{' '}
                 {moment(currentUser.metadata.creationTime).format(
@@ -151,7 +155,7 @@ export default function Dashboard() {
                 .
               </span>
             </div>
-            <div className='d-flex justify-content-between mt-2'>
+            <div className='profile-info-bottom'>
               <span>Email: {currentUser.email}</span>
               <Link className='myLink' to='/update-profile'>
                 Update profile.
@@ -161,7 +165,11 @@ export default function Dashboard() {
         </Card.Body>
       </Card>
       <div>
-        <Button variant='secondary' onClick={handleLogOut}>
+        <Button
+          className='logout-btn'
+          variant='secondary'
+          onClick={handleLogOut}
+        >
           log out
         </Button>
         <ToastContainer

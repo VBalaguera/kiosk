@@ -94,14 +94,17 @@ a:hover,
 
 .title,
 .section-title,
-.title-card {
+.title-card,
+.title-favorite-card {
   color: white;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.title-card {
+.title-card,
+.title-favorite-card {
   margin-bottom: 1.3rem;
   font-size: 1.5rem;
 }
@@ -187,6 +190,58 @@ a:hover,
   margin-top: 2rem;
 }
 
+/* dashboard */
+
+.favorite-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.favorite-card-top {
+  margin-bottom: 1.5rem;
+}
+
+.favorite-card-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite-card-bottom-left,
+.favorite-card-bottom-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* profile */
+
+.profile-info-top,
+.profile-info-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info-top {
+  align-items: flex-start;
+}
+
+.profile-info-bottom {
+  align-items: flex-end;
+}
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* footer */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem;
+}
+
 /* responsive */
 
 @media screen and (max-width: 568px) {
@@ -201,15 +256,17 @@ a:hover,
 
   /* kiosk */
   .kiosk,
-  .favorites-btn {
-    font-size: 0.5rem !important;
+  .favorites-btn,
+  .logout-btn {
+    font-size: 0.7rem !important;
   }
 
   /* postcard */
   .section-title {
     font-size: 1.2rem;
   }
-  .title-card {
+  .title-card,
+  .title-favorite-card {
     font-size: 1rem;
   }
 
@@ -224,14 +281,39 @@ a:hover,
   }
 
   /* dashboard */
-  .favorite-card,
-  .favorite-card-top {
-    flex-direction: column;
+
+  .favorite-card span,
+  .profile span {
+    font-size: 0.7rem;
   }
 
   .favorite-card-bottom {
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: row !important;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .favorite-card-bottom-right {
+    width: 100%;
+    margin-top: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile-info {
+    flex-direction: column;
+  }
+
+  .profile-info-top,
+  .profile-info-bottom {
+    margin: 0.5rem 0;
+  }
+
+  .profile-info-bottom {
+    align-items: flex-start;
+  }
+
+  .footer {
+    font-size: 0.7rem;
+    flex-direction: column;
   }
 }

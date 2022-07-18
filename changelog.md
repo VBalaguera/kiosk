@@ -2,13 +2,21 @@
 
 Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
 
-## 2022/07/16
+## 2022/07/18
+
+- Users can delete their own favorites.
+- added source field to favorites (ie: source: 'New York Times');
+- replacing this.props.user.multiFactor.user.uid with the favorite's source (ie: 'New York Times')
+- fixed footer and navbar
+- responsive
 
 TODO:
 
 - FIX DATE PROBLEM AT FAVORITE.js
 - explore api lists here: https://github.com/VBalaguera/public-apis and USE IT TO CREATE MORE CONTENT!
 - explore CRUD options for Favorites!
+
+## 2022/07/16
 
 Done:
 

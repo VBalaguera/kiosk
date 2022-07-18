@@ -5,8 +5,6 @@ import axios from 'axios'
 import PostCardMovies from '../../PostCardMovies'
 import { useAuth } from '../../../context/AuthContext'
 
-import moment from 'moment'
-
 import data from '../../../data/nytMovieReviews.json'
 const nytMovieReviewsUrl = `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?&api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
