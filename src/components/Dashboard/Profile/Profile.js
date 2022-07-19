@@ -11,9 +11,9 @@ export default function Profile() {
 
   return (
     <>
+      <h2 className='section-title'>profile</h2>
       <Card className='profile card bg-dark text-light border-light'>
         <Card.Body>
-          <h2 className='section-title'>profile</h2>
           {/* {error && <Alert variant='danger'>{error}</Alert>}
            */}
           <div className='profile-info'>

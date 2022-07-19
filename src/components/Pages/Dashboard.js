@@ -36,7 +36,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <h1 className='section-title'>dashboard</h1>
+      <h1 className='page-title'>dashboard</h1>
       {/* <div className='d-flex justify-content-center flex-wrap flex-row mb-3'>
         {sections.map((section, index) => (
           <Nav.Link key={index} className='px-1 py-1 '>

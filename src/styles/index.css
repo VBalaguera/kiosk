@@ -93,21 +93,33 @@ a:hover,
 /* card elements */
 
 .title,
-.section-title,
 .title-card,
+.section-title,
+.page-title,
 .title-favorite-card {
   color: white;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 2rem;
   margin-bottom: 1.5rem;
   letter-spacing: 0.1rem;
 }
 
+.section-title,
+.page-title {
+  font-size: 2rem;
+}
+
+.page-title {
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
 .title-card,
 .title-favorite-card {
-  margin-bottom: 1.3rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .img,
