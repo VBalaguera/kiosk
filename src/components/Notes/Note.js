@@ -105,7 +105,7 @@ export default function Note({ note, index }) {
           </div>
           <div>
             <Button
-              variant='info'
+              variant='secondary'
               className='delete-btn mx-2'
               onClick={openEditModal}
             >
