@@ -19,6 +19,7 @@ export default function TechnologyTopStories() {
       .then((response) => {
         /*  console.log(response.data.results) */
         setPosts(response.data.results)
+        console.log(response.data.results)
       })
       .catch((err) => {
         /*  console.log(err) */
@@ -30,7 +31,7 @@ export default function TechnologyTopStories() {
       <div className='top-stories'>
         {posts.map((post, index) => (
           <>
-            <PostCard post={post} user={currentUser} />
+            <PostCard key={index} post={post} user={currentUser} />
           </>
         ))}
       </div>

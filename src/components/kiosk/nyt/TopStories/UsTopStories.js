@@ -30,7 +30,7 @@ export default function UsTopStories() {
         {posts.map((post, index) => (
           <div className='w-100'>
             <>
-              <PostCard post={post} user={currentUser} />
+              <PostCard key={post.id} post={post} user={currentUser} />
             </>
           </div>
         ))}
