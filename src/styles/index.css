@@ -226,14 +226,12 @@ a:hover,
 .navbar-link {
   margin: 0 0.4rem;
   letter-spacing: 0.1rem;
-  font-weight: bolder;
 }
 
 .link:hover,
 .navbar-link:hover {
   filter: brightness(90%);
   transition: all 0.2s ease-in-out;
-  color: black;
 }
 
 /* cards */

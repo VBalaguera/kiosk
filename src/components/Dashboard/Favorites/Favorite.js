@@ -149,21 +149,25 @@ export default function Favorite({ favorite, index }) {
               </span>
             ) : null}
           </div>
+          <Form onSubmit={handleUpdateFavorite}>
+            <div className='d-flex my-2'>
+              <Form.Control
+                type='text'
+                className='outline-dark text-light bg-dark '
+                placeholder='Would you like to add some comments?'
+                onChange={(e) => setComment(e.target.value)}
+                value={comment}
+              />
+              <Button
+                variant='secondary'
+                className='favorites-btn'
+                type='submit'
+              >
+                submit
+              </Button>
+            </div>
+          </Form>
         </Card.Body>
-        <Form onSubmit={handleUpdateFavorite}>
-          <div className='d-flex my-2'>
-            <Form.Control
-              type='text'
-              className='outline-dark text-light bg-dark '
-              placeholder='Would you like to add some comments?'
-              onChange={(e) => setComment(e.target.value)}
-              value={comment}
-            />
-            <Button variant='secondary' className='favorites-btn' type='submit'>
-              submit
-            </Button>
-          </div>
-        </Form>
       </Card>
       <ToastContainer
         position='bottom-right'
