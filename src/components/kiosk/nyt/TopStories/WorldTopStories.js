@@ -17,7 +17,7 @@ export default function WorldTopStories() {
       .get(nytTopStoriesUrl)
       .then((response) => {
         /*      console.log(response.data.results) */
-        setPosts(response.data.results.slice(1))
+        setPosts(response.data.results.slice(2))
       })
       .catch((err) => {
         /*  console.log(err) */
@@ -26,7 +26,7 @@ export default function WorldTopStories() {
   }, [])
   return (
     <div>
-      <div className='top-stories'>
+      <div className='top-stories grid-example'>
         {posts.map((post, index) => (
           <>
             <PostCard post={post} user={currentUser} />

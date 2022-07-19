@@ -67,7 +67,7 @@ export default function Kiosk() {
         {mySection === 'sports' && <SportsTopStories />}
         {mySection === 'us' && <UsTopStories />}
         {mySection === 'world' && <WorldTopStories />}
-        {mySection === 'technology' && <TechnologyTopStories />}
+        {mySection === 'tech' && <TechnologyTopStories />}
         {mySection === 'about' && <About />}
         {mySection === 'search' && <ArticleSearch />}
       </div>

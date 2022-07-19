@@ -124,7 +124,7 @@ a:hover,
 
 .img,
 .img-movies .book-img {
-  height: 600px;
+  height: auto;
   object-fit: contain;
   margin-bottom: 1rem;
 }

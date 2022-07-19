@@ -7,19 +7,18 @@ https://firebase.google.com/docs/rules/basics
 
 - daily backup
 - updated security settings on firebase to prod standards:
-
-<code>
-user
-rules_version = '2';
-service cloud.firestore {
-match /databases/{database}/documents {
-match /{document=\*\*} {
-allow read, write, create, update, delete: if request.auth.uid == resource.data.user;
-}
-}
-}
-
-</code>
+- fixed some errors at TechTopStories.js
+  <code>
+  rules_version = '2';
+  service cloud.firestore {
+  match /databases/{database}/documents {
+  match /{document=\*\*} {
+  allow read, write, create: if request.auth != null;
+  allow update, delete: if request.auth.uid == resource.data.user;
+  }
+  }
+  }
+  </code>
 - minor styles tweaking: mostly letters-spacing and font-weight; also: navbar-link, and dashboard
 - minor date tweaking
 - deleted Routes for Notes; profile, notes and favorites are under dashboard. thinking about setting each of these into separated routes.

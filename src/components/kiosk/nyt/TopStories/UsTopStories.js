@@ -26,7 +26,7 @@ export default function UsTopStories() {
   }, [])
   return (
     <div className='w-100'>
-      <div className='top-stories'>
+      <div className='top-stories grid-example'>
         {posts.map((post, index) => (
           <div className='w-100'>
             <>

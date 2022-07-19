@@ -28,7 +28,7 @@ export default function TechnologyTopStories() {
   }, [])
   return (
     <div>
-      <div className='top-stories'>
+      <div className='top-stories grid-example'>
         {posts.map((post, index) => (
           <>
             <PostCard key={index} post={post} user={currentUser} />
