@@ -61,14 +61,14 @@ function App() {
                   </PrivateRoute>
                 }
               ></Route>
-              <Route
+              {/*               <Route
                 path='/notes'
                 element={
                   <PrivateRoute>
                     <Notes />
                   </PrivateRoute>
                 }
-              ></Route>
+              ></Route> */}
               <Route path='/kiosk' element={<Kiosk />} />
               {/* <Route path='/work' element={<Work />} /> */}
               <Route path='/forgot-password' element={<ForgotPassword />} />
