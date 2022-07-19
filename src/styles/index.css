@@ -362,7 +362,7 @@ a:hover,
   .logout-btn,
   .search-btn,
   .delete-btn {
-    font-size: 0.7rem !important;
+    font-size: 0.8rem !important;
   }
 
   /* postcard */
@@ -395,7 +395,7 @@ a:hover,
   .note-description,
   .note-content,
   .about p {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   .profile-info {
