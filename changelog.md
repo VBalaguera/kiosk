@@ -24,6 +24,7 @@ https://firebase.google.com/docs/rules/basics
 - deleted Routes for Notes; profile, notes and favorites are under dashboard. thinking about setting each of these into separated routes.
 - Users can update and delete notes.
 - responsive styling
+- if user doesn't have notes, app will notify the user
 
 ## 2022/07/18
 

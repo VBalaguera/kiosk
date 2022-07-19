@@ -90,12 +90,31 @@ export default function Notes() {
         <div className='notes-read'>
           <h1 className='section-title'>notes</h1>
           <div className='grid-example'>
-            {notes.map((note, index) => (
-              /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
-              <>
-                <Note note={note} index={index} />
-              </>
-            ))}
+            <>
+              {notes.length > 0 ? (
+                <>
+                  {notes.map((favorite, index) => {
+                    /* console.log(favorite) */
+                    return (
+                      <>
+                        {notes.map((note, index) => (
+                          /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
+                          <>
+                            <Note note={note} index={index} />
+                          </>
+                        ))}
+                      </>
+                    )
+                  })}
+                </>
+              ) : (
+                <div className='mt-4'>
+                  <>
+                    <span>You have no notes yet. Take your time.</span>
+                  </>
+                </div>
+              )}
+            </>
           </div>
         </div>
         <div className='notes-write my-3'>
