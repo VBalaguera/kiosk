@@ -84,7 +84,7 @@ export default function ArticleSearch() {
                 <Card.Text className='author-date'>
                   <span>{post.byline.original}</span>{' '}
                   <span>
-                    Published: {moment(post.pub_date).format('MMMM d, YYYY')}
+                    Published: {moment(post.pub_date).format('MMMM DD, YYYY')}
                   </span>
                 </Card.Text>
                 <div className='lead-paragraph'>{post.lead_paragraph}</div>

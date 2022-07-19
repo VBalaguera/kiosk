@@ -87,7 +87,7 @@ export class PostCard extends Component {
               <span>{this.props.post.byline}</span>{' '}
               <span>
                 Published:{' '}
-                {moment(this.props.post.published_date).format('MMMM d, YYYY')}
+                {moment(this.props.post.published_date).format('MMMM DD, YYYY')}
               </span>
             </Card.Text>
             <div className='d-flex align-items-center justify-content-center'>
