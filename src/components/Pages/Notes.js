@@ -15,6 +15,8 @@ import {
 import { db } from '../../firebase'
 import { useAuth } from '../../context/AuthContext'
 
+import Note from '../Notes/Note'
+
 import moment from 'moment'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -22,6 +24,7 @@ import { ToastContainer, toast } from 'react-toastify'
 export default function Notes() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [content, setContent] = useState('')
 
   const [notes, setNotes] = useState([])
 
@@ -54,18 +57,20 @@ export default function Notes() {
 
   /* writing notes */
 
-  const handleUpdateFavorite = async (e) => {
+  const handleWriteNote = async (e) => {
     e.preventDefault()
     try {
       await addDoc(notesCollectionRef, {
         title: title,
         description: description,
+        content: content,
         created: Timestamp.now(),
         user: currentUser.uid,
       })
 
       /* console.log(favorite) */
-      /* window.location.reload(false) */
+      /* TOOD: find alternatives! */
+      window.location.reload(false)
       toast('note created')
     } catch (err) {
       /* console.log(err) */
@@ -83,22 +88,19 @@ export default function Notes() {
     <>
       <div>
         <div className='notes-read'>
-          <h1>notes</h1>
-          {notes.map((note, index) => (
-            /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
-            <Card key={index} className='bg-dark text-light border-light'>
-              <h2>{note.title}</h2>
-              <span>
-                Written on:{' '}
-                {moment.unix(note.created.seconds).format('MMMM DD, YYYY')}.
-              </span>
-              <span>{note.description}</span>
-            </Card>
-          ))}
+          <h1 className='section-title'>notes</h1>
+          <div className='grid-example'>
+            {notes.map((note, index) => (
+              /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
+              <>
+                <Note note={note} index={index} />
+              </>
+            ))}
+          </div>
         </div>
-        <div className='notes-write'>
-          <h1>write a note</h1>
-          <Form onSubmit={handleUpdateFavorite}>
+        <div className='notes-write my-3'>
+          <h1 className='section-title'>write a note</h1>
+          <Form onSubmit={handleWriteNote}>
             <div className='notes-write-form'>
               <Form.Control
                 type='text'
@@ -107,11 +109,17 @@ export default function Notes() {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
               />
-              <textarea
+              <Form.Control
                 className='form-control outline-dark text-light bg-dark my-1'
                 placeholder='description'
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
+              />
+              <textarea
+                className='form-control outline-dark text-light bg-dark my-1'
+                placeholder='content'
+                onChange={(e) => setContent(e.target.value)}
+                value={content}
                 rows='3'
               />
               <Button

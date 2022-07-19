@@ -2,6 +2,10 @@
 
 Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
 
+## 2022/07/19
+
+- Users can update and delete notes.
+
 ## 2022/07/18
 
 NOTES BRANCH CREATED FOR STUDYING CRUD FUNCTIONS IN FIREBASE

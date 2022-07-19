@@ -129,7 +129,25 @@ a:hover,
 .search-form {
 }
 
-/* notes forms */
+/* notes */
+
+.note-date-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-description {
+  font-style: italic;
+}
+
+.note-content {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.note-content p {
+  text-align: justify;
+}
 
 .notes-write-form {
   display: flex;
@@ -189,7 +207,7 @@ a:hover,
 
 /* cards */
 .card {
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
   padding: 0.5rem;
 }
 
