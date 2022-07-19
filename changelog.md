@@ -5,6 +5,7 @@ Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User
 ## 2022/07/19
 
 - daily backup
+- minor styles tweaking: mostly letters-spacing and font-weight;
 - deleted Routes for Notes; profile, notes and favorites are under dashboard. thinking about setting each of these into separated routes.
 - Users can update and delete notes.
 - responsive styling
