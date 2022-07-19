@@ -90,33 +90,35 @@ export default function Note({ note, index }) {
   }
   return (
     <>
-      <Card key={index} className='note bg-dark text-light border-light'>
-        <h2 className='section-title note-title'>{note.title}</h2>
-        <div className='note-date-description'>
-          <span className='note-date'>
-            Written on:{' '}
-            {moment.unix(note.created.seconds).format('MMMM DD, YYYY')}.
-          </span>
-          <span className='note-description'>{note.description}</span>
-        </div>
-        <div className='note-content'>
-          <p>{note.content}</p>
-        </div>
-        <div>
-          <Button
-            variant='info'
-            className='delete-btn mx-2'
-            onClick={openEditModal}
-          >
-            Edit note.
-          </Button>
-          <Button
-            variant='warning'
-            className='favorites-btn mx-2'
-            onClick={openDeleteModal}
-          >
-            Delete.
-          </Button>
+      <Card key={index} className='note bg-dark text-light border-light '>
+        <div className='d-flex flex-column align-items-stretch'>
+          <h2 className='section-title note-title'>{note.title}</h2>
+          <div className='note-date-description'>
+            <span className='note-date'>
+              Written on:{' '}
+              {moment.unix(note.created.seconds).format('MMMM DD, YYYY')}.
+            </span>
+            <span className='note-description'>{note.description}</span>
+          </div>
+          <div className='note-content'>
+            <p>{note.content}</p>
+          </div>
+          <div>
+            <Button
+              variant='info'
+              className='delete-btn mx-2'
+              onClick={openEditModal}
+            >
+              Edit note.
+            </Button>
+            <Button
+              variant='warning'
+              className='favorites-btn mx-2'
+              onClick={openDeleteModal}
+            >
+              Delete.
+            </Button>
+          </div>
         </div>
         {/* edit modal */}
         <Modal
@@ -134,12 +136,14 @@ export default function Note({ note, index }) {
                   /* placeholder='title' */
                   defaultValue={note.title}
                   onChange={(e) => setTitle(e.target.value)}
+                  required
                 />
                 <Form.Control
                   className='form-control outline-dark text-light bg-dark my-2'
                   /* placeholder='description' */
                   defaultValue={note.description}
                   onChange={(e) => setDescription(e.target.value)}
+                  required
                 />
                 <textarea
                   className='form-control outline-dark text-light bg-dark my-2'
@@ -147,6 +151,7 @@ export default function Note({ note, index }) {
                   defaultValue={note.content}
                   onChange={(e) => setContent(e.target.value)}
                   rows='3'
+                  required
                 />
                 <Button
                   variant='secondary'

@@ -39,7 +39,7 @@ export default function Kiosk() {
   const [mySection, setMySection] = useState(true)
   return (
     <div>
-      <div className='d-flex justify-content-between flex-wrap flex-row mb-3'>
+      <div className='d-flex justify-content-center flex-wrap flex-row mb-3'>
         {sections.map((section, index) => (
           <Nav.Link key={index} className='px-1 py-1 '>
             <Button

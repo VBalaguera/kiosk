@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Card, Button, Form } from 'react-bootstrap'
 
 import { doc, deleteDoc, collection, updateDoc } from 'firebase/firestore'
-import { db } from '../../firebase'
-import { useAuth } from '../../context/AuthContext'
+import { db } from '../../../firebase'
+import { useAuth } from '../../../context/AuthContext'
 import moment from 'moment'
 
 import Modal from 'react-modal'
