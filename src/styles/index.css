@@ -163,6 +163,26 @@ a:hover,
   .book-img {
     object-fit: contain;
   }
+
+  .favorite-card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .favorite-card-bottom-right {
+    width: 100%;
+    margin-top: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-body {
+    padding: 0.2rem !important;
+  }
+
+  .card {
+    margin: 0.5rem 0 !important;
+  }
 }
 
 .subtitle {
@@ -358,18 +378,6 @@ a:hover,
   .profile-info-bottom a,
   .about span {
     font-size: 0.7rem;
-  }
-
-  .favorite-card-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .favorite-card-bottom-right {
-    width: 100%;
-    margin-top: 0.6rem;
-    display: flex;
-    justify-content: space-between;
   }
 
   .profile-info {

@@ -5,6 +5,7 @@ Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User
 ## 2022/07/19
 
 - Users can update and delete notes.
+- responsive styling
 
 ## 2022/07/18
 

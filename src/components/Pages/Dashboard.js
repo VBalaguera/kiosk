@@ -109,7 +109,7 @@ export default function Dashboard() {
       <Card className='dashboard card bg-dark text-light border-light'>
         <Card.Body>
           <h2 className='section-title'>favorites</h2>
-          <div className='d-flex justify-content-center'>
+          <div className='d-flex justify-content-center my-2'>
             {/*             {favoritesSection.map((section, index) => (
               <button key={index} onClick={() => filterItems(section)}>
                 {section}
