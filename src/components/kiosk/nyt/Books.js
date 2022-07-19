@@ -27,7 +27,7 @@ export default function Books() {
   return (
     <div>
       {' '}
-      <div className='books'>
+      <div className='books grid-example'>
         {books.map((post, index) => (
           <>
             <PostCardBooks post={post} user={currentUser} />

@@ -1,31 +1,27 @@
-import { Container, Button, Nav, Navbar } from 'react-bootstrap'
-import './App.css'
+import { Container } from 'react-bootstrap'
+import './styles/App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-/* TODO! fix this */
-/* import DarkModeToggle from './components/DarkModeToggle/DarkModeToggle'
-
-
-import WeatherWidget from './components/WeatherWidget/WeatherWidget' */
 
 /* auth */
 import { AuthProvider } from './context/AuthContext'
-import SignUp from './components/SignUp/SignUp'
 
 /* routing */
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import PublicRoute from './components/PublicRoute/PublicRoute'
-/* kiosk */
-import Kiosk from './Kiosk'
-import Work from './Work'
 
-import About from './components/About'
+/* pages */
+import Kiosk from './components/Pages/Kiosk'
+import Work from './components/Pages/Work'
+import Notes from './components/Pages/Notes'
+import About from './components/Pages/About'
+import Dashboard from './components/Pages/Dashboard'
 
-import Dashboard from './Dashboard'
-import Login from './components/Login/Login'
-import ForgotPassword from './components/ForgotPassword/ForgotPassword'
-import UpdateProfile from './components/UpdateProfile/UpdateProfile'
+/* forms */
+import SignUp from './components/Forms/SignUp/SignUp'
+import Login from './components/Forms/Login/Login'
+import ForgotPassword from './components/Forms/ForgotPassword/ForgotPassword'
+import UpdateProfile from './components/Forms/UpdateProfile/UpdateProfile'
 
 import NavBar from './components/navigation/NavBar'
 import Footer from './components/navigation/Footer'
@@ -62,6 +58,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <UpdateProfile />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path='/notes'
+                element={
+                  <PrivateRoute>
+                    <Notes />
                   </PrivateRoute>
                 }
               ></Route>

@@ -15,7 +15,7 @@ export class PostCard extends Component {
     this.state = {
       author: this.props.post.byline,
       date: this.props.post.published_date,
-      createdAt: Date().toLocaleString(),
+      createdAt: Timestamp.now(),
       description: this.props.post.abstract,
       section: this.props.post.section,
       title: this.props.post.title,
@@ -41,7 +41,7 @@ export class PostCard extends Component {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.byline,
           date: this.props.post.published_date,
-          createdAt: Date().toLocaleString(),
+          createdAt: Timestamp.now(),
           description: this.props.post.abstract,
           section: this.props.post.section,
           title: this.props.post.title,
@@ -115,20 +115,20 @@ export class PostCard extends Component {
           <Card.Footer>
             <SharingButtons url={this.props.post.url} />
           </Card.Footer>
+          <ToastContainer
+            position='bottom-right'
+            type='info'
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            theme='dark'
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Card>
-        <ToastContainer
-          position='bottom-right'
-          type='info'
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme='dark'
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </>
     )
   }

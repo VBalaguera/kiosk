@@ -2,7 +2,23 @@
 
 Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
 
+## 2022/07/19
+
+- Users can update and delete notes.
+- responsive styling
+
 ## 2022/07/18
+
+NOTES BRANCH CREATED FOR STUDYING CRUD FUNCTIONS IN FIREBASE
+
+- notes collection created; a basic text/description/date collection on firebase;
+- Notes.js created:
+  - users can write notes
+- .vscode no longer needed
+- src/hooks no longer needed
+- better folder organization
+- search works way better now; also, responsive overhaul.
+
 AUTH BRANCH MERGED WITH MAIN
 
 - Users can delete their own favorites.
@@ -19,9 +35,11 @@ AUTH BRANCH MERGED WITH MAIN
 - minor code cleaning
 - about page updated
 - footer info updated with portfolio link.
+- Date().toLocaleString() replaced with Timestamp.now()
 
 TODO:
 
+- USING NOTES.JS as starting point, try to stop using Class comps in any PostCards!!!
 - the question is: different apis used different fields and results, so when dealing with saving/showing favorites I should create similar comps for each api source (ie: nyt postcard/favorite comps). This also includes all api/firestore calls, filtering them by source.
 - explore api lists here: https://github.com/VBalaguera/public-apis and USE IT TO CREATE MORE CONTENT!
 - explore CRUD options for Favorites!

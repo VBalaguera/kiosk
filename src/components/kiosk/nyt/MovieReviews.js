@@ -26,7 +26,7 @@ export default function MovieReviews() {
   }, [])
   return (
     <div>
-      <div className='movie-reviews'>
+      <div className='movie-reviews grid-example'>
         {reviews.map((post, index) => (
           <PostCardMovies post={post} user={currentUser} />
         ))}

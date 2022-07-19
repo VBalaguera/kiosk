@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Button, Alert } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import {
   getDocs,
   collection,
@@ -8,14 +8,14 @@ import {
   where,
   query,
 } from 'firebase/firestore'
-import { db } from './firebase'
-import { useAuth } from './context/AuthContext'
+import { db } from '../../firebase'
+import { useAuth } from '../../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 
 import { ToastContainer, toast } from 'react-toastify'
 
-import Favorites from './components/Favorites/Favorites'
+import Favorites from '../../components/Favorites/Favorites'
 
 export default function Dashboard() {
   /*   const [error, setError] = useState('') */
@@ -109,7 +109,7 @@ export default function Dashboard() {
       <Card className='dashboard card bg-dark text-light border-light'>
         <Card.Body>
           <h2 className='section-title'>favorites</h2>
-          <div className='d-flex justify-content-center'>
+          <div className='d-flex justify-content-center my-2'>
             {/*             {favoritesSection.map((section, index) => (
               <button key={index} onClick={() => filterItems(section)}>
                 {section}
@@ -143,7 +143,7 @@ export default function Dashboard() {
               <span>
                 Created on:{' '}
                 {moment(currentUser.metadata.creationTime).format(
-                  'MMMM d, YYYY'
+                  'MMMM DD, YYYY'
                 )}
                 .
               </span>
@@ -151,7 +151,7 @@ export default function Dashboard() {
               <span>
                 Last login on:{' '}
                 {moment(currentUser.metadata.lastSignInTime).format(
-                  'MMMM d, YYYY'
+                  'MMMM DD, YYYY'
                 )}
                 .
               </span>

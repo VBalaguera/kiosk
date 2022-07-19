@@ -40,7 +40,7 @@ export default function MostPopular() {
   }, [])
 
   return (
-    <div className='most-populars'>
+    <div className='most-populars grid-example'>
       {mostPopulars.map((post, index) => (
         <>
           <PostCard post={post} user={currentUser} />

@@ -1,19 +1,20 @@
-import { useState, useEffect } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import { Card, Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 
 import moment from 'moment'
 
-import data from '../../data/nytMostPopular.json'
+import data from '../../../../data/nytMostPopular.json'
 
-import SharingButtons from '../Sharing/SharingButtons'
+import SharingButtons from '../../../Sharing/SharingButtons'
 
 export default function ArticleSearch() {
   const [wordEntered, setWordEntered] = useState('')
   const [posts, setPosts] = useState([])
 
-  const handleSearch = (event) => {
-    const query = event.target.value
+  const handleSearch = (e) => {
+    e.preventDefault()
+    const query = wordEntered
     setWordEntered(query)
 
     axios
@@ -37,35 +38,38 @@ export default function ArticleSearch() {
 
   return (
     <div className='w-100'>
-      <div className='articles-search'>
-        <div className='articles-search-searchbar input-group mb-4'>
-          <input
-            type='text'
-            className='articles-search__input form-control'
-            placeholder='what would you like to know?'
-            value={wordEntered}
-            onChange={handleSearch}
-            aria-label='what would you like to know?'
-          />
-          {posts.length === 0 ? (
-            <span
-              className='btn btn-outline-light'
-              type='button'
-              id='button-addon2'
-            >
-              search
-            </span>
-          ) : (
-            <button
-              className='btn btn-outline-light'
-              type='button'
-              id='button-addon2'
-              onClick={clearInput}
-            >
-              delete
-            </button>
-          )}
+      <Card className='articles-search bg-dark text-light border-light'>
+        <div className=''>
+          <Form onSubmit={handleSearch}>
+            <div className='articles-search__form'>
+              <Form.Control
+                type='text'
+                className='articles-search__form-input'
+                placeholder='what would you like to know?'
+                onChange={(e) => setWordEntered(e.target.value)}
+                value={wordEntered}
+                aria-label='what would you like to know?'
+              ></Form.Control>
+              <div className='articles-search__form-buttons'>
+                <Button
+                  type='submit'
+                  variant='secondary'
+                  className='btn btn-outline-light search-btn'
+                >
+                  Search
+                </Button>
+                <Button
+                  className='btn btn-outline-light search-btn'
+                  variant='secondary'
+                  onClick={clearInput}
+                >
+                  delete
+                </Button>
+              </div>
+            </div>
+          </Form>
         </div>
+        <div className='articles-search-searchbar input-group mb-4'></div>
 
         {posts.map((post) => (
           <div className='w-100'>
@@ -99,7 +103,7 @@ export default function ArticleSearch() {
             </Card>
           </div>
         ))}
-      </div>
+      </Card>
     </div>
   )
 }

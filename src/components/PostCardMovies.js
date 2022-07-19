@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 /* firebase and firestore */
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Card, Button } from 'react-bootstrap'
 import SharingButtons from './Sharing/SharingButtons'
@@ -13,7 +13,7 @@ export class PostCardMovies extends Component {
     this.state = {
       author: this.props.post.byline,
       date: this.props.post.publication_date,
-      createdAt: new Date(),
+      createdAt: Timestamp.now(),
       description: this.props.post.summary_short,
       section: 'movies',
       title: this.props.post.display_title,
@@ -36,7 +36,7 @@ export class PostCardMovies extends Component {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.byline,
           date: this.props.post.publication_date,
-          createdAt: new Date(),
+          createdAt: Timestamp.now(),
           description: this.props.post.summary_short,
           section: 'movies',
           title: this.props.post.display_title,
@@ -64,7 +64,7 @@ export class PostCardMovies extends Component {
             <div className='title-card'>{this.props.post.display_title}</div>
             {this.props.post.multimedia ? (
               <Card.Img
-                className='img'
+                className='img-movies'
                 src={this.props.post.multimedia.src}
                 alt={this.props.post.headline}
               />
@@ -102,20 +102,20 @@ export class PostCardMovies extends Component {
           <Card.Footer>
             <SharingButtons url={this.props.post.link.url} />
           </Card.Footer>
+          <ToastContainer
+            position='bottom-right'
+            type='info'
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            theme='dark'
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Card>
-        <ToastContainer
-          position='bottom-right'
-          type='info'
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme='dark'
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </>
     )
   }

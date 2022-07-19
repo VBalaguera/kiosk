@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 /* firebase and firestore */
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Card, Button } from 'react-bootstrap'
 import SharingButtons from './Sharing/SharingButtons'
@@ -13,7 +13,7 @@ export class PostCardBooks extends Component {
     this.state = {
       author: this.props.post.author,
       publisher: this.props.post.publisher,
-      createdAt: new Date(),
+      createdAt: Timestamp.now(),
       description: this.props.post.description,
       section: 'books',
       title: this.props.post.title,
@@ -36,7 +36,7 @@ export class PostCardBooks extends Component {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.author,
           publisher: this.props.post.publisher,
-          createdAt: new Date(),
+          createdAt: Timestamp.now(),
           description: this.props.post.description,
           section: 'books',
           title: this.props.post.title,
@@ -106,20 +106,20 @@ export class PostCardBooks extends Component {
           <Card.Footer>
             <SharingButtons url={this.props.post.url} />
           </Card.Footer>
+          <ToastContainer
+            position='bottom-right'
+            type='info'
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            theme='dark'
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </Card>
-        <ToastContainer
-          position='bottom-right'
-          type='info'
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          theme='dark'
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </>
     )
   }
