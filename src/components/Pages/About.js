@@ -7,7 +7,7 @@ export default function About() {
       <Card className='about card bg-dark text-light border-light'>
         <Card.Body>
           <Card.Text className='d-flex flex-column'>
-            <span>
+            <p>
               A simple web app project, created by{' '}
               <a
                 className='myLink'
@@ -17,17 +17,12 @@ export default function About() {
               >
                 Víctor Balaguera
               </a>
-              .
-            </span>
-            <span>
-              At this moment, uses the New York Times API only as source of
-              external content.
-            </span>
-            <span>
-              Create your account. Read the news. Add your favorites. Share
-              them. Take notes.
-            </span>
-            <span>More to come.</span>
+              . At this moment, uses the New York Times API only as source of
+              external content. Create your account. Read the news. Add your
+              favorites. Share them. Take notes.
+            </p>
+
+            <p>More to come.</p>
           </Card.Text>
         </Card.Body>
       </Card>

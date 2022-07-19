@@ -340,6 +340,9 @@ a:hover,
 /* responsive */
 
 @media screen and (max-width: 568px) {
+  .page-title {
+    font-size: 1.5rem;
+  }
   /* navbar */
   .nav-link {
     padding: 0.1rem 0.5rem;
@@ -387,7 +390,11 @@ a:hover,
   .favorite-card-comments span,
   .profile span,
   .profile-info-bottom a,
-  .about span {
+  .note-title,
+  .note-date,
+  .note-description,
+  .note-content,
+  .about p {
     font-size: 0.7rem;
   }
 
