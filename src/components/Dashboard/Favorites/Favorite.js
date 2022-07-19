@@ -72,8 +72,6 @@ export default function Favorite({ favorite, index }) {
     }
   }
 
-  console.log(favorite.comments)
-
   return (
     <>
       <Card key={index} className='card bg-dark text-light border-light'>

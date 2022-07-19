@@ -79,7 +79,9 @@ export default function Note({ note, index }) {
     try {
       setEditModal(false)
       setTimeout(await deleteDoc(doc(notesCollectionRef, id)), 2000)
-      console.log('Entire Document has been deleted successfully.')
+      console.log(
+        `Entire Document with id ${id} has been deleted successfully.`
+      )
       toast(`Document with id ${id} has been deleted successfully.`)
 
       window.location.reload(false)
