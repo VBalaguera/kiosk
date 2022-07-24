@@ -189,7 +189,7 @@ export default function Note({ note, index }) {
           <Card className='card bg-dark text-light border-light'>
             <h1 className='section-title text-center'>Warning</h1>
             <div className='d-flex flex-column align-items-center'>
-              <span>Are you sure you want to delete this item</span>
+              <span>Are you sure you want to delete this item?</span>
               <span>This action cannot be undone.</span>
             </div>
             <div className='d-flex my-2  justify-content-center'>

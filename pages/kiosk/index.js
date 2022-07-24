@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button, Nav } from 'react-bootstrap'
 
 import Layout from '../../src/components/layout'
 import { useAuth } from '../../src/context/AuthContext'
+
+import { useRouter } from 'next/router'
 
 /* nyt api */
 
@@ -25,7 +27,19 @@ import About from '../about'
 
 export default function Kiosk() {
   const { currentUser } = useAuth()
-  console.log(currentUser)
+
+  const router = useRouter()
+  useEffect(() => {
+    if (currentUser && currentUser.email) {
+    } else if (currentUser == null) {
+      router.push('/')
+    }
+  }, [])
+
+  if (!currentUser) {
+    return null
+  }
+
   const sections = [
     'most popular',
     'us',

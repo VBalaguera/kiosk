@@ -22,16 +22,10 @@ export default function Favorites() {
   const { currentUser } = useAuth()
   const router = useRouter()
   /* TODO: revisit this */
-  console.log(currentUser)
-  useEffect(() => {
-    if (currentUser === null) {
-      router.push('/')
-    } else {
-      router.push('/dashboard')
-    }
 
+  useEffect(() => {
     getFavorites()
-  }, [currentUser, router])
+  }, [])
   const [favorites, setFavorites] = useState([])
   const [favoritesSection, setFavoritesSection] = useState([])
 

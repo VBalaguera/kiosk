@@ -18,10 +18,10 @@ export default function Login() {
 
   /* this replaces PublicRoute from react versions */
   useEffect(() => {
-    if (currentUser) {
-      router.push('/kiosk')
-    } else {
+    if (currentUser == null) {
       router.push('/')
+    } else {
+      router.push('/kiosk')
     }
   }, [])
 

@@ -117,7 +117,7 @@ export default function Favorite({ favorite, index }) {
                   contentLabel='Warning'
                 >
                   <div className='d-flex flex-column align-items-center'>
-                    <span>Are you sure you want to delete this item</span>
+                    <span>Are you sure you want to delete this item?</span>
                     <span>This action cannot be undone.</span>
                   </div>
                   <div className='d-flex justify-content-between mt-2'>

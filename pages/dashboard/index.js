@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, Button, Nav } from 'react-bootstrap'
 
-import { useAuth, currentUser } from '../../src/context/AuthContext'
+import { useAuth } from '../../src/context/AuthContext'
 
 import { useRouter } from 'next/router'
 
@@ -14,13 +14,22 @@ import Notes from '../notes'
 import Layout from '../../src/components/layout'
 
 export default function Dashboard() {
-  /*   const [error, setError] = useState('') */
+  const [mySection, setMySection] = useState(true)
   const { currentUser, logout } = useAuth()
+
   const router = useRouter()
+  useEffect(() => {
+    if (currentUser && currentUser.email) {
+    } else if (currentUser == null) {
+      router.push('/')
+    }
+  }, [])
+
+  if (!currentUser) {
+    return null
+  }
 
   const sections = ['favorites', 'profile', 'notes']
-
-  const [mySection, setMySection] = useState(true)
 
   async function handleLogOut() {
     /* setError('') */

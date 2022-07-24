@@ -5,7 +5,26 @@ https://firebase.google.com/docs/rules/basics
 
 ## 2022/07/24
 
-- nextjs conversion on route, problems when trying to use protected routes with currentUser from firebase and useAuth;
+- nextjs conversion on route,
+
+PROBLEM:
+
+- when trying to use protected routes with currentUser from firebase and useAuth;
+
+SOLUTION:
+
+const router = useRouter()
+useEffect(() => {
+if (currentUser) {
+console.log('signed in!')
+} else if (currentUser == null) {
+router.push('/')
+}
+}, [currentUser])
+
+if (!currentUser) {
+return null
+}
 
 ## 2022/07/19
 
