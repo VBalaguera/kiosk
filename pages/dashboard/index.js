@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Button, Nav } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 import { useAuth } from '../../src/context/AuthContext'
 
@@ -14,7 +14,6 @@ import Notes from '../notes'
 import Layout from '../../src/components/layout'
 
 export default function Dashboard() {
-  const [mySection, setMySection] = useState(true)
   const { currentUser, logout } = useAuth()
 
   const router = useRouter()
@@ -51,28 +50,11 @@ export default function Dashboard() {
       <Layout>
         {' '}
         <h1 className='page-title'>dashboard</h1>
-        {/* <div className='d-flex justify-content-center flex-wrap flex-row mb-3'>
-        {sections.map((section, index) => (
-          <Nav.Link key={index} className='px-1 py-1 '>
-            <Button
-              variant='btn btn-outline-light button p-1 kiosk'
-              type='button'
-              key={section}
-              onClick={() => setMySection(section)}
-            >
-              {section}
-            </Button>
-          </Nav.Link>
-        ))}
-      </div> */}
         <Favorites />
         <br />
         <Profile />
         <br />
         <Notes />
-        {/* {mySection === 'favorites' && <Favorites />}
-      {mySection === 'profile' && <Profile />}
-      {mySection === 'notes' && <Notes />} */}
         <div>
           <Button
             className='logout-btn'

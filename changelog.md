@@ -5,7 +5,13 @@ https://firebase.google.com/docs/rules/basics
 
 ## 2022/07/24
 
-- nextjs conversion on route,
+-nextjsconversion branch is live at https://kiosk-cj5y1u6xd-vbalaguera.vercel.app/
+
+- nextjs conversion is complete
+- daily backup
+- dashboard buttons styling and flex-wrapping
+- fixes at notes
+- buttons with links now look better
 
 PROBLEM:
 

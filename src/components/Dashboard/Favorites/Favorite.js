@@ -98,9 +98,9 @@ export default function Favorite({ favorite, index }) {
                 <span>Section: {favorite.section}.</span>
               </div>
               <div className='favorite-card-bottom-right'>
-                <Button variant='secondary' className='favorites-btn me-2'>
+                <Button variant='link' className='favorites-btn me-2'>
                   <a href={favorite.url} className='myLink text-light'>
-                    Read more.
+                    Read more
                   </a>
                 </Button>
                 <Button
@@ -108,7 +108,7 @@ export default function Favorite({ favorite, index }) {
                   className='favorites-btn'
                   onClick={openModal}
                 >
-                  Delete.
+                  Delete
                 </Button>
                 <Modal
                   isOpen={modal}

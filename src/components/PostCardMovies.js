@@ -88,8 +88,8 @@ export class PostCardMovies extends Component {
             </Card.Text>
             <div className='d-flex align-items-center justify-content-center'>
               <Button
-                className='btn read-more'
-                variant='btn btn-outline-light mx-2'
+                className='btn read-more btn-outline-light mx-2'
+                variant='link'
               >
                 <a href={this.props.post.link.url} className='myLink'>
                   Read more

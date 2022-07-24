@@ -81,7 +81,6 @@ export default function Notes() {
 
   useEffect(() => {
     getNotes()
-    console.log(notes)
   }, [])
 
   return (
@@ -93,21 +92,18 @@ export default function Notes() {
           <>
             {notes.length > 0 ? (
               <>
-                {notes.map((favorite, index) => {
-                  /* console.log(favorite) */
-                  return (
+                return (
+                <>
+                  {notes.map((note, index) => (
+                    /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
                     <>
-                      {notes.map((note, index) => (
-                        /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
-                        <>
-                          <div className='grid-example'>
-                            <Note note={note} index={index} />
-                          </div>
-                        </>
-                      ))}
+                      <div className='grid-example'>
+                        <Note note={note} index={index} />
+                      </div>
                     </>
-                  )
-                })}
+                  ))}
+                </>
+                )
               </>
             ) : (
               <div className='mt-4'>

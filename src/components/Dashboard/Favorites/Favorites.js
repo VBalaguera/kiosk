@@ -87,7 +87,7 @@ export default function Favorites() {
       <div className='dashboard bg-dark text-light border-light'>
         <div>
           <h2 className='section-title'>favorites</h2>
-          <div className='d-flex justify-content-center my-3'>
+          <div className='d-flex justify-content-center my-3 flex-wrap'>
             {/*             {favoritesSection.map((section, index) => (
               <button key={index} onClick={() => filterItems(section)}>
                 {section}
@@ -96,7 +96,7 @@ export default function Favorites() {
             {allSections.map((section, index) => (
               <Button
                 variant='secondary'
-                className='mx-2 favorites-btn'
+                className='m-2 favorites-btn'
                 key={index}
                 onClick={() => filterItems(section)}
               >
