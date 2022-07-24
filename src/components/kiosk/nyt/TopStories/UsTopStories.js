@@ -4,6 +4,9 @@ import axios from 'axios'
 import PostCard from '../../../PostCard'
 import { useAuth } from '../../../../context/AuthContext'
 
+import { getDocs, collection, where, query } from 'firebase/firestore'
+import { db } from '../../../../firebase'
+
 import data from '../../../../data/nytTopStories.json'
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/us.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
@@ -11,6 +14,32 @@ const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/us.json?api-
 export default function UsTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
+
+  const [favorites, setFavorites] = useState([])
+
+  const favoritesCollectionRef = collection(
+    db,
+    'favorites',
+    currentUser.email,
+    currentUser.uid
+  )
+  const q = query(
+    favoritesCollectionRef,
+    where('user', '==', String(currentUser.uid))
+  )
+  /* TODO: revisit and polish this code asap */
+
+  const getFavorites = async () => {
+    const data = await getDocs(q)
+    /*       console.log(currentUser.uid) */
+    setFavorites(
+      data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        user: currentUser.uid,
+      }))
+    )
+  }
   useEffect(() => {
     /* top stories */
     axios
@@ -23,6 +52,8 @@ export default function UsTopStories() {
         /*    console.log(err) */
         setPosts(data)
       })
+
+    getFavorites()
   }, [])
   return (
     <div className='w-100'>
@@ -30,7 +61,12 @@ export default function UsTopStories() {
         {posts.map((post, index) => (
           <div className='w-100'>
             <>
-              <PostCard key={post.id} post={post} user={currentUser} />
+              <PostCard
+                key={post.id}
+                post={post}
+                user={currentUser}
+                favorites={favorites}
+              />
             </>
           </div>
         ))}

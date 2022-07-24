@@ -4,9 +4,11 @@ import axios from 'axios'
 
 import moment from 'moment'
 import { useAuth } from '../../../../context/AuthContext'
-import PostCard from '../../../PostCard'
 
-import SharingButtons from '../../../Sharing/SharingButtons'
+import { getDocs, collection, where, query } from 'firebase/firestore'
+import { db } from '../../../../firebase'
+
+import PostCard from '../../../PostCard'
 
 import data from '../../../../data/nytBusiness.json'
 
@@ -16,6 +18,32 @@ const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/business.jso
 export default function BusinnessTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
+
+  const [favorites, setFavorites] = useState([])
+
+  const favoritesCollectionRef = collection(
+    db,
+    'favorites',
+    currentUser.email,
+    currentUser.uid
+  )
+  const q = query(
+    favoritesCollectionRef,
+    where('user', '==', String(currentUser.uid))
+  )
+  /* TODO: revisit and polish this code asap */
+
+  const getFavorites = async () => {
+    const data = await getDocs(q)
+    /*       console.log(currentUser.uid) */
+    setFavorites(
+      data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        user: currentUser.uid,
+      }))
+    )
+  }
   useEffect(() => {
     /* top stories */
     axios
@@ -28,13 +56,15 @@ export default function BusinnessTopStories() {
         /* console.log(err) */
         setPosts(data)
       })
+
+    getFavorites()
   }, [])
   return (
     <div>
       <div className='top-stories grid-example'>
         {posts.map((post, index) => (
           <>
-            <PostCard post={post} user={currentUser} />
+            <PostCard post={post} user={currentUser} favorites={favorites} />
           </>
         ))}
       </div>

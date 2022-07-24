@@ -23,9 +23,6 @@ export default function Favorites() {
   const router = useRouter()
   /* TODO: revisit this */
 
-  useEffect(() => {
-    getFavorites()
-  }, [])
   const [favorites, setFavorites] = useState([])
   const [favoritesSection, setFavoritesSection] = useState([])
 
@@ -80,6 +77,10 @@ export default function Favorites() {
     ]
     setFavoritesSection(allSections)
   }
+
+  useEffect(() => {
+    getFavorites()
+  }, [])
 
   return (
     <>

@@ -27,6 +27,7 @@ import About from '../about'
 
 export default function Kiosk() {
   const { currentUser } = useAuth()
+  const [mySection, setMySection] = useState(true)
 
   const router = useRouter()
   useEffect(() => {
@@ -55,7 +56,6 @@ export default function Kiosk() {
     'search',
   ]
 
-  const [mySection, setMySection] = useState(true)
   return (
     <Layout>
       <div className='d-flex justify-content-center flex-wrap flex-row mb-3'>

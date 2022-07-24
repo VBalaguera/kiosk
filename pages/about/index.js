@@ -24,7 +24,6 @@ export default function About() {
                 external content. Create your account. Read the news. Add your
                 favorites. Share them. Take notes.
               </p>
-              <br />
               <p>More to come.</p>
             </Card.Text>
           </Card.Body>

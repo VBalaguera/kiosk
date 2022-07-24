@@ -20,6 +20,8 @@ export class PostCardMovies extends Component {
       url: this.props.post.link.url,
       user: this.props.user.multiFactor.user.uid,
       source: 'New York Times',
+      favorites: this.props.favorites,
+      active: true,
     }
   }
 
@@ -47,11 +49,18 @@ export class PostCardMovies extends Component {
         /* console.log('favorite added')
         console.log(this.props.post.byline) */
         toast('favorite added')
+        this.setState({
+          active: false,
+        })
       } catch (err) {
         /* console.log(err) */
         toast(err)
       }
     }
+
+    let favoritedItem = this.props.favorites.filter(
+      (favorite) => favorite.title === this.props.post.display_title
+    )
 
     return (
       <>
@@ -90,6 +99,7 @@ export class PostCardMovies extends Component {
               <Button
                 className='btn read-more'
                 variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0 || !this.state.active}
               >
                 <span onClick={() => saveFavorite(this.props)}>
                   Save as favorite

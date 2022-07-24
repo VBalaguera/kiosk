@@ -9,6 +9,96 @@ https://firebase.google.com/docs/rules/basics
 
 PROBLEM:
 
+- Save as favorite button remains not disabled after clicking.
+
+SOLUTION:
+
+<code>
+constructor(props) {
+    super(props)
+    this.state = {
+      author: this.props.post.byline,
+      date: this.props.post.published_date,
+      createdAt: Timestamp.now(),
+      description: this.props.post.abstract,
+      section: this.props.post.section,
+      title: this.props.post.title,
+      url: this.props.post.url,
+      user: this.props.user.multiFactor.user.uid,
+      source: 'New York Times',
+      comments: '',
+      favorites: this.props.favorites,
+      active: true,
+    }
+  }
+  [...]
+  const saveFavorite = async () => {
+      try {
+        await addDoc(favoritesCollectionRef, {
+          author: this.props.post.byline,
+          date: this.props.post.published_date,
+          createdAt: Timestamp.now(),
+          description: this.props.post.abstract,
+          section: this.props.post.section,
+          title: this.props.post.title,
+          url: this.props.post.url,
+          user: this.props.user.multiFactor.user.uid,
+          source: 'New York Times',
+          comments: '',
+        })
+        /* console.log('favorite added') */
+        toast('favorite added')
+        this.setState({
+          active: false,
+        })
+        /* console.log(this.props.post.byline) */
+      } catch (err) {
+        /* console.log(err) */
+        toast(err)
+      }
+    }
+
+[...]
+
+<Button
+                className='btn read-more'
+                variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0 || !this.state.active} >
+<span onClick={() => saveFavorite(this.props)}>
+Save as favorite
+</span>
+.
+</Button>
+
+</code>
+
+PROBLEM:
+
+- users can add favorites multiple times
+
+SOLUTION:
+
+On PostCard and others, add this:
+
+<code>
+    let favoritedItem = this.props.favorites.filter(
+      (favorite) => favorite.title === this.props.post.title
+    )
+    [...]
+    <Button
+                className='btn read-more'
+                variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0}
+              >
+                <span onClick={() => saveFavorite(this.props)}>
+                  Save as favorite
+                </span>
+                .
+              </Button>
+    </code>
+
+PROBLEM:
+
 - when trying to use protected routes with currentUser from firebase and useAuth;
 
 SOLUTION:

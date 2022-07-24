@@ -4,6 +4,9 @@ import axios from 'axios'
 import PostCard from '../../../PostCard'
 import { useAuth } from '../../../../context/AuthContext'
 
+import { getDocs, collection, where, query } from 'firebase/firestore'
+import { db } from '../../../../firebase'
+
 import data from '../../../../data/nytPolitics.json'
 
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
@@ -12,6 +15,31 @@ const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/politics.jso
 export default function PoliticsTopStories() {
   const [posts, setPosts] = useState([])
   const { currentUser } = useAuth()
+  const [favorites, setFavorites] = useState([])
+
+  const favoritesCollectionRef = collection(
+    db,
+    'favorites',
+    currentUser.email,
+    currentUser.uid
+  )
+  const q = query(
+    favoritesCollectionRef,
+    where('user', '==', String(currentUser.uid))
+  )
+  /* TODO: revisit and polish this code asap */
+
+  const getFavorites = async () => {
+    const data = await getDocs(q)
+    /*       console.log(currentUser.uid) */
+    setFavorites(
+      data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        user: currentUser.uid,
+      }))
+    )
+  }
   useEffect(() => {
     /* top stories */
     axios
@@ -30,7 +58,7 @@ export default function PoliticsTopStories() {
       <div className='top-stories grid-example'>
         {posts.map((post, index) => (
           <>
-            <PostCard post={post} user={currentUser} />
+            <PostCard post={post} user={currentUser} favorites={favorites} />
           </>
         ))}
       </div>

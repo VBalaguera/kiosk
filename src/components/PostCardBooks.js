@@ -20,6 +20,8 @@ export class PostCardBooks extends Component {
       url: this.props.post.amazon_product_url,
       user: this.props.user.multiFactor.user.uid,
       source: 'New York Times',
+      favorites: this.props.favorites,
+      active: true,
     }
   }
 
@@ -47,11 +49,19 @@ export class PostCardBooks extends Component {
         /* console.log('favorite added')
         console.log(this.props.post.byline) */
         toast('favorite added')
+        this.setState({
+          active: false,
+        })
       } catch (err) {
         /* console.log(err) */
         toast(err)
       }
     }
+    let favoritedItem = this.props.favorites.filter(
+      (favorite) => favorite.title === this.props.post.title
+    )
+    console.log(this.props.post.title)
+    console.log(favoritedItem)
     /* console.log(this.props.user.multiFactor.user.uid) */
     return (
       <>
@@ -94,6 +104,7 @@ export class PostCardBooks extends Component {
               <Button
                 className='btn read-more'
                 variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0 || !this.state.active}
               >
                 <span onClick={() => saveFavorite(this.props)}>
                   Save as favorite

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 /* firebase and firestore */
-import { addDoc, collection, Timestamp } from 'firebase/firestore'
+import { addDoc, collection, Timestamp, query, where } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Card, Button } from 'react-bootstrap'
 import SharingButtons from './Sharing/SharingButtons'
@@ -23,6 +23,8 @@ export class PostCard extends Component {
       user: this.props.user.multiFactor.user.uid,
       source: 'New York Times',
       comments: '',
+      favorites: this.props.favorites,
+      active: true,
     }
   }
 
@@ -36,7 +38,7 @@ export class PostCard extends Component {
       /* 'New York Times' */
       this.props.user.multiFactor.user.uid
     )
-    const saveFavorite = async (props) => {
+    const saveFavorite = async () => {
       try {
         await addDoc(favoritesCollectionRef, {
           author: this.props.post.byline,
@@ -52,13 +54,26 @@ export class PostCard extends Component {
         })
         /* console.log('favorite added') */
         toast('favorite added')
+        this.setState({
+          active: false,
+        })
         /* console.log(this.props.post.byline) */
       } catch (err) {
         /* console.log(err) */
         toast(err)
       }
     }
-    /*  console.log(this.props.user.multiFactor.user.uid) */
+
+    let favoritedItem = this.props.favorites.filter(
+      (favorite) => favorite.title == this.props.post.title
+    )
+    /*     console.log(favoritedItem)
+    if (favoritedItem.length > 0) {
+      console.log('yes')
+    } else {
+      console.log('no')
+    } */
+
     return (
       <>
         <Card
@@ -100,9 +115,11 @@ export class PostCard extends Component {
                 </a>
                 .
               </Button>
+
               <Button
                 className='btn read-more'
                 variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0 || !this.state.active}
               >
                 <span onClick={() => saveFavorite(this.props)}>
                   Save as favorite
