@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react'
 import { Card, Button, Form } from 'react-bootstrap'
 
 import {
-  doc,
   addDoc,
   getDocs,
-  deleteDoc,
   query,
   collection,
-  updateDoc,
+  orderBy,
   Timestamp,
   where,
 } from 'firebase/firestore'

@@ -1,7 +1,13 @@
 # KIOSK
 
-Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
-https://firebase.google.com/docs/rules/basics
+Resourceful docs:
+
+- https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
+  https://firebase.google.com/docs/rules/basics
+- migration from react to nextjs info: https://dev.to/seven/how-to-implement-protected-routes-in-nextjs-1m50
+- nextjs with ecommerce info: https://commercejs.com/frameworks/nextjs-ecommerce
+- nextjs with e-commerce demo: https://github.com/chec/commercejs-chopchop-demo
+- protected routes example: https://github.com/Chensokheng/next-firebase-boilerplate/blob/main/src/hook/route.js
 
 ## 2022/07/24
 
@@ -10,8 +16,17 @@ https://firebase.google.com/docs/rules/basics
 - nextjs conversion is complete
 - daily backup
 - dashboard buttons styling and flex-wrapping
-- fixes at notes
+- fixes Notes:
+  - notes where loading duplicated on live version
 - buttons with links now look better
+
+PROBLEM:
+
+- notes are indexed by created date at Firebase;
+
+SOLUTION:
+
+- create an index for said notes query??
 
 PROBLEM:
 
