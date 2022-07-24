@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../../../context/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
-
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Modal from 'react-modal'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -12,9 +12,18 @@ export default function Login() {
   const passwordRef = useRef()
   /* const [error, setError] = useState('') */
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const router = useRouter()
 
-  const { login } = useAuth()
+  const { login, currentUser } = useAuth()
+
+  /* this replaces PublicRoute from react versions */
+  useEffect(() => {
+    if (currentUser) {
+      router.push('/kiosk')
+    } else {
+      router.push('/')
+    }
+  }, [])
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -25,7 +34,7 @@ export default function Login() {
       await login(emailRef.current.value, passwordRef.current.value)
       /* console.log('logged in!') */
       toast('welcome back!')
-      navigate('/kiosk')
+      router.push('/kiosk')
     } catch {
       /* setError('Error while login') */
       toast('Error while login')
@@ -67,14 +76,14 @@ export default function Login() {
           <div className='m-2'>
             <div>
               Still don't have an account?{' '}
-              <Link className='myLink' to='/signup'>
+              <Link className='myLink' href='/signup'>
                 get one
               </Link>
               .
             </div>
 
             <div>
-              <Link className='myLink' to='/forgot-password'>
+              <Link className='myLink' href='/forgot-password'>
                 Forgot your password?
               </Link>
             </div>

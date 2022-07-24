@@ -12,10 +12,10 @@ import {
   Timestamp,
   where,
 } from 'firebase/firestore'
-import { db } from '../../firebase'
-import { useAuth } from '../../context/AuthContext'
+import { db } from '../../src/firebase'
+import { useAuth } from '../../src/context/AuthContext'
 
-import Note from '../Notes/Note'
+import Note from '../../src/components/Notes/Note'
 
 import moment from 'moment'
 

@@ -3,6 +3,10 @@
 Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
 https://firebase.google.com/docs/rules/basics
 
+## 2022/07/24
+
+- nextjs conversion on route, problems when trying to use protected routes with currentUser from firebase and useAuth;
+
 ## 2022/07/19
 
 - daily backup

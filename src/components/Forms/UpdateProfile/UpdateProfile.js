@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Card, Form, Button } from 'react-bootstrap'
 import { useAuth } from '../../../context/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
+
+import { useRouter } from 'next/router'
 
 import Modal from 'react-modal'
 
@@ -37,7 +39,7 @@ export default function UpdateProfile() {
   const confirmPasswordRef = useRef()
   /*   const [error, setError] = useState('') */
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const { currentUser, updateEmail, updatePassword, deleteUser } = useAuth()
 
@@ -62,7 +64,7 @@ export default function UpdateProfile() {
     Promise.all(promises)
       .then(() => {
         toast('account updated successfully')
-        navigate('/kiosk')
+        router.push('/kiosk')
       })
       .catch(() => {
         /*     setError('failed to update account') */
@@ -77,7 +79,7 @@ export default function UpdateProfile() {
       setLoading(true)
 
       toast('info updated')
-      navigate('/kiosk')
+      router.push('/kiosk')
     } catch {
       /*       setError('Error while updating account info') */
       toast('Error while updating account info')
@@ -92,11 +94,20 @@ export default function UpdateProfile() {
       deleteUser(uid)
       toast('bye :(')
       toast('user with uid', { uid }, ' deleted')
-      navigate('/')
+      router.push('/')
     } catch {
       toast('Error when deleting user')
     }
   }
+
+  /* TODO: revisit this */
+  useEffect(() => {
+    if (currentUser && currentUser.email) {
+      router.push('/update-profile')
+    } else {
+      router.push('/')
+    }
+  }, [])
 
   return (
     <div className='forms'>
@@ -134,7 +145,7 @@ export default function UpdateProfile() {
           </Form>
           <div className='m-2'>
             Changed your mind?{' '}
-            <Link className='myLink' to='/'>
+            <Link className='myLink' href='/'>
               Cancel
             </Link>
             .

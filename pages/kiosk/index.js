@@ -1,26 +1,31 @@
 import { useState } from 'react'
 import { Button, Nav } from 'react-bootstrap'
 
+import Layout from '../../src/components/layout'
+import { useAuth } from '../../src/context/AuthContext'
+
 /* nyt api */
 
-import ArticleSearch from '../kiosk/nyt/ArticleSearch/ArticleSearch'
+import ArticleSearch from '../../src/components/kiosk/nyt/ArticleSearch/ArticleSearch'
 
-import MostPopular from '../kiosk/nyt/MostPopular'
-import MovieReviews from '../kiosk/nyt/MovieReviews'
-import Books from '../kiosk/nyt/Books'
-import PoliticsTopStories from '../kiosk/nyt/TopStories/PoliticsTopStories'
-import OpinionTopStories from '../kiosk/nyt/TopStories/OpinionTopStories'
-import ArtTopStories from '../kiosk/nyt/TopStories/ArtTopStories'
-import SportsTopStories from '../kiosk/nyt/TopStories/Sports'
-import BusinessTopStories from '../kiosk/nyt/TopStories/BusinessTopStories'
-import UsTopStories from '../kiosk/nyt/TopStories/UsTopStories'
-import WorldTopStories from '../kiosk/nyt/TopStories/WorldTopStories'
-import TechnologyTopStories from '../kiosk/nyt/TopStories/TechTopStories'
+import MostPopular from '../../src/components/kiosk/nyt/MostPopular'
+import MovieReviews from '../../src/components/kiosk/nyt/MovieReviews'
+import Books from '../../src/components/kiosk/nyt/Books'
+import PoliticsTopStories from '../../src/components/kiosk/nyt/TopStories/PoliticsTopStories'
+import OpinionTopStories from '../../src/components/kiosk/nyt/TopStories/OpinionTopStories'
+import ArtTopStories from '../../src/components/kiosk/nyt/TopStories/ArtTopStories'
+import SportsTopStories from '../../src/components/kiosk/nyt/TopStories/Sports'
+import BusinessTopStories from '../../src/components/kiosk/nyt/TopStories/BusinessTopStories'
+import UsTopStories from '../../src/components/kiosk/nyt/TopStories/UsTopStories'
+import WorldTopStories from '../../src/components/kiosk/nyt/TopStories/WorldTopStories'
+import TechnologyTopStories from '../../src/components/kiosk/nyt/TopStories/TechTopStories'
 
 /* miscellaneous */
-import About from './About'
+import About from '../about'
 
 export default function Kiosk() {
+  const { currentUser } = useAuth()
+  console.log(currentUser)
   const sections = [
     'most popular',
     'us',
@@ -38,7 +43,7 @@ export default function Kiosk() {
 
   const [mySection, setMySection] = useState(true)
   return (
-    <div>
+    <Layout>
       <div className='d-flex justify-content-center flex-wrap flex-row mb-3'>
         {sections.map((section, index) => (
           <Nav.Link key={index} className='px-1 py-1 '>
@@ -71,6 +76,6 @@ export default function Kiosk() {
         {mySection === 'about' && <About />}
         {mySection === 'search' && <ArticleSearch />}
       </div>
-    </div>
+    </Layout>
   )
 }

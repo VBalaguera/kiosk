@@ -6,7 +6,7 @@ import { useAuth } from '../../../context/AuthContext'
 
 import data from '../../../data/nytBooks.json'
 
-const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 
 export default function Books() {
   const [books, setBooks] = useState([])

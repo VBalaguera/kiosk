@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react'
 import Favorite from './Favorite'
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+
+import { useAuth } from '../../../context/AuthContext'
+
+import { useRouter } from 'next/router'
 
 import {
   getDocs,
@@ -13,18 +17,29 @@ import {
 } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
-import { useAuth } from '../../../context/AuthContext'
-
 export default function Favorites() {
+  /*   const [error, setError] = useState('') */
+  const { currentUser } = useAuth()
+  const router = useRouter()
+  /* TODO: revisit this */
+  console.log(currentUser)
+  useEffect(() => {
+    if (currentUser === null) {
+      router.push('/')
+    } else {
+      router.push('/dashboard')
+    }
+
+    getFavorites()
+  }, [currentUser, router])
   const [favorites, setFavorites] = useState([])
   const [favoritesSection, setFavoritesSection] = useState([])
-  const { currentUser } = useAuth()
+
   const favoritesCollectionRef = collection(
     db,
     'favorites',
     currentUser.email,
     currentUser.uid
-    /* 'New York Times' */
   )
   const q = query(
     favoritesCollectionRef,
@@ -72,10 +87,6 @@ export default function Favorites() {
     setFavoritesSection(allSections)
   }
 
-  useEffect(() => {
-    getFavorites()
-  }, [])
-
   return (
     <>
       <div className='dashboard bg-dark text-light border-light'>
@@ -116,7 +127,7 @@ export default function Favorites() {
                 <>
                   <span>
                     You have no favorites yet. C'mon,{' '}
-                    <Link className='myLink' to='/kiosk'>
+                    <Link className='myLink' href='/kiosk'>
                       add some
                     </Link>
                     .

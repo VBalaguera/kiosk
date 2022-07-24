@@ -19,7 +19,7 @@ export default function ArticleSearch() {
 
     axios
       .get(
-        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
       )
       .then((response) => {
         /* console.log(response.data.response.docs) */

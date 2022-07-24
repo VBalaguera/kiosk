@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Card, Form, Button } from 'react-bootstrap'
 import { useAuth } from '../../../context/AuthContext'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -55,13 +55,13 @@ export default function ForgotPassword() {
           </Form>
           <div className='m-2'>
             Still don't have an account?{' '}
-            <Link className='myLink' to='/signup'>
+            <Link className='myLink' href='/signup'>
               Get one
             </Link>
             .
           </div>
           <div>
-            <Link className='myLink' to='/'>
+            <Link className='myLink' href='/'>
               False alarm? Log in
             </Link>
             .

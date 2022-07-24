@@ -10,7 +10,7 @@ import SharingButtons from '../../../Sharing/SharingButtons'
 
 import data from '../../../../data/nytBusiness.json'
 
-const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
 export default function BusinnessTopStories() {

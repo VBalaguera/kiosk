@@ -6,7 +6,7 @@ import { useAuth } from '../../../context/AuthContext'
 import PostCard from '../../PostCard'
 
 import data from '../../../data/nytMostPopular.json'
-const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 export default function MostPopular() {
   const [mostPopulars, setMostPopulars] = useState([])
   const { currentUser } = useAuth()

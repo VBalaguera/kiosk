@@ -17,7 +17,7 @@ export default function Work() {
   function getNewsByCountry(e) {
     const location = e.target.value
     const adzunaUrl = `
-https://newsapi.org/v2/top-headlines?country=${location}&apiKey=${process.env.REACT_APP_NEWSAPI_API_KEY}`
+https://newsapi.org/v2/top-headlines?country=${location}&apiKey=${process.env.NEXT_PUBLIC_NEWSAPI_API_KEY}`
     axios
       .get(adzunaUrl)
       .then((response) => {
@@ -30,7 +30,7 @@ https://newsapi.org/v2/top-headlines?country=${location}&apiKey=${process.env.RE
 
   /* useEffect(() => {
     const adzunaUrl = `
-https://newsapi.org/v2/top-headlines?country=${location}&apiKey=${process.env.REACT_APP_NEWSAPI_API_KEY}`
+https://newsapi.org/v2/top-headlines?country=${location}&apiKey=${process.env.NEXT_PUBLIC_NEWSAPI_API_KEY}`
     axios
       .get(adzunaUrl)
       .then((response) => {

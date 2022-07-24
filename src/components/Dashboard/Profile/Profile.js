@@ -1,12 +1,13 @@
 import React from 'react'
 import { Card, Button, Nav } from 'react-bootstrap'
 import { useAuth } from '../../../context/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
 import moment from 'moment'
 export default function Profile() {
-  const navigate = useNavigate()
+  const router = useRouter()
   const { currentUser, logout } = useAuth()
 
   return (
@@ -36,7 +37,7 @@ export default function Profile() {
             </div>
             <div className='profile-info-bottom'>
               <span>Email: {currentUser.email}</span>
-              <Link className='myLink' to='/update-profile'>
+              <Link className='myLink' href='/update-profile'>
                 Update profile.
               </Link>
             </div>
