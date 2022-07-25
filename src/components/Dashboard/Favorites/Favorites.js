@@ -40,14 +40,17 @@ export default function Favorites() {
 
   const getFavorites = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
-    setFavorites(
-      data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-        user: currentUser.uid,
-      }))
+
+    const favorites = data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      user: currentUser.uid,
+    }))
+    const sortedAsc = favorites.sort(
+      (objA, objB) =>
+        Number(objA.createdAt.seconds) - Number(objB.createdAt.seconds)
     )
+    setFavorites(sortedAsc)
   }
 
   function filterItems(term) {
@@ -81,6 +84,8 @@ export default function Favorites() {
   useEffect(() => {
     getFavorites()
   }, [])
+
+  console.log(favorites)
 
   return (
     <>

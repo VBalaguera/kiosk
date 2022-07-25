@@ -9,6 +9,39 @@ Resourceful docs:
 - nextjs with e-commerce demo: https://github.com/chec/commercejs-chopchop-demo
 - protected routes example: https://github.com/Chensokheng/next-firebase-boilerplate/blob/main/src/hook/route.js
 
+## 2022/07/25
+
+PROBLEM:
+
+- notes are indexed by created date at Firebase;
+
+SOLUTION:
+
+- create an index for said notes query?? No.
+- This works:
+  <code>
+  const getNotes = async () => {
+  const data = await getDocs(q)
+  /_ console.log(currentUser.uid) _/
+
+  const notes = data.docs.map((doc) => ({
+  ...doc.data(),
+  id: doc.id,
+  user: currentUser.uid,
+  }))
+  /_ desc order: from newest to oldest _/
+  const sortedAsc = notes.sort(
+  (objA, objB) =>
+  Number(objA.created.seconds) - Number(objB.created.seconds)
+  )
+  setNotes(sortedAsc)
+  }</code>
+
+- This solution has been implemented to Notes and Favorites.
+
+Tinkering with MongoDB atm to avoid Firestore limitations.
+Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/
+
 ## 2022/07/24
 
 -nextjsconversion branch is live at https://kiosk-cj5y1u6xd-vbalaguera.vercel.app/
@@ -19,14 +52,6 @@ Resourceful docs:
 - fixes Notes:
   - notes where loading duplicated on live version
 - buttons with links now look better
-
-PROBLEM:
-
-- notes are indexed by created date at Firebase;
-
-SOLUTION:
-
-- create an index for said notes query??
 
 PROBLEM:
 

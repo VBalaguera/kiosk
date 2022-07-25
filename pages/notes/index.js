@@ -44,13 +44,18 @@ export default function Notes() {
   const getNotes = async () => {
     const data = await getDocs(q)
     /*       console.log(currentUser.uid) */
-    setNotes(
-      data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-        user: currentUser.uid,
-      }))
+
+    const notes = data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      user: currentUser.uid,
+    }))
+    /* desc order: from newest to oldest */
+    const sortedAsc = notes.sort(
+      (objA, objB) =>
+        Number(objA.created.seconds) - Number(objB.created.seconds)
     )
+    setNotes(sortedAsc)
   }
 
   /* writing notes */
