@@ -78,7 +78,7 @@ export default function PostCarMovies({ post, user, favorites }) {
               variant='link'
             >
               <a href={post.link.url} className='myLink'>
-                Read more.
+                Read more
               </a>
             </Button>
             <Button

@@ -58,7 +58,7 @@ export default function Kiosk() {
 
   return (
     <Layout>
-      <div className='d-flex justify-content-center flex-wrap flex-row mb-3'>
+      <div className='d-flex justify-content-center flex-wrap flex-row'>
         {sections.map((section, index) => (
           <Nav.Link key={index} className='px-1 py-1 '>
             <Button

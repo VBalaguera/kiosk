@@ -40,6 +40,7 @@ SOLUTION:
   }</code>
 
 - This solution has been implemented to Notes and Favorites.
+- daily backups
 - using react-copy-to-clipboard on all PostCards, ArticleSearch and Favorite (using hooks in the last two). also: toasts!
 - fixed an error in PostCardBooks: link props were not working properly.
 - all PostCards moved to /PostCards
@@ -48,9 +49,10 @@ SOLUTION:
 - minor button style changes.
 - /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
 - ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards; done.
-- navbar fixed at top
+- navbar fixed at top; fixed responsive positioning errors;
 - placeholder of Favorites from placeholder='Would you like to add some comments?' to placeholder='Your thoughts?'
 - major code cleaning
+- updated README.md!
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/

@@ -137,7 +137,7 @@ export default function ArticleSearch() {
                   variant='btn btn-outline-light'
                 >
                   <a href={post.web_url} className='link'>
-                    read more
+                    Read more
                   </a>
                 </Button>
                 <Button

@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap'
 
 export default function Layout({ children }) {
   return (
-    <div className='App bg-dark'>
+    <div className='App bg-dark  mt-5'>
       <Container className='pb-5' style={{ minHeight: '95vh' }}>
         <NavBar />
         <main>
