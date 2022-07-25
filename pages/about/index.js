@@ -20,9 +20,9 @@ export default function About() {
                 >
                   Víctor Balaguera
                 </a>
-                . At this moment, uses the New York Times API only as source of
-                external content. Create your account. Read the news. Add your
-                favorites. Share them. Take notes.
+                . At this moment, uses the New York Times API only as a source
+                of external content. Create your account. Read the news. Add
+                your favorites. Share them. Take notes.
               </p>
               <p>More to come.</p>
             </Card.Text>
