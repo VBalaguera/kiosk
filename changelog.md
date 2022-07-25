@@ -53,6 +53,7 @@ SOLUTION:
 - placeholder of Favorites from placeholder='Would you like to add some comments?' to placeholder='Your thoughts?'
 - major code cleaning
 - updated README.md!
+- updated package.json
 - and updated changelog.md
 
 ## 2022/07/24

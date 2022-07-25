@@ -1,6 +1,13 @@
 {
   "name": "kiosk",
-  "version": "0.1.0",
+  "version": "2.0.0",
+  "author": "Víctor Balaguera",
+  "description": "A simple news API project. At this moment, uses the New York Times API only as source of external content.",
+  "homepage": "https://kiosk-vbalaguera.vercel.app/",
+  "bugs": {
+    "url": "https://github.com/VBalaguera/kiosk/issues",
+    "email": "victorbalaguera@protonmail.com"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
