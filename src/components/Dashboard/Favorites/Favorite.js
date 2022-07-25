@@ -164,7 +164,7 @@ export default function Favorite({ favorite, index }) {
               <Form.Control
                 type='text'
                 className='outline-dark text-light bg-dark '
-                placeholder='Would you like to add some comments?'
+                placeholder='Your thoughts?'
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
               />

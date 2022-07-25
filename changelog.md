@@ -48,6 +48,8 @@ SOLUTION:
 - minor button style changes.
 - /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
 - ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards; done.
+- navbar fixed at top
+- placeholder of Favorites from placeholder='Would you like to add some comments?' to placeholder='Your thoughts?'
 - major code cleaning
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
