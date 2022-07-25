@@ -41,6 +41,7 @@ SOLUTION:
 
 - This solution has been implemented to Notes and Favorites.
 - daily backups
+- created pages forgot-password, signup and update-profile
 - using react-copy-to-clipboard on all PostCards, ArticleSearch and Favorite (using hooks in the last two). also: toasts!
 - fixed an error in PostCardBooks: link props were not working properly.
 - all PostCards moved to /PostCards
