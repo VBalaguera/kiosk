@@ -46,8 +46,8 @@ export default function PostCard({ post, user, favorites }) {
     (favorite) => favorite.title === post.title
   )
 
-  const handleCopyLink = async () => {
-    await setCopied(true)
+  const handleCopyLink = () => {
+    setCopied(true)
     toast('link copied to clipboard')
   }
 
@@ -95,7 +95,7 @@ export default function PostCard({ post, user, favorites }) {
             <Button
               className='btn read-more'
               variant='btn btn-outline-light mx-2'
-              disabled={favoritedItem.length > 0 || !setClicked}
+              disabled={favoritedItem.length > 0 || clicked}
             >
               <span onClick={() => saveFavorite(post, user)}>
                 Save as favorite

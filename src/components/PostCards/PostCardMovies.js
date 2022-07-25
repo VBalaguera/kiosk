@@ -8,9 +8,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import moment from 'moment'
 
 import { ToastContainer, toast } from 'react-toastify'
-export default function PostCard({ post, user, favorites }) {
+export default function PostCarMovies({ post, user, favorites }) {
   const [clicked, setClicked] = useState(false)
-  const [active, setActive] = useState(false)
   const [copied, setCopied] = useState(false)
   const favoritesCollectionRef = collection(
     db,
@@ -35,18 +34,18 @@ export default function PostCard({ post, user, favorites }) {
       })
 
       toast('favorite added')
-      setActive(true)
+      setClicked(true)
     } catch (err) {
       toast(err)
     }
   }
 
-  let favoritedItem = this.props.favorites.filter(
+  let favoritedItem = favorites.filter(
     (favorite) => favorite.title === post.display_title
   )
 
-  const handleCopyLink = async () => {
-    await this.setState({ copied: true })
+  const handleCopyLink = () => {
+    setCopied(true)
     toast('link copied to clipboard')
   }
 
@@ -54,24 +53,23 @@ export default function PostCard({ post, user, favorites }) {
     <>
       <Card
         className='most-populars__card  card bg-dark text-light border-light'
-        key={this.props.post.id}
+        key={post.id}
       >
         <Card.Body>
           {' '}
-          <div className='title-card'>{this.props.post.display_title}</div>
-          {this.props.post.multimedia ? (
+          <div className='title-card'>{post.display_title}</div>
+          {post.multimedia ? (
             <Card.Img
               className='img-movies'
-              src={this.props.post.multimedia.src}
-              alt={this.props.post.headline}
+              src={post.multimedia.src}
+              alt={post.headline}
             />
           ) : null}
-          <div className='subtitle'>{this.props.post.summary_short}</div>
+          <div className='subtitle'>{post.summary_short}</div>
           <Card.Text className='author-date'>
-            <span>By {this.props.post.byline}.</span>
+            <span>By {post.byline}.</span>
             <span>
-              Published:{' '}
-              {moment(this.props.post.published_date).format('MMMM DD, YYYY')}
+              Published: {moment(post.published_date).format('MMMM DD, YYYY')}
             </span>
           </Card.Text>
           <div className='d-flex align-items-center justify-content-center'>
@@ -79,17 +77,16 @@ export default function PostCard({ post, user, favorites }) {
               className='btn read-more btn-outline-light mx-2'
               variant='link'
             >
-              <a href={this.props.post.link.url} className='myLink'>
-                Read more
+              <a href={post.link.url} className='myLink'>
+                Read more.
               </a>
-              .
             </Button>
             <Button
               className='btn read-more'
               variant='btn btn-outline-light mx-2'
-              disabled={favoritedItem.length > 0 || !this.state.active}
+              disabled={favoritedItem.length > 0 || clicked}
             >
-              <span onClick={() => saveFavorite(this.props)}>
+              <span onClick={() => saveFavorite(post, user)}>
                 Save as favorite
               </span>
               .
@@ -98,11 +95,8 @@ export default function PostCard({ post, user, favorites }) {
         </Card.Body>
 
         <Card.Footer className='d-flex align-items-center justify-content-center'>
-          <SharingButtons url={this.props.post.link.url} />
-          <CopyToClipboard
-            text={this.props.post.link.url}
-            onCopy={() => handleCopyLink()}
-          >
+          <SharingButtons url={post.link.url} />
+          <CopyToClipboard text={post.link.url} onCopy={() => handleCopyLink()}>
             <img
               src='../assets/icons/clipboard.svg'
               alt='read more'

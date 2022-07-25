@@ -11,8 +11,6 @@ Resourceful docs:
 
 ## 2022/07/25
 
-- PENDING CONVERTING POSTCARDMOVIES AND POSTCARDBOOKS INTO RFC!
-
 Livetesting before merging branches!
 
 LIVETESTING NOTES:
@@ -53,7 +51,7 @@ SOLUTION:
 - minor footer and navbar style changes.
 - minor button style changes.
 - /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
-- ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards
+- ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards; done.
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/
