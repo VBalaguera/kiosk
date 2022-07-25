@@ -23,11 +23,11 @@ import WorldTopStories from '../../src/components/kiosk/nyt/TopStories/WorldTopS
 import TechnologyTopStories from '../../src/components/kiosk/nyt/TopStories/TechTopStories'
 
 /* miscellaneous */
-import About from '../about'
+import Welcome from '../../src/components/Welcome/Welcome'
 
 export default function Kiosk() {
   const { currentUser } = useAuth()
-  const [mySection, setMySection] = useState(true)
+  const [mySection, setMySection] = useState(undefined)
 
   const router = useRouter()
   useEffect(() => {
@@ -75,6 +75,7 @@ export default function Kiosk() {
       <div className='index'>
         {/* <WeatherWidget /> */}
         <h1 className='section-title text-light '>{mySection}</h1>
+        {mySection === undefined && <Welcome />}
 
         {mySection === 'most popular' && <MostPopular />}
         {mySection === 'art' && <ArtTopStories />}
@@ -87,7 +88,6 @@ export default function Kiosk() {
         {mySection === 'us' && <UsTopStories />}
         {mySection === 'world' && <WorldTopStories />}
         {mySection === 'tech' && <TechnologyTopStories />}
-        {mySection === 'about' && <About />}
         {mySection === 'search' && <ArticleSearch />}
       </div>
     </Layout>

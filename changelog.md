@@ -43,6 +43,7 @@ SOLUTION:
 - all PostCards moved to /PostCards
 - Notes are now properly shown.
 - minor footer and navbar style changes.
+- /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/
