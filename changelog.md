@@ -42,6 +42,7 @@ SOLUTION:
 - fixed an error in PostCardBooks: link props were not working properly.
 - all PostCards moved to /PostCards
 - Notes are now properly shown.
+- minor footer and navbar style changes.
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/

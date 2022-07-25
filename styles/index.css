@@ -222,9 +222,11 @@ a:hover,
   transition: all 0.2s ease-in-out;
 }
 
-.navbar-link {
+.navbar-link,
+.myLink {
   margin: 0 0.4rem;
   letter-spacing: 0.1rem;
+  font-weight: bolder;
 }
 
 .link:hover,
@@ -333,6 +335,11 @@ a:hover,
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-right span {
+  text-style: italic !important;
 }
 
 /* responsive */
