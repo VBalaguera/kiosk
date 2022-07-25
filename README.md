@@ -1,6 +1,6 @@
 # Kiosk
 
-A simple news API project. At this moment, uses the New York Times API only as source of
+A simple news API project. At this moment, uses the New York Times API only as a source of
 external content.
 Implement functions such as:
 
