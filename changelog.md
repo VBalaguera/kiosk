@@ -55,6 +55,7 @@ SOLUTION:
 - major code cleaning
 - updated README.md!
 - updated package.json
+- updated Head and NextSeo
 - and updated changelog.md
 
 ## 2022/07/24
