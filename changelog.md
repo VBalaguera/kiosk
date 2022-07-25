@@ -38,6 +38,10 @@ SOLUTION:
   }</code>
 
 - This solution has been implemented to Notes and Favorites.
+- using react-copy-to-clipboard on all PostCards, ArticleSearch and Favorite (using hooks in the last two).
+- fixed an error in PostCardBooks: link props were not working properly.
+- all PostCards moved to /PostCards
+- Notes are now properly shown.
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/

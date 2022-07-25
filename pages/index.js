@@ -1,22 +1,22 @@
 import Login from '../src/components/Forms/Login/Login'
 
-import clientPromise from '../lib/mongodb'
+/* import clientPromise from '../lib/mongodb' */
 
 import Layout from '../src/components/layout'
-export default function Home({ isConnected }) {
+export default function Home() {
   return (
     <Layout>
-      {isConnected ? (
+      {/*       {isConnected ? (
         <h1 className='subtitle text-light'>Welcome</h1>
       ) : (
         <h1 className='subtitle text-light'>Welcome!</h1>
-      )}
+      )} */}
       <Login />
     </Layout>
   )
 }
 
-export async function getServerSideProps(context) {
+/* export async function getServerSideProps(context) {
   try {
     await clientPromise
     // `await clientPromise` will use the default database passed in the MONGODB_URI
@@ -37,4 +37,4 @@ export async function getServerSideProps(context) {
       props: { isConnected: false },
     }
   }
-}
+} */

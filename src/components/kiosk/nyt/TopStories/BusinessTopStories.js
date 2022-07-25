@@ -8,7 +8,7 @@ import { useAuth } from '../../../../context/AuthContext'
 import { getDocs, collection, where, query } from 'firebase/firestore'
 import { db } from '../../../../firebase'
 
-import PostCard from '../../../PostCard'
+import PostCard from '../../../PostCards/PostCard'
 
 import data from '../../../../data/nytBusiness.json'
 

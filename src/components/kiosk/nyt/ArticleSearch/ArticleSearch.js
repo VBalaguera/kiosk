@@ -7,10 +7,12 @@ import moment from 'moment'
 import data from '../../../../data/nytMostPopular.json'
 
 import SharingButtons from '../../../Sharing/SharingButtons'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 export default function ArticleSearch() {
   const [wordEntered, setWordEntered] = useState('')
   const [posts, setPosts] = useState([])
+  const [copied, setCopied] = useState(false)
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -97,8 +99,18 @@ export default function ArticleSearch() {
                   </a>
                 </Button>
               </Card.Body>
-              <Card.Footer>
+              <Card.Footer className='d-flex align-items-center justify-content-center'>
                 <SharingButtons url={post.web_url} />
+                <CopyToClipboard
+                  text={post.web_url}
+                  onCopy={() => setCopied(true)}
+                >
+                  <img
+                    src='../assets/icons/clipboard.svg'
+                    alt='read more'
+                    className='sharing-icon'
+                  />
+                </CopyToClipboard>
               </Card.Footer>
             </Card>
           </div>

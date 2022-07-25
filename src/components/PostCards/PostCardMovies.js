@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
 /* firebase and firestore */
 import { addDoc, collection, Timestamp } from 'firebase/firestore'
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import { Card, Button } from 'react-bootstrap'
-import SharingButtons from './Sharing/SharingButtons'
+import SharingButtons from '../Sharing/SharingButtons'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import moment from 'moment'
 
 import { ToastContainer, toast } from 'react-toastify'
-
-export class PostCardBooks extends Component {
+export class PostCardMovies extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      author: this.props.post.author,
-      publisher: this.props.post.publisher,
+      author: this.props.post.byline,
+      date: this.props.post.publication_date,
       createdAt: Timestamp.now(),
-      description: this.props.post.description,
-      section: 'books',
-      title: this.props.post.title,
-      url: this.props.post.amazon_product_url,
+      description: this.props.post.summary_short,
+      section: 'movies',
+      title: this.props.post.display_title,
+      url: this.props.post.link.url,
       user: this.props.user.multiFactor.user.uid,
       source: 'New York Times',
       favorites: this.props.favorites,
       active: true,
+      copied: false,
     }
   }
 
@@ -36,33 +38,30 @@ export class PostCardBooks extends Component {
     const saveFavorite = async (props) => {
       try {
         await addDoc(favoritesCollectionRef, {
-          author: this.props.post.author,
-          publisher: this.props.post.publisher,
+          author: this.props.post.byline,
+          date: this.props.post.publication_date,
           createdAt: Timestamp.now(),
-          description: this.props.post.description,
-          section: 'books',
-          title: this.props.post.title,
-          url: this.props.post.amazon_product_url,
+          description: this.props.post.summary_short,
+          section: 'movies',
+          title: this.props.post.display_title,
+          url: this.props.post.link.url,
           user: this.props.user.multiFactor.user.uid,
           source: 'New York Times',
         })
-        /* console.log('favorite added')
-        console.log(this.props.post.byline) */
+
         toast('favorite added')
         this.setState({
           active: false,
         })
       } catch (err) {
-        /* console.log(err) */
         toast(err)
       }
     }
+
     let favoritedItem = this.props.favorites.filter(
-      (favorite) => favorite.title === this.props.post.title
+      (favorite) => favorite.title === this.props.post.display_title
     )
-    console.log(this.props.post.title)
-    console.log(favoritedItem)
-    /* console.log(this.props.user.multiFactor.user.uid) */
+
     return (
       <>
         <Card
@@ -71,33 +70,29 @@ export class PostCardBooks extends Component {
         >
           <Card.Body>
             {' '}
-            <div className='title-card'>{this.props.post.title}</div>
+            <div className='title-card'>{this.props.post.display_title}</div>
             {this.props.post.multimedia ? (
               <Card.Img
-                className='img'
-                src={this.props.post.multimedia[0].url}
-                alt={this.props.post.caption}
+                className='img-movies'
+                src={this.props.post.multimedia.src}
+                alt={this.props.post.headline}
               />
             ) : null}
-            {this.props.post.book_image ? (
-              <Card.Img
-                className='img book-img'
-                src={this.props.post.book_image}
-                alt={this.props.post.description}
-              />
-            ) : null}
-            <div className='subtitle'>{this.props.post.description}</div>
+            <div className='subtitle'>{this.props.post.summary_short}</div>
             <Card.Text className='author-date'>
-              <span>By {this.props.post.author}.</span>
-              <span>Publisher: {this.props.post.publisher}</span>
+              <span>By {this.props.post.byline}.</span>
+              <span>
+                Published:{' '}
+                {moment(this.props.post.published_date).format('MMMM DD, YYYY')}
+              </span>
             </Card.Text>
             <div className='d-flex align-items-center justify-content-center'>
               <Button
-                className='btn read-more'
-                variant='btn btn-outline-light mx-2'
+                className='btn read-more btn-outline-light mx-2'
+                variant='link'
               >
-                <a href={this.props.post.amazon_product_url} className='myLink'>
-                  Amazon link
+                <a href={this.props.post.link.url} className='myLink'>
+                  Read more
                 </a>
                 .
               </Button>
@@ -114,8 +109,18 @@ export class PostCardBooks extends Component {
             </div>
           </Card.Body>
 
-          <Card.Footer>
-            <SharingButtons url={this.props.post.url} />
+          <Card.Footer className='d-flex align-items-center justify-content-center'>
+            <SharingButtons url={this.props.post.link.url} />
+            <CopyToClipboard
+              text={this.props.post.link.url}
+              onCopy={() => this.setState({ copied: true })}
+            >
+              <img
+                src='../assets/icons/clipboard.svg'
+                alt='read more'
+                className='sharing-icon'
+              />
+            </CopyToClipboard>
           </Card.Footer>
           <ToastContainer
             position='bottom-right'
@@ -136,4 +141,4 @@ export class PostCardBooks extends Component {
   }
 }
 
-export default PostCardBooks
+export default PostCardMovies

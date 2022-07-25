@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
-import PostCard from '../../../PostCard'
+import PostCard from '../../../PostCards/PostCard'
 import { useAuth } from '../../../../context/AuthContext'
 
 import { getDocs, collection, where, query } from 'firebase/firestore'

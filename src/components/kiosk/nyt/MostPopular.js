@@ -6,7 +6,7 @@ import { useAuth } from '../../../context/AuthContext'
 import { getDocs, collection, where, query } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
-import PostCard from '../../PostCard'
+import PostCard from '../../PostCards/PostCard'
 
 import data from '../../../data/nytMostPopular.json'
 const nytMostPopularUrl = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`

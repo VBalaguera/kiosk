@@ -6,6 +6,9 @@ import { db } from '../../../firebase'
 import { useAuth } from '../../../context/AuthContext'
 import moment from 'moment'
 
+import SharingButtons from '../../Sharing/SharingButtons'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 import Modal from 'react-modal'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -26,6 +29,7 @@ const customStyles = {
 export default function Favorite({ favorite, index }) {
   /* modal */
   const [modal, setModal] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   function openModal() {
     setModal(true)
@@ -166,6 +170,16 @@ export default function Favorite({ favorite, index }) {
             </div>
           </Form>
         </Card.Body>
+        <Card.Footer className='d-flex align-items-center justify-content-center'>
+          <SharingButtons url={favorite.url} />
+          <CopyToClipboard text={favorite.url} onCopy={() => setCopied(true)}>
+            <img
+              src='../assets/icons/clipboard.svg'
+              alt='read more'
+              className='sharing-icon'
+            />
+          </CopyToClipboard>
+        </Card.Footer>
       </Card>
       <ToastContainer
         position='bottom-right'

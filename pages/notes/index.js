@@ -97,14 +97,14 @@ export default function Notes() {
               <>
                 return (
                 <>
-                  {notes.map((note, index) => (
-                    /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
-                    <>
-                      <div className='grid-example'>
+                  <div className='grid-example'>
+                    {notes.map((note, index) => (
+                      /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
+                      <>
                         <Note note={note} index={index} />
-                      </div>
-                    </>
-                  ))}
+                      </>
+                    ))}
+                  </div>
                 </>
                 )
               </>

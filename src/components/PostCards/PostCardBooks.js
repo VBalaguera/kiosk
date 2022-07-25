@@ -1,36 +1,33 @@
 import React, { Component } from 'react'
 /* firebase and firestore */
-import { addDoc, collection, Timestamp, query, where } from 'firebase/firestore'
-import { db } from '../firebase'
+import { addDoc, collection, Timestamp } from 'firebase/firestore'
+import { db } from '../../firebase'
 import { Card, Button } from 'react-bootstrap'
-import SharingButtons from './Sharing/SharingButtons'
-import moment from 'moment'
+import SharingButtons from '../Sharing/SharingButtons'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
-/* toast */
 import { ToastContainer, toast } from 'react-toastify'
 
-export class PostCard extends Component {
+export class PostCardBooks extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      author: this.props.post.byline,
-      date: this.props.post.published_date,
+      author: this.props.post.author,
+      publisher: this.props.post.publisher,
       createdAt: Timestamp.now(),
-      description: this.props.post.abstract,
-      section: this.props.post.section,
+      description: this.props.post.description,
+      section: 'books',
       title: this.props.post.title,
-      url: this.props.post.url,
+      url: this.props.post.amazon_product_url,
       user: this.props.user.multiFactor.user.uid,
       source: 'New York Times',
-      comments: '',
       favorites: this.props.favorites,
       active: true,
+      copied: false,
     }
   }
 
   render() {
-    /* console.log(this.props)
-    console.log(this.props.user.multiFactor.user) */
     const favoritesCollectionRef = collection(
       db,
       'favorites',
@@ -38,41 +35,31 @@ export class PostCard extends Component {
       /* 'New York Times' */
       this.props.user.multiFactor.user.uid
     )
-    const saveFavorite = async () => {
+    const saveFavorite = async (props) => {
       try {
         await addDoc(favoritesCollectionRef, {
-          author: this.props.post.byline,
-          date: this.props.post.published_date,
+          author: this.props.post.author,
+          publisher: this.props.post.publisher,
           createdAt: Timestamp.now(),
-          description: this.props.post.abstract,
-          section: this.props.post.section,
+          description: this.props.post.description,
+          section: 'books',
           title: this.props.post.title,
-          url: this.props.post.url,
+          url: this.props.post.amazon_product_url,
           user: this.props.user.multiFactor.user.uid,
           source: 'New York Times',
-          comments: '',
         })
-        /* console.log('favorite added') */
+
         toast('favorite added')
         this.setState({
           active: false,
         })
-        /* console.log(this.props.post.byline) */
       } catch (err) {
-        /* console.log(err) */
         toast(err)
       }
     }
-
     let favoritedItem = this.props.favorites.filter(
-      (favorite) => favorite.title == this.props.post.title
+      (favorite) => favorite.title === this.props.post.title
     )
-    /*     console.log(favoritedItem)
-    if (favoritedItem.length > 0) {
-      console.log('yes')
-    } else {
-      console.log('no')
-    } */
 
     return (
       <>
@@ -97,25 +84,21 @@ export class PostCard extends Component {
                 alt={this.props.post.description}
               />
             ) : null}
-            <div className='subtitle'>{this.props.post.abstract}</div>
+            <div className='subtitle'>{this.props.post.description}</div>
             <Card.Text className='author-date'>
-              <span>{this.props.post.byline}</span>{' '}
-              <span>
-                Published:{' '}
-                {moment(this.props.post.published_date).format('MMMM DD, YYYY')}
-              </span>
+              <span>By {this.props.post.author}.</span>
+              <span>Publisher: {this.props.post.publisher}</span>
             </Card.Text>
             <div className='d-flex align-items-center justify-content-center'>
               <Button
                 className='btn read-more'
                 variant='btn btn-outline-light mx-2'
               >
-                <a href={this.props.post.url} className='myLink'>
-                  Read more
+                <a href={this.props.post.amazon_product_url} className='myLink'>
+                  Amazon link
                 </a>
                 .
               </Button>
-
               <Button
                 className='btn read-more'
                 variant='btn btn-outline-light mx-2'
@@ -129,8 +112,18 @@ export class PostCard extends Component {
             </div>
           </Card.Body>
 
-          <Card.Footer>
-            <SharingButtons url={this.props.post.url} />
+          <Card.Footer className='d-flex align-items-center justify-content-center'>
+            <SharingButtons url={this.props.post.amazon_product_url} />
+            <CopyToClipboard
+              text={this.props.post.amazon_product_url}
+              onCopy={() => this.setState({ copied: true })}
+            >
+              <img
+                src='../assets/icons/clipboard.svg'
+                alt='read more'
+                className='sharing-icon'
+              />
+            </CopyToClipboard>
           </Card.Footer>
           <ToastContainer
             position='bottom-right'
@@ -151,4 +144,4 @@ export class PostCard extends Component {
   }
 }
 
-export default PostCard
+export default PostCardBooks
