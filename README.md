@@ -13,4 +13,4 @@ Implement functions such as:
   - users can create notes in their dashboard page.
 - daily backups of all main news sections by using python (in case the API has reached its maximum number of daily calls, search will only display a random news section)
 
-More to come.
+Created by [Víctor Balaguera](http://vbalaguera.com). More to come.
