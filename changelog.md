@@ -11,6 +11,14 @@ Resourceful docs:
 
 ## 2022/07/25
 
+- PENDING CONVERTING POSTCARDMOVIES AND POSTCARDBOOKS INTO RFC!
+
+Livetesting before merging branches!
+
+LIVETESTING NOTES:
+
+-
+
 PROBLEM:
 
 - notes are indexed by created date at Firebase;
@@ -38,12 +46,14 @@ SOLUTION:
   }</code>
 
 - This solution has been implemented to Notes and Favorites.
-- using react-copy-to-clipboard on all PostCards, ArticleSearch and Favorite (using hooks in the last two).
+- using react-copy-to-clipboard on all PostCards, ArticleSearch and Favorite (using hooks in the last two). also: toasts!
 - fixed an error in PostCardBooks: link props were not working properly.
 - all PostCards moved to /PostCards
 - Notes are now properly shown.
 - minor footer and navbar style changes.
+- minor button style changes.
 - /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
+- ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/

@@ -61,6 +61,11 @@ export class PostCardBooks extends Component {
       (favorite) => favorite.title === this.props.post.title
     )
 
+    const handleCopyLink = async () => {
+      await this.setState({ copied: true })
+      toast('link copied to clipboard')
+    }
+
     return (
       <>
         <Card
@@ -116,7 +121,7 @@ export class PostCardBooks extends Component {
             <SharingButtons url={this.props.post.amazon_product_url} />
             <CopyToClipboard
               text={this.props.post.amazon_product_url}
-              onCopy={() => this.setState({ copied: true })}
+              onCopy={() => handleCopyLink()}
             >
               <img
                 src='../assets/icons/clipboard.svg'

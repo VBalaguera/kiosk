@@ -76,6 +76,11 @@ export default function Favorite({ favorite, index }) {
     }
   }
 
+  const handleCopyLink = () => {
+    setCopied(true)
+    toast('link copied to clipboard')
+  }
+
   return (
     <>
       <Card key={index} className='card bg-dark text-light border-light'>
@@ -102,8 +107,11 @@ export default function Favorite({ favorite, index }) {
                 <span>Section: {favorite.section}.</span>
               </div>
               <div className='favorite-card-bottom-right'>
-                <Button variant='link' className='favorites-btn me-2'>
-                  <a href={favorite.url} className='myLink text-light'>
+                <Button
+                  variant='link'
+                  className='favorites-btn me-2 btn-outline-light'
+                >
+                  <a href={favorite.url} className='myLink text-light m-0'>
                     Read more
                   </a>
                 </Button>
@@ -162,7 +170,7 @@ export default function Favorite({ favorite, index }) {
               />
               <Button
                 variant='secondary'
-                className='favorites-btn'
+                className='favorites-btn ms-1'
                 type='submit'
               >
                 submit
@@ -172,7 +180,7 @@ export default function Favorite({ favorite, index }) {
         </Card.Body>
         <Card.Footer className='d-flex align-items-center justify-content-center'>
           <SharingButtons url={favorite.url} />
-          <CopyToClipboard text={favorite.url} onCopy={() => setCopied(true)}>
+          <CopyToClipboard text={favorite.url} onCopy={() => handleCopyLink()}>
             <img
               src='../assets/icons/clipboard.svg'
               alt='read more'

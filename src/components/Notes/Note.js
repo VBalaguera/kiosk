@@ -108,14 +108,14 @@ export default function Note({ note, index }) {
           <div>
             <Button
               variant='secondary'
-              className='delete-btn mx-2'
+              className='delete-btn ms-1'
               onClick={openEditModal}
             >
               Edit note.
             </Button>
             <Button
               variant='warning'
-              className='favorites-btn mx-2'
+              className='favorites-btn ms-1'
               onClick={openDeleteModal}
             >
               Delete.

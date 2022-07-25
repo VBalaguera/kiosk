@@ -350,15 +350,11 @@ a:hover,
   .nav-link {
     padding: 0.1rem 0.5rem;
   }
-  .navbar-link {
+  .navbar-link,
+  .myLink {
     margin: 0 0 0 0.5rem;
     font-size: 0.8rem;
   }
-
-  .navbar-link .myLink {
-    margin: 0 0 0 0.1rem;
-  }
-
   /* kiosk */
   .kiosk,
   .favorites-btn,
