@@ -53,9 +53,7 @@ SOLUTION:
 - placeholder of Favorites from placeholder='Would you like to add some comments?' to placeholder='Your thoughts?'
 - major code cleaning
 - updated README.md!
-
-Tinkering with MongoDB atm to avoid Firestore limitations.
-Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/
+- and updated changelog.md
 
 ## 2022/07/24
 

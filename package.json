@@ -13,7 +13,6 @@
     "firebase": "^9.9.0",
     "json-server": "^0.17.0",
     "moment": "^2.29.3",
-    "mongodb": "^4.8.0",
     "next": "latest",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
