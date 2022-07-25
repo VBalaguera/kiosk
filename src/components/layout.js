@@ -11,7 +11,7 @@ export default function Layout({ children }) {
   return (
     <div className='App bg-dark  mt-5'>
       <Head>
-        <title>Víctor Balaguera's Portfolio</title>
+        <title>kiosk</title>
         <meta charSet='utf-8' />
         <meta
           name='keywords'
