@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify'
 
 export default function SignUp() {
-  const displayNameRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
@@ -25,18 +24,12 @@ export default function SignUp() {
     }
 
     try {
-      /*       setError('') */
       setLoading(true)
-      await signup(
-        emailRef.current.value,
-        passwordRef.current.value,
-        displayNameRef.current.value
-      )
-      /* console.log('account created!') */
+      await signup(emailRef.current.value, passwordRef.current.value)
+
       toast('account created!')
       router.push('/kiosk')
     } catch {
-      /* setError('Error while creating an account') */
       toast('Error while creating an account')
     }
     setLoading(false)
@@ -55,10 +48,6 @@ export default function SignUp() {
           {/* firebase uses localstorage; also an initial loading state */}
 
           <Form onSubmit={handleSubmit}>
-            <Form.Group id='displayName' className='m-2'>
-              <Form.Label>Display name</Form.Label>
-              <Form.Control type='displayName' ref={displayNameRef} required />
-            </Form.Group>
             <Form.Group id='email' className='m-2'>
               <Form.Label>Email address</Form.Label>
               <Form.Control type='email' ref={emailRef} required />

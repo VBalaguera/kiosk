@@ -42,9 +42,6 @@ export default function Dashboard() {
     }
   }
 
-  /* console.log('favoritesSection', favoritesSection)
-  console.log('allSections', allSections) */
-
   return (
     <>
       <Layout>

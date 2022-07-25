@@ -31,7 +31,7 @@ export default function MovieReviews() {
 
   const getFavorites = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
+
     setFavorites(
       data.docs.map((doc) => ({
         ...doc.data(),
@@ -46,11 +46,9 @@ export default function MovieReviews() {
     axios
       .get(nytMovieReviewsUrl)
       .then((response) => {
-        /* console.log(response.data.results) */
         setReviews(response.data.results)
       })
       .catch((err) => {
-        /*  console.log(err) */
         setReviews(data)
       })
 

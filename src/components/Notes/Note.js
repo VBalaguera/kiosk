@@ -66,11 +66,9 @@ export default function Note({ note, index }) {
         content: content,
       })
 
-      /* console.log(favorite) */
       window.location.reload(false)
       toast('updated')
     } catch (err) {
-      /* console.log(err) */
       toast(err)
     }
   }
@@ -79,14 +77,11 @@ export default function Note({ note, index }) {
     try {
       setEditModal(false)
       setTimeout(await deleteDoc(doc(notesCollectionRef, id)), 2000)
-      console.log(
-        `Entire Document with id ${id} has been deleted successfully.`
-      )
+
       toast(`Document with id ${id} has been deleted successfully.`)
 
       window.location.reload(false)
     } catch (err) {
-      console.log(err)
       toast(err)
     }
   }

@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Card, Form, Button, Alert } from 'react-bootstrap'
+import { Card, Form, Button } from 'react-bootstrap'
 import { useAuth } from '../../../context/AuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Modal from 'react-modal'
 
 import { ToastContainer, toast } from 'react-toastify'
 
@@ -29,14 +28,12 @@ export default function Login() {
     e.preventDefault()
 
     try {
-      /* setError('') */
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      /* console.log('logged in!') */
+
       toast('welcome back!')
       router.push('/kiosk')
     } catch {
-      /* setError('Error while login') */
       toast('Error while login')
     }
     setLoading(false)

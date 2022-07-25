@@ -51,12 +51,10 @@ export default function Favorite({ favorite, index }) {
     try {
       setModal(false)
       setTimeout(await deleteDoc(doc(favoritesCollectionRef, id)), 2000)
-      console.log('Entire Document has been deleted successfully.')
       toast(`Document with id ${id} has been deleted successfully.`)
 
       window.location.reload(false)
     } catch (err) {
-      console.log(err)
       toast(err)
     }
   }
@@ -67,11 +65,9 @@ export default function Favorite({ favorite, index }) {
         comments: comment,
       })
 
-      /* console.log(favorite) */
       window.location.reload(false)
       toast('updated')
     } catch (err) {
-      /* console.log(err) */
       toast(err)
     }
   }

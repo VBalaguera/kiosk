@@ -41,7 +41,6 @@ export default function SportsTopStories() {
     axios
       .get(nytTopStoriesUrl)
       .then((response) => {
-        console.log(response.data.results)
         setPosts(response.data.results)
       })
       .catch((err) => {

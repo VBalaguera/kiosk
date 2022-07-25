@@ -44,7 +44,6 @@ export default function TechnologyTopStories() {
       .get(nytTopStoriesUrl)
       .then((response) => {
         setPosts(response.data.results)
-        console.log(response.data.results)
       })
       .catch((err) => {
         setPosts(data)

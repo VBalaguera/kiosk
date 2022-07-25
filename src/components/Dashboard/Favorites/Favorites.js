@@ -71,8 +71,6 @@ export default function Favorites() {
     getFavorites()
   }, [])
 
-  console.log(favorites)
-
   return (
     <>
       <div className='dashboard bg-dark text-light border-light'>

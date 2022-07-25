@@ -69,9 +69,7 @@ export default function Notes() {
       window.location.reload(false)
       toast('note created')
     } catch (err) {
-      /* console.log(err) */
       toast(err)
-      console.log(err)
     }
   }
 

@@ -34,11 +34,9 @@ export default function ArticleSearch() {
         `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
       )
       .then((response) => {
-        /* console.log(response.data.response.docs) */
         setPosts(response.data.response.docs)
       })
       .catch((err) => {
-        /* console.log(err) */
         setPosts(data)
       })
   }
