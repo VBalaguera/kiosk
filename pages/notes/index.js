@@ -1,23 +1,18 @@
 import { useState, useEffect } from 'react'
-import { Card, Button, Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 
 import {
-  doc,
   addDoc,
   getDocs,
-  deleteDoc,
   query,
   collection,
-  updateDoc,
   Timestamp,
   where,
 } from 'firebase/firestore'
-import { db } from '../../firebase'
-import { useAuth } from '../../context/AuthContext'
+import { db } from '../../src/firebase'
+import { useAuth } from '../../src/context/AuthContext'
 
-import Note from '../Notes/Note'
-
-import moment from 'moment'
+import Note from '../../src/components/Notes/Note'
 
 import { ToastContainer, toast } from 'react-toastify'
 
@@ -41,18 +36,21 @@ export default function Notes() {
     notesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getNotes = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
-    setNotes(
-      data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-        user: currentUser.uid,
-      }))
+
+    const notes = data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      user: currentUser.uid,
+    }))
+    /* desc order: from newest to oldest */
+    const sortedAsc = notes.sort(
+      (objA, objB) =>
+        Number(objA.created.seconds) - Number(objB.created.seconds)
     )
+    setNotes(sortedAsc)
   }
 
   /* writing notes */
@@ -68,20 +66,15 @@ export default function Notes() {
         user: currentUser.uid,
       })
 
-      /* console.log(favorite) */
-      /* TOOD: find alternatives! */
       window.location.reload(false)
       toast('note created')
     } catch (err) {
-      /* console.log(err) */
       toast(err)
-      console.log(err)
     }
   }
 
   useEffect(() => {
     getNotes()
-    console.log(notes)
   }, [])
 
   return (
@@ -93,21 +86,17 @@ export default function Notes() {
           <>
             {notes.length > 0 ? (
               <>
-                {notes.map((favorite, index) => {
-                  /* console.log(favorite) */
-                  return (
-                    <>
-                      {notes.map((note, index) => (
-                        /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
-                        <>
-                          <div className='grid-example'>
-                            <Note note={note} index={index} />
-                          </div>
-                        </>
-                      ))}
-                    </>
-                  )
-                })}
+                return (
+                <>
+                  <div className='grid-example'>
+                    {notes.map((note, index) => (
+                      <>
+                        <Note note={note} index={index} />
+                      </>
+                    ))}
+                  </div>
+                </>
+                )
               </>
             ) : (
               <div className='mt-4'>

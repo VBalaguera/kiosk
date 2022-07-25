@@ -77,15 +77,14 @@ h1 {
 
 a,
 .myLink {
-  color: gold;
-  text-decoration: none;
-  color: crimson;
+  text-decoration: none !important;
+  color: crimson !important;
   transition: all 0.5s ease-in-out;
 }
 
 a:hover,
 .myLink:hover {
-  color: crimson;
+  color: crimson !important;
   filter: brightness(80%);
   transition: all 0.5s ease-in-out;
 }
@@ -253,6 +252,7 @@ a:hover,
 .sharing-icon:hover {
   transition: all 0.2s ease-in-out;
   filter: brightness(70%);
+  cursor: pointer;
 }
 
 /* search bar */
@@ -332,7 +332,12 @@ a:hover,
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-right span {
+  text-style: italic !important;
 }
 
 /* responsive */
@@ -345,15 +350,11 @@ a:hover,
   .nav-link {
     padding: 0.1rem 0.5rem;
   }
-  .navbar-link {
+  .navbar-link,
+  .myLink {
     margin: 0 0 0 0.5rem;
     font-size: 0.8rem;
   }
-
-  .navbar-link .myLink {
-    margin: 0 0 0 0.1rem;
-  }
-
   /* kiosk */
   .kiosk,
   .favorites-btn,

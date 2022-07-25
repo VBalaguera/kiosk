@@ -6,6 +6,9 @@ import { db } from '../../../firebase'
 import { useAuth } from '../../../context/AuthContext'
 import moment from 'moment'
 
+import SharingButtons from '../../Sharing/SharingButtons'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 import Modal from 'react-modal'
 
 import { ToastContainer, toast } from 'react-toastify'
@@ -26,6 +29,7 @@ const customStyles = {
 export default function Favorite({ favorite, index }) {
   /* modal */
   const [modal, setModal] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   function openModal() {
     setModal(true)
@@ -47,12 +51,10 @@ export default function Favorite({ favorite, index }) {
     try {
       setModal(false)
       setTimeout(await deleteDoc(doc(favoritesCollectionRef, id)), 2000)
-      console.log('Entire Document has been deleted successfully.')
       toast(`Document with id ${id} has been deleted successfully.`)
 
       window.location.reload(false)
     } catch (err) {
-      console.log(err)
       toast(err)
     }
   }
@@ -63,13 +65,16 @@ export default function Favorite({ favorite, index }) {
         comments: comment,
       })
 
-      /* console.log(favorite) */
       window.location.reload(false)
       toast('updated')
     } catch (err) {
-      /* console.log(err) */
       toast(err)
     }
+  }
+
+  const handleCopyLink = () => {
+    setCopied(true)
+    toast('link copied to clipboard')
   }
 
   return (
@@ -98,9 +103,12 @@ export default function Favorite({ favorite, index }) {
                 <span>Section: {favorite.section}.</span>
               </div>
               <div className='favorite-card-bottom-right'>
-                <Button variant='secondary' className='favorites-btn me-2'>
-                  <a href={favorite.url} className='myLink text-light'>
-                    Read more.
+                <Button
+                  variant='link'
+                  className='favorites-btn me-2 btn-outline-light'
+                >
+                  <a href={favorite.url} className='myLink text-light m-0'>
+                    Read more
                   </a>
                 </Button>
                 <Button
@@ -108,7 +116,7 @@ export default function Favorite({ favorite, index }) {
                   className='favorites-btn'
                   onClick={openModal}
                 >
-                  Delete.
+                  Delete
                 </Button>
                 <Modal
                   isOpen={modal}
@@ -117,7 +125,7 @@ export default function Favorite({ favorite, index }) {
                   contentLabel='Warning'
                 >
                   <div className='d-flex flex-column align-items-center'>
-                    <span>Are you sure you want to delete this item</span>
+                    <span>Are you sure you want to delete this item?</span>
                     <span>This action cannot be undone.</span>
                   </div>
                   <div className='d-flex justify-content-between mt-2'>
@@ -152,13 +160,13 @@ export default function Favorite({ favorite, index }) {
               <Form.Control
                 type='text'
                 className='outline-dark text-light bg-dark '
-                placeholder='Would you like to add some comments?'
+                placeholder='Your thoughts?'
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
               />
               <Button
                 variant='secondary'
-                className='favorites-btn'
+                className='favorites-btn ms-1'
                 type='submit'
               >
                 submit
@@ -166,6 +174,16 @@ export default function Favorite({ favorite, index }) {
             </div>
           </Form>
         </Card.Body>
+        <Card.Footer className='d-flex align-items-center justify-content-center'>
+          <SharingButtons url={favorite.url} />
+          <CopyToClipboard text={favorite.url} onCopy={() => handleCopyLink()}>
+            <img
+              src='../assets/icons/clipboard.svg'
+              alt='read more'
+              className='sharing-icon'
+            />
+          </CopyToClipboard>
+        </Card.Footer>
       </Card>
       <ToastContainer
         position='bottom-right'

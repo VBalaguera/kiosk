@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { useAuth } from '../../context/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
+import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 export default function NavBar() {
   const [mySection, setMySection] = useState(true)
   /*   const [error, setError] = useState('') */
   const { currentUser, logout } = useAuth()
-  const navigate = useNavigate()
+  const router = useRouter()
   async function handleLogOut() {
     /* setError('') */
     try {
       await logout()
       toast('bye')
-      navigate('/')
+      router.push('/')
     } catch {
       toast('error while logging out')
       /* setError('error while logging out') */
@@ -21,11 +22,17 @@ export default function NavBar() {
   }
   return (
     <>
-      <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+      <Navbar
+        collapseOnSelect
+        expand='lg'
+        bg='dark'
+        variant='dark'
+        className='fixed-top'
+      >
         <Container>
           <div>
             <span className='title'>
-              <Link className='myLink' to='/'>
+              <Link className='myLink' href='/'>
                 kiosk
               </Link>
             </span>
@@ -34,30 +41,26 @@ export default function NavBar() {
             {currentUser ? (
               <>
                 <span className='link navbar-link'>
-                  <Link className='myLink' to='/dashboard'>
+                  <Link className='myLink' href='/dashboard'>
                     dashboard
                   </Link>
                 </span>
 
-                <Link
-                  className='link navbar-link '
-                  onClick={handleLogOut}
-                  to='/'
-                >
-                  <span className='myLink'>logout</span>
-                </Link>
+                <span className='myLink' onClick={handleLogOut}>
+                  logout
+                </span>
               </>
             ) : null}
             {!currentUser ? (
               <span className='link navbar-link'>
-                <Link className='myLink' to='/'>
+                <Link className='myLink' href='/'>
                   login
                 </Link>
               </span>
             ) : null}
 
             <span className='link navbar-link'>
-              <Link className='myLink' to='/about'>
+              <Link className='myLink' href='/about'>
                 about
               </Link>
             </span>

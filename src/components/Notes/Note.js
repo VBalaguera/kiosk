@@ -66,11 +66,9 @@ export default function Note({ note, index }) {
         content: content,
       })
 
-      /* console.log(favorite) */
       window.location.reload(false)
       toast('updated')
     } catch (err) {
-      /* console.log(err) */
       toast(err)
     }
   }
@@ -79,14 +77,11 @@ export default function Note({ note, index }) {
     try {
       setEditModal(false)
       setTimeout(await deleteDoc(doc(notesCollectionRef, id)), 2000)
-      console.log(
-        `Entire Document with id ${id} has been deleted successfully.`
-      )
+
       toast(`Document with id ${id} has been deleted successfully.`)
 
       window.location.reload(false)
     } catch (err) {
-      console.log(err)
       toast(err)
     }
   }
@@ -108,14 +103,14 @@ export default function Note({ note, index }) {
           <div>
             <Button
               variant='secondary'
-              className='delete-btn mx-2'
+              className='delete-btn ms-1'
               onClick={openEditModal}
             >
               Edit note.
             </Button>
             <Button
               variant='warning'
-              className='favorites-btn mx-2'
+              className='favorites-btn ms-1'
               onClick={openDeleteModal}
             >
               Delete.
@@ -189,7 +184,7 @@ export default function Note({ note, index }) {
           <Card className='card bg-dark text-light border-light'>
             <h1 className='section-title text-center'>Warning</h1>
             <div className='d-flex flex-column align-items-center'>
-              <span>Are you sure you want to delete this item</span>
+              <span>Are you sure you want to delete this item?</span>
               <span>This action cannot be undone.</span>
             </div>
             <div className='d-flex my-2  justify-content-center'>

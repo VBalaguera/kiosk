@@ -1,7 +1,181 @@
 # KIOSK
 
-Resourceful docs: https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
-https://firebase.google.com/docs/rules/basics
+Resourceful docs:
+
+- https://firebase.google.com/docs/reference/js/v8/firebase.User#delete
+  https://firebase.google.com/docs/rules/basics
+- migration from react to nextjs info: https://dev.to/seven/how-to-implement-protected-routes-in-nextjs-1m50
+- nextjs with ecommerce info: https://commercejs.com/frameworks/nextjs-ecommerce
+- nextjs with e-commerce demo: https://github.com/chec/commercejs-chopchop-demo
+- protected routes example: https://github.com/Chensokheng/next-firebase-boilerplate/blob/main/src/hook/route.js
+
+## 2022/07/25
+
+Livetesting before merging branches!
+
+PROBLEM:
+
+- notes are indexed by created date at Firebase;
+
+SOLUTION:
+
+- create an index for said notes query?? No.
+- This works:
+  <code>
+  const getNotes = async () => {
+  const data = await getDocs(q)
+  /_ console.log(currentUser.uid) _/
+
+  const notes = data.docs.map((doc) => ({
+  ...doc.data(),
+  id: doc.id,
+  user: currentUser.uid,
+  }))
+  /_ desc order: from newest to oldest _/
+  const sortedAsc = notes.sort(
+  (objA, objB) =>
+  Number(objA.created.seconds) - Number(objB.created.seconds)
+  )
+  setNotes(sortedAsc)
+  }</code>
+
+- This solution has been implemented to Notes and Favorites.
+- daily backups
+- created pages forgot-password, signup and update-profile
+- using react-copy-to-clipboard on all PostCards, ArticleSearch and Favorite (using hooks in the last two). also: toasts!
+- fixed an error in PostCardBooks: link props were not working properly.
+- all PostCards moved to /PostCards
+- Notes are now properly shown.
+- minor footer and navbar style changes.
+- minor button style changes.
+- /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
+- ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards; done.
+- navbar fixed at top; fixed responsive positioning errors;
+- placeholder of Favorites from placeholder='Would you like to add some comments?' to placeholder='Your thoughts?'
+- major code cleaning
+- updated README.md!
+- updated package.json
+- and updated changelog.md
+
+## 2022/07/24
+
+-nextjsconversion branch is live at https://kiosk-cj5y1u6xd-vbalaguera.vercel.app/
+
+- nextjs conversion is complete
+- daily backup
+- dashboard buttons styling and flex-wrapping
+- fixes Notes:
+  - notes where loading duplicated on live version
+- buttons with links now look better
+
+PROBLEM:
+
+- Save as favorite button remains not disabled after clicking.
+
+SOLUTION:
+
+<code>
+constructor(props) {
+    super(props)
+    this.state = {
+      author: this.props.post.byline,
+      date: this.props.post.published_date,
+      createdAt: Timestamp.now(),
+      description: this.props.post.abstract,
+      section: this.props.post.section,
+      title: this.props.post.title,
+      url: this.props.post.url,
+      user: this.props.user.multiFactor.user.uid,
+      source: 'New York Times',
+      comments: '',
+      favorites: this.props.favorites,
+      active: true,
+    }
+  }
+  [...]
+  const saveFavorite = async () => {
+      try {
+        await addDoc(favoritesCollectionRef, {
+          author: this.props.post.byline,
+          date: this.props.post.published_date,
+          createdAt: Timestamp.now(),
+          description: this.props.post.abstract,
+          section: this.props.post.section,
+          title: this.props.post.title,
+          url: this.props.post.url,
+          user: this.props.user.multiFactor.user.uid,
+          source: 'New York Times',
+          comments: '',
+        })
+        /* console.log('favorite added') */
+        toast('favorite added')
+        this.setState({
+          active: false,
+        })
+        /* console.log(this.props.post.byline) */
+      } catch (err) {
+        /* console.log(err) */
+        toast(err)
+      }
+    }
+
+[...]
+
+<Button
+                className='btn read-more'
+                variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0 || !this.state.active} >
+<span onClick={() => saveFavorite(this.props)}>
+Save as favorite
+</span>
+.
+</Button>
+
+</code>
+
+PROBLEM:
+
+- users can add favorites multiple times
+
+SOLUTION:
+
+On PostCard and others, add this:
+
+<code>
+    let favoritedItem = this.props.favorites.filter(
+      (favorite) => favorite.title === this.props.post.title
+    )
+    [...]
+    <Button
+                className='btn read-more'
+                variant='btn btn-outline-light mx-2'
+                disabled={favoritedItem.length > 0}
+              >
+                <span onClick={() => saveFavorite(this.props)}>
+                  Save as favorite
+                </span>
+                .
+              </Button>
+    </code>
+
+PROBLEM:
+
+- when trying to use protected routes with currentUser from firebase and useAuth;
+
+SOLUTION:
+
+const router = useRouter()
+useEffect(() => {
+if (currentUser) {
+console.log('signed in!')
+} else if (currentUser == null) {
+router.push('/')
+}
+}, [currentUser])
+
+if (!currentUser) {
+return null
+}
 
 ## 2022/07/19
 
