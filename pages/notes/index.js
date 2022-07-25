@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Card, Button, Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 
 import {
   addDoc,
   getDocs,
   query,
   collection,
-  orderBy,
   Timestamp,
   where,
 } from 'firebase/firestore'
@@ -14,8 +13,6 @@ import { db } from '../../src/firebase'
 import { useAuth } from '../../src/context/AuthContext'
 
 import Note from '../../src/components/Notes/Note'
-
-import moment from 'moment'
 
 import { ToastContainer, toast } from 'react-toastify'
 
@@ -39,11 +36,9 @@ export default function Notes() {
     notesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getNotes = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
 
     const notes = data.docs.map((doc) => ({
       ...doc.data(),
@@ -71,8 +66,6 @@ export default function Notes() {
         user: currentUser.uid,
       })
 
-      /* console.log(favorite) */
-      /* TOOD: find alternatives! */
       window.location.reload(false)
       toast('note created')
     } catch (err) {
@@ -99,7 +92,6 @@ export default function Notes() {
                 <>
                   <div className='grid-example'>
                     {notes.map((note, index) => (
-                      /* TODO: I should use the same Favorites/Favorite approach, props and everything; CRUD will be easier then */
                       <>
                         <Note note={note} index={index} />
                       </>

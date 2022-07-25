@@ -28,11 +28,9 @@ export default function TechnologyTopStories() {
     favoritesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getFavorites = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
     setFavorites(
       data.docs.map((doc) => ({
         ...doc.data(),
@@ -42,16 +40,13 @@ export default function TechnologyTopStories() {
     )
   }
   useEffect(() => {
-    /* top stories */
     axios
       .get(nytTopStoriesUrl)
       .then((response) => {
-        /*  console.log(response.data.results) */
         setPosts(response.data.results)
         console.log(response.data.results)
       })
       .catch((err) => {
-        /*  console.log(err) */
         setPosts(data)
       })
     getFavorites()

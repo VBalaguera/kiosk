@@ -13,10 +13,6 @@ Resourceful docs:
 
 Livetesting before merging branches!
 
-LIVETESTING NOTES:
-
--
-
 PROBLEM:
 
 - notes are indexed by created date at Firebase;
@@ -52,6 +48,7 @@ SOLUTION:
 - minor button style changes.
 - /kiosk displays a Welcome message and a random section as a proposition for the user to begin reading.
 - ArticleSearch now save to Favorites. it's a rfc, so I should try to implement this to all PostCards; done.
+- major code cleaning
 
 Tinkering with MongoDB atm to avoid Firestore limitations.
 Following this: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/

@@ -1,28 +1,15 @@
 import { useState, useEffect } from 'react'
 import Favorite from './Favorite'
-import { Button, Card } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import Link from 'next/link'
 
 import { useAuth } from '../../../context/AuthContext'
 
-import { useRouter } from 'next/router'
-
-import {
-  getDocs,
-  collection,
-  deleteDoc,
-  doc,
-  where,
-  query,
-} from 'firebase/firestore'
+import { getDocs, collection, where, query } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
 export default function Favorites() {
-  /*   const [error, setError] = useState('') */
   const { currentUser } = useAuth()
-  const router = useRouter()
-  /* TODO: revisit this */
-
   const [favorites, setFavorites] = useState([])
   const [favoritesSection, setFavoritesSection] = useState([])
 
@@ -36,7 +23,6 @@ export default function Favorites() {
     favoritesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getFavorites = async () => {
     const data = await getDocs(q)
@@ -93,11 +79,6 @@ export default function Favorites() {
         <div>
           <h2 className='section-title'>favorites</h2>
           <div className='d-flex justify-content-center my-3 flex-wrap'>
-            {/*             {favoritesSection.map((section, index) => (
-              <button key={index} onClick={() => filterItems(section)}>
-                {section}
-              </button>
-            ))} */}
             {allSections.map((section, index) => (
               <Button
                 variant='secondary'
@@ -114,7 +95,6 @@ export default function Favorites() {
             {favorites.length > 0 ? (
               <>
                 {favorites.map((favorite, index) => {
-                  /* console.log(favorite) */
                   return (
                     <>
                       <Favorite favorite={favorite} index={index} />

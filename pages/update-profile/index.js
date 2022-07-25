@@ -102,7 +102,6 @@ export default function UpdateProfile() {
     }
   }
 
-  /* TODO: revisit this */
   useEffect(() => {
     if (currentUser && currentUser.email) {
       router.push('/update-profile')
@@ -119,10 +118,6 @@ export default function UpdateProfile() {
             <Card.Header>
               <span className='section-title text-dark'>update profile</span>
             </Card.Header>
-            {/*  {error && <Alert variant='danger'>{error}</Alert>} */}
-            {/* {JSON.stringify(currentUser)} */}
-            {/*  { currentUser &&   currentUser.email} */}
-            {/* firebase uses localstorage; also an initial loading state */}
 
             <Form onSubmit={handleSubmit}>
               <Form.Group id='email' className='m-2'>

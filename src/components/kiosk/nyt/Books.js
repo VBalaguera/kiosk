@@ -8,6 +8,7 @@ import { getDocs, collection, where, query } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
 import data from '../../../data/nytBooks.json'
+import { toast } from 'react-toastify'
 
 const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 
@@ -28,11 +29,9 @@ export default function Books() {
     favoritesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getFavorites = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
     setFavorites(
       data.docs.map((doc) => ({
         ...doc.data(),
@@ -47,12 +46,11 @@ export default function Books() {
     axios
       .get(nytBooksUrl)
       .then((response) => {
-        /*  console.log(response.data.results.books) */
         setBooks(response.data.results.books)
       })
       .catch((err) => {
-        /* console.log(err) */
         setBooks(data)
+        toast(err)
       })
 
     getFavorites()
@@ -66,6 +64,7 @@ export default function Books() {
             <PostCardBooks
               post={post}
               user={currentUser}
+              key={index}
               favorites={favorites}
             />
           </>

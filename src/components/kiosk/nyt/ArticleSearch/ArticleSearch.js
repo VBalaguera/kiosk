@@ -6,7 +6,7 @@ import moment from 'moment'
 
 import data from '../../../../data/nytMostPopular.json'
 
-import { addDoc, collection, Timestamp } from 'firebase/firestore'
+import { addDoc, collection, Timestamp, getDocs, q } from 'firebase/firestore'
 import { db } from '../../../../firebase'
 
 import { useAuth } from '../../../../context/AuthContext'
@@ -80,8 +80,6 @@ export default function ArticleSearch() {
       toast(err)
     }
   }
-  console.log(currentUser)
-  console.log(posts)
 
   return (
     <div className='w-100'>
@@ -116,8 +114,7 @@ export default function ArticleSearch() {
             </div>
           </Form>
         </div>
-        <div className='articles-search-searchbar input-group mb-4'></div>
-
+        <div className='articles-search-searchbar input-group mb-1'></div>
         {posts.map((post) => (
           <div className='w-100'>
             <Card
@@ -146,7 +143,7 @@ export default function ArticleSearch() {
                 <Button
                   className='btn read-more'
                   variant='btn btn-outline-light mx-2'
-                  disabled={setClicked}
+                  disabled={clicked}
                 >
                   <span onClick={() => saveFavorite(post, currentUser)}>
                     Save as favorite

@@ -14,15 +14,6 @@ export default function MostPopular() {
   const [mostPopulars, setMostPopulars] = useState([])
   const { currentUser } = useAuth()
 
-  const [author, setAuthor] = useState('')
-  const [date, setDate] = useState('')
-  const [description, setDescription] = useState('')
-  const [section, setSection] = useState('')
-
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
-  const [user, setUser] = useState('')
-
   const [favorites, setFavorites] = useState([])
 
   const favoritesCollectionRef = collection(
@@ -35,11 +26,10 @@ export default function MostPopular() {
     favoritesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getFavorites = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
+
     setFavorites(
       data.docs.map((doc) => ({
         ...doc.data(),
@@ -54,9 +44,7 @@ export default function MostPopular() {
     axios
       .get(nytMostPopularUrl)
       .then((response) => {
-        /* console.log(response.data.results) */
         setMostPopulars(response.data.results)
-        /* setUser(currentUser.uid) */
       })
       .catch((err) => {
         console.log(err)

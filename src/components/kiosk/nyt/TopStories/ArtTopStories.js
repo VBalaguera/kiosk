@@ -27,11 +27,9 @@ export default function ArtTopStories() {
     favoritesCollectionRef,
     where('user', '==', String(currentUser.uid))
   )
-  /* TODO: revisit and polish this code asap */
 
   const getFavorites = async () => {
     const data = await getDocs(q)
-    /*       console.log(currentUser.uid) */
     setFavorites(
       data.docs.map((doc) => ({
         ...doc.data(),
@@ -41,15 +39,12 @@ export default function ArtTopStories() {
     )
   }
   useEffect(() => {
-    /* top stories */
     axios
       .get(nytTopStoriesUrl)
       .then((response) => {
-        /*   console.log(response.data.results) */
         setPosts(response.data.results)
       })
       .catch((err) => {
-        /*     console.log(err) */
         setPosts(data)
       })
     getFavorites()
@@ -59,7 +54,12 @@ export default function ArtTopStories() {
       <div className='top-stories grid-example'>
         {posts.map((post, index) => (
           <>
-            <PostCard post={post} user={currentUser} favorites={favorites} />
+            <PostCard
+              key={index}
+              post={post}
+              user={currentUser}
+              favorites={favorites}
+            />
           </>
         ))}
       </div>
