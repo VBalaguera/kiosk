@@ -75,10 +75,10 @@ export default function PostCarMovies({ post, user, favorites }) {
           <div className='d-flex align-items-center justify-content-center'>
             <Button
               className='btn read-more btn-outline-light mx-2'
-              variant='link'
+              variant='btn'
             >
               <a href={post.link.url} className='myLink'>
-                Read more
+                Read more.
               </a>
             </Button>
             <Button
@@ -87,9 +87,8 @@ export default function PostCarMovies({ post, user, favorites }) {
               disabled={favoritedItem.length > 0 || clicked}
             >
               <span onClick={() => saveFavorite(post, user)}>
-                Save as favorite
+                Save as favorite.
               </span>
-              .
             </Button>
           </div>
         </Card.Body>

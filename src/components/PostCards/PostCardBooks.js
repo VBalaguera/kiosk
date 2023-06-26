@@ -91,9 +91,8 @@ export default function PostCarBooks({ post, user, favorites }) {
               disabled={favoritedItem.length > 0 || clicked}
             >
               <span onClick={() => saveFavorite(post, user)}>
-                Save as favorite
+                Save as favorite.
               </span>
-              .
             </Button>
           </div>
         </Card.Body>

@@ -46,7 +46,7 @@ export default function NavBar() {
                   </Link>
                 </span>
 
-                <span className='myLink' onClick={handleLogOut}>
+                <span className='myLink hover' onClick={handleLogOut}>
                   logout
                 </span>
               </>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Button, Nav } from 'react-bootstrap'
 
 import Layout from '../../src/components/layout'
 import { useAuth } from '../../src/context/AuthContext'
@@ -24,6 +23,7 @@ import TechnologyTopStories from '../../src/components/kiosk/nyt/TopStories/Tech
 
 /* miscellaneous */
 import Welcome from '../../src/components/Welcome/Welcome'
+import Sections from '../../src/components/navigation/Sections'
 
 export default function Kiosk() {
   const { currentUser } = useAuth()
@@ -35,7 +35,7 @@ export default function Kiosk() {
     } else if (currentUser == null) {
       router.push('/')
     }
-  }, [])
+  }, [currentUser, router])
 
   if (!currentUser) {
     return null
@@ -58,24 +58,13 @@ export default function Kiosk() {
 
   return (
     <Layout>
-      <div className='d-flex justify-content-center flex-wrap flex-row'>
-        {sections.map((section, index) => (
-          <Nav.Link key={index} className='px-1 py-1 '>
-            <Button
-              variant='btn btn-outline-light button p-1 kiosk'
-              type='button'
-              key={section}
-              onClick={() => setMySection(section)}
-            >
-              {section}
-            </Button>
-          </Nav.Link>
-        ))}
-      </div>
+      <Sections sections={sections} setMySection={setMySection} />
       <div className='index'>
         {/* <WeatherWidget /> */}
         <h1 className='section-title text-light '>{mySection}</h1>
-        {mySection === undefined && <Welcome />}
+        {mySection === undefined && (
+          <Welcome sections={sections} setMySection={setMySection} />
+        )}
 
         {mySection === 'most popular' && <MostPopular />}
         {mySection === 'art' && <ArtTopStories />}

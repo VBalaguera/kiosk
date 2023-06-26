@@ -108,7 +108,7 @@ export default function Favorite({ favorite, index }) {
                   className='favorites-btn me-2 btn-outline-light'
                 >
                   <a href={favorite.url} className='myLink text-light m-0'>
-                    Read more
+                    .
                   </a>
                 </Button>
                 <Button

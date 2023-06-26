@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Card, Button, Form } from 'react-bootstrap'
-import axios from 'axios'
+import { Card, Button } from 'react-bootstrap'
 
 import moment from 'moment'
 
@@ -15,6 +14,7 @@ import SharingButtons from '../../../Sharing/SharingButtons'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { ToastContainer, toast } from 'react-toastify'
+import SearchBar from '../../../Search/SearchBar'
 
 export default function ArticleSearch() {
   const [wordEntered, setWordEntered] = useState('')
@@ -23,28 +23,6 @@ export default function ArticleSearch() {
   const [clicked, setClicked] = useState(false)
 
   const { currentUser } = useAuth()
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    const query = wordEntered
-    setWordEntered(query)
-
-    axios
-      .get(
-        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
-      )
-      .then((response) => {
-        setPosts(response.data.response.docs)
-      })
-      .catch((err) => {
-        setPosts(data)
-      })
-  }
-
-  const clearInput = () => {
-    setPosts([])
-    setWordEntered('')
-  }
 
   const handleCopyLink = () => {
     setCopied(true)
@@ -82,37 +60,12 @@ export default function ArticleSearch() {
   return (
     <div className='w-100'>
       <Card className='articles-search bg-dark text-light border-light'>
-        <div className=''>
-          <Form onSubmit={handleSearch}>
-            <div className='articles-search__form'>
-              <Form.Control
-                type='text'
-                className='articles-search__form-input'
-                placeholder='what would you like to know?'
-                onChange={(e) => setWordEntered(e.target.value)}
-                value={wordEntered}
-                aria-label='what would you like to know?'
-              ></Form.Control>
-              <div className='articles-search__form-buttons'>
-                <Button
-                  type='submit'
-                  variant='secondary'
-                  className='btn btn-outline-light search-btn ms-1'
-                >
-                  Search
-                </Button>
-                <Button
-                  className='btn btn-outline-light search-btn ms-1'
-                  variant='secondary'
-                  onClick={clearInput}
-                >
-                  delete
-                </Button>
-              </div>
-            </div>
-          </Form>
-        </div>
-        <div className='articles-search-searchbar input-group mb-1'></div>
+        <SearchBar
+          setPosts={setPosts}
+          data={data}
+          wordEntered={wordEntered}
+          setWordEntered={setWordEntered}
+        />
         {posts.map((post) => (
           <div className='w-100'>
             <Card
@@ -135,7 +88,7 @@ export default function ArticleSearch() {
                   variant='btn btn-outline-light'
                 >
                   <a href={post.web_url} className='link'>
-                    Read more
+                    Read more.
                   </a>
                 </Button>
                 <Button
@@ -144,9 +97,8 @@ export default function ArticleSearch() {
                   disabled={clicked}
                 >
                   <span onClick={() => saveFavorite(post, currentUser)}>
-                    Save as favorite
+                    Save as favorite.
                   </span>
-                  .
                 </Button>
               </Card.Body>
               <Card.Footer className='d-flex align-items-center justify-content-center'>

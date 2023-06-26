@@ -67,6 +67,10 @@ code {
     monospace;
 }
 
+.hover:hover {
+  cursor: pointer;
+}
+
 .index {
   margin: auto;
 }
@@ -138,8 +142,7 @@ a:hover,
 }
 
 /* search form */
-.search-form {
-}
+.search-form {}
 
 /* notes */
 
@@ -322,6 +325,7 @@ a:hover,
 .profile-info-bottom {
   align-items: flex-end;
 }
+
 .profile-info {
   display: flex;
   justify-content: space-between;
@@ -346,15 +350,18 @@ a:hover,
   .page-title {
     font-size: 1.5rem;
   }
+
   /* navbar */
   .nav-link {
     padding: 0.1rem 0.5rem;
   }
+
   .navbar-link,
   .myLink {
     margin: 0 0 0 0.5rem;
     font-size: 0.8rem;
   }
+
   /* kiosk */
   .kiosk,
   .favorites-btn,
@@ -368,6 +375,7 @@ a:hover,
   .section-title {
     font-size: 1.2rem;
   }
+
   .title-card,
   .title-favorite-card {
     font-size: 1rem;

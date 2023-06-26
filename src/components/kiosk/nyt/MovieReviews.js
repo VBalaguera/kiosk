@@ -59,6 +59,7 @@ export default function MovieReviews() {
       <div className='movie-reviews grid-example'>
         {reviews.map((post, index) => (
           <PostCardMovies
+            key={index}
             post={post}
             user={currentUser}
             favorites={favorites}

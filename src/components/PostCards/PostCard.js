@@ -83,24 +83,21 @@ export default function PostCard({ post, user, favorites }) {
           </Card.Text>
           <div className='d-flex align-items-center justify-content-center'>
             <Button
-              className='btn read-more'
-              variant='btn btn-outline-light mx-2'
+              className='btn read-more btn-outline-light mx-2'
+              variant='btn '
             >
               <a href={post.url} className='myLink'>
-                Read more
+                Read more.
               </a>
-              .
             </Button>
-
             <Button
               className='btn read-more'
               variant='btn btn-outline-light mx-2'
               disabled={favoritedItem.length > 0 || clicked}
             >
               <span onClick={() => saveFavorite(post, user)}>
-                Save as favorite
+                Save as favorite.
               </span>
-              .
             </Button>
           </div>
         </Card.Body>
