@@ -10,6 +10,7 @@ import { db } from '../../../firebase'
 import data from '../../../data/nytBooks.json'
 import { toast } from 'react-toastify'
 
+import Loading from '../../Loading/Loading'
 const nytBooksUrl = `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 
 export default function Books() {
@@ -18,6 +19,8 @@ export default function Books() {
 
   /* checking out user's favorites */
   const [favorites, setFavorites] = useState([])
+
+  const [loading, setLoading] = useState(false)
 
   const favoritesCollectionRef = collection(
     db,
@@ -42,34 +45,40 @@ export default function Books() {
   }
 
   useEffect(() => {
+    setLoading(true)
     /* books */
     axios
       .get(nytBooksUrl)
       .then((response) => {
         setBooks(response.data.results.books)
+        setLoading(false)
       })
       .catch((err) => {
         setBooks(data)
         toast(err)
+        setLoading(false)
       })
 
     getFavorites()
   }, [])
   return (
     <div>
-      {' '}
-      <div className='books grid-example'>
-        {books.map((post, index) => (
-          <>
-            <PostCardBooks
-              post={post}
-              user={currentUser}
-              key={index}
-              favorites={favorites}
-            />
-          </>
-        ))}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='books grid-example'>
+          {books.map((post, index) => (
+            <>
+              <PostCardBooks
+                post={post}
+                user={currentUser}
+                key={index}
+                favorites={favorites}
+              />
+            </>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

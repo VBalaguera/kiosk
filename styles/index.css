@@ -331,6 +331,15 @@ a:hover,
   justify-content: space-between;
 }
 
+/* loading */
+.loading {
+  color: red;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 /* footer */
 
 .footer {

@@ -1,9 +1,14 @@
 import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
-import { useState } from 'react'
 
-const SearchBar = ({ setPosts, data, setWordEntered, wordEntered }) => {
-  const [loading, setLoading] = useState(false)
+const SearchBar = ({
+  setPosts,
+  data,
+  setWordEntered,
+  wordEntered,
+  loading,
+  setLoading,
+}) => {
   const handleSearch = (e) => {
     e.preventDefault()
     setLoading(true)

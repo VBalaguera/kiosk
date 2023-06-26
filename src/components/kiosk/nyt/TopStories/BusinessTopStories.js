@@ -11,7 +11,7 @@ import { db } from '../../../../firebase'
 import PostCard from '../../../PostCards/PostCard'
 
 import data from '../../../../data/nytBusiness.json'
-
+import Loading from '../../../Loading/Loading'
 const nytTopStoriesUrl = `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 /* allowed values: arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world */
 
@@ -20,6 +20,8 @@ export default function BusinnessTopStories() {
   const { currentUser } = useAuth()
 
   const [favorites, setFavorites] = useState([])
+
+  const [loading, setLoading] = useState(false)
 
   const favoritesCollectionRef = collection(
     db,
@@ -43,31 +45,38 @@ export default function BusinnessTopStories() {
     )
   }
   useEffect(() => {
+    setLoading(true)
     axios
       .get(nytTopStoriesUrl)
       .then((response) => {
         setPosts(response.data.results)
+        setLoading(false)
       })
       .catch((err) => {
         setPosts(data)
+        setLoading(false)
       })
 
     getFavorites()
   }, [])
   return (
     <div>
-      <div className='top-stories grid-example'>
-        {posts.map((post, index) => (
-          <>
-            <PostCard
-              key={index}
-              post={post}
-              user={currentUser}
-              favorites={favorites}
-            />
-          </>
-        ))}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='top-stories grid-example'>
+          {posts.map((post, index) => (
+            <>
+              <PostCard
+                key={index}
+                post={post}
+                user={currentUser}
+                favorites={favorites}
+              />
+            </>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

@@ -9,6 +9,7 @@ import { getDocs, collection, where, query } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
 import data from '../../../data/nytMovieReviews.json'
+import Loading from '../../Loading/Loading'
 const nytMovieReviewsUrl = `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?&api-key=${process.env.NEXT_PUBLIC_NYT_API_KEY}`
 
 export default function MovieReviews() {
@@ -17,6 +18,8 @@ export default function MovieReviews() {
 
   /* checking out user's favorites */
   const [favorites, setFavorites] = useState([])
+
+  const [loading, setLoading] = useState(false)
 
   const favoritesCollectionRef = collection(
     db,
@@ -43,29 +46,37 @@ export default function MovieReviews() {
 
   useEffect(() => {
     /* movie reviews */
+    setLoading(true)
     axios
       .get(nytMovieReviewsUrl)
       .then((response) => {
         setReviews(response.data.results)
+        setLoading(false)
       })
       .catch((err) => {
         setReviews(data)
+        console.log(err)
+        setLoading(false)
       })
 
     getFavorites()
   }, [])
   return (
     <div>
-      <div className='movie-reviews grid-example'>
-        {reviews.map((post, index) => (
-          <PostCardMovies
-            key={index}
-            post={post}
-            user={currentUser}
-            favorites={favorites}
-          />
-        ))}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='movie-reviews grid-example'>
+          {reviews.map((post, index) => (
+            <PostCardMovies
+              key={index}
+              post={post}
+              user={currentUser}
+              favorites={favorites}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
